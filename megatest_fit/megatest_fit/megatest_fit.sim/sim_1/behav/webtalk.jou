@@ -2,11 +2,11 @@
 # Webtalk v2017.2 (64-bit)
 # SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
 # IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
-# Start of session at: Wed Dec 11 14:21:39 2024
-# Process ID: 15400
-# Current directory: C:/Users/dsed/Downloads/firBlock/firBlock/firBlock.sim/sim_1/behav
-# Command line: wbtcv.exe -mode batch -source C:/Users/dsed/Downloads/firBlock/firBlock/firBlock.sim/sim_1/behav/xsim.dir/tb_fir5stage_behav/webtalk/xsim_webtalk.tcl -notrace
-# Log file: C:/Users/dsed/Downloads/firBlock/firBlock/firBlock.sim/sim_1/behav/webtalk.log
-# Journal file: C:/Users/dsed/Downloads/firBlock/firBlock/firBlock.sim/sim_1/behav\webtalk.jou
+# Start of session at: Thu Dec 12 00:58:00 2024
+# Process ID: 9932
+# Current directory: C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/megatest_fit/megatest_fit.sim/sim_1/behav
+# Command line: wbtcv.exe -mode batch -source C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/megatest_fit/megatest_fit.sim/sim_1/behav/xsim.dir/tb_firterBlock_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/megatest_fit/megatest_fit.sim/sim_1/behav/webtalk.log
+# Journal file: C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/megatest_fit/megatest_fit.sim/sim_1/behav\webtalk.jou
 #-----------------------------------------------------------
-source C:/Users/dsed/Downloads/firBlock/firBlock/firBlock.sim/sim_1/behav/xsim.dir/tb_fir5stage_behav/webtalk/xsim_webtalk.tcl -notrace
+source C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/megatest_fit/megatest_fit.sim/sim_1/behav/xsim.dir/tb_firterBlock_behav/webtalk/xsim_webtalk.tcl -notrace

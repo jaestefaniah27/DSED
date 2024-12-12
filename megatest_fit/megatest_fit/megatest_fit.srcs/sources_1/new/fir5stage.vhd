@@ -113,7 +113,7 @@ r2_next <= mul_o;
 
 sum_o <= signed(r1_reg) + signed(r2_reg);
 --sample_out <= std_logic_vector(resize(SIGNED(r1_reg), 8));
-sample_out <= r1_reg(17) & r1_reg(13 downto 7);
+sample_out <= r1_reg(17) & r1_reg(13 downto 7); --r1_reg(17)
 COUNTER: contador_3bits port map (
     clk => clk_12Mhz,
     rst => rst,

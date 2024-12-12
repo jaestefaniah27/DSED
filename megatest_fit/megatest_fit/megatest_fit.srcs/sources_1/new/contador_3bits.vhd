@@ -56,7 +56,9 @@ begin
     end process;
 --next state logic 
 count_enable_next <= '0' when r_reg = "110" else count_enable_reg;
-r_next <= r_reg + 1 when count_enable_reg = '1' else r_reg;
+r_next <=   r_reg + 1 when count_enable_reg = '1' else
+            "000" when r_reg="111" 
+            else r_reg;
 sample_out_ready_next <= '1' when r_reg = "111" else '0'; -- cuidao
 --output logic
 mux_sel <= r_reg;

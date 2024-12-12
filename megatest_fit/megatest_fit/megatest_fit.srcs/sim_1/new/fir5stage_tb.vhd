@@ -98,22 +98,24 @@ begin
         c2 <= "00111001";
         c3 <= "00011111";
         c4 <= "00000101";
-        
         s0 <= "00000000";
         s1 <= "00000000";
         s2 <= "00000000";
         s3 <= "00000000";
-        s4 <= "01000000";
+        s4 <= "00000000";
         wait for 2.5 * CLK_PERIOD ;
         rst <= '0';
         wait for 2 * CLK_PERIOD ;
-        s0 <= "00000000";
-
+        s0 <= "10100111";
+        s1 <= "11100111";
+        s2 <= "00100110";
+        s3 <= "01100110";
+        s4 <= "01110011";
         sen <= '1';
         wait for CLK_PERIOD;
 
         sen <= '0';
-        wait for 15 * CLK_PERIOD;
+        wait for 20 * CLK_PERIOD;
 
         -- Finalización de la simulación
         wait;
