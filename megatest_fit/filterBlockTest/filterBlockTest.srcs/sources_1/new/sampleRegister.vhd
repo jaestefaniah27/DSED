@@ -51,7 +51,7 @@ architecture Behavioral of sampleRegister is
     signal s_reg0, s_reg1, s_reg2, s_reg3, s_reg4 : std_logic_vector(sample_size - 1 downto 0);
 
     -- Registro para la señal sen
-    signal sen_reg : std_logic;
+    signal sen_reg, sen_next : std_logic;
 
     -- Señal escalada de entrada (sample_in - 128)
 --    signal sample_in_scaled : std_logic_vector(sample_size - 1 downto 0);
@@ -72,7 +72,7 @@ begin
             s_reg4 <= (others => '0');
             sen_reg <= '0';
         elsif rising_edge(clk_12Mhz) then
-            sen_reg <= sample_en;
+            sen_reg <= sen_next;
             if sample_en = '1' then
                 -- Desplaza las muestras previas
                 s_reg4 <= s_reg3;
@@ -83,7 +83,7 @@ begin
             end if;
         end if;
     end process;
-
+sen_next <= sample_en;
     -- Salidas
     s0 <= s_reg0;
     s1 <= s_reg1;

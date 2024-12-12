@@ -90,61 +90,51 @@ begin
         wait for 2 * CLK_PERIOD ;
         
         -- Comienzo de secuencia
-        sample_in <= "01000000";
+        sample_in <= "00000000";
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
+        sample_in <= "01000000"; --0, 0.5
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
+        sample_in <= "00000000";
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
+        sample_in <= "00010000"; -- 0, 0.125
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
+        sample_in <= "00000000"; -- X= -1, 0.9921875, 0.0078125, -0.0078125
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
+        sample_in <= "00000000";
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;        
-        sample_in <= "01000000";
+        sample_in <= "00000000";
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
+        sample_in <= "00000000";
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;                
-        sample_in <= "01000000";
+        sample_in <= "00000000";
         sample_en <= '1';
         wait for CLK_PERIOD;
         sample_en <= '0';
         wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
-        sample_en <= '1';
-        wait for CLK_PERIOD;
-        sample_en <= '0';
-        wait for 20 * CLK_PERIOD;
-        sample_in <= "01000000";
-        sample_en <= '1';
-        wait for CLK_PERIOD;
-        sample_en <= '0';
-        wait for 20 * CLK_PERIOD;                        
         -- Finalización de la simulación
         wait;
     end process;
