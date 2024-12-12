@@ -2,12 +2,12 @@
 # Webtalk v2017.2 (64-bit)
 # SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
 # IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
-# Start of session at: Thu Dec 12 15:47:44 2024
-# Process ID: 12412
+# Start of session at: Thu Dec 12 16:50:22 2024
+# Process ID: 26360
 # Current directory: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav
-# Command line: wbtcv.exe -mode batch -source C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav/xsim.dir/tb_firterBlock_behav/webtalk/xsim_webtalk.tcl -notrace
+# Command line: wbtcv.exe -mode batch -source C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav/xsim.dir/tb_RAM_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav/webtalk.log
 # Journal file: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav\webtalk.jou
 #-----------------------------------------------------------
-source C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav/xsim.dir/tb_firterBlock_behav/webtalk/xsim_webtalk.tcl -notrace
-INFO: [Common 17-206] Exiting Webtalk at Thu Dec 12 15:47:45 2024...
+source C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.sim/sim_1/behav/xsim.dir/tb_RAM_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Dec 12 16:50:23 2024...

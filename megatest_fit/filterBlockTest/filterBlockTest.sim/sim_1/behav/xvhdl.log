@@ -43,3 +43,5 @@ INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/SDverisure/Documents/4_TELECO/
 INFO: [VRFC 10-307] analyzing entity sampleRegister_tb
 INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.srcs/sim_1/new/tb_filterBlock.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity tb_firterBlock
+INFO: [VRFC 10-163] Analyzing VHDL file "C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.srcs/sim_1/new/tb_RAM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity tb_RAM
