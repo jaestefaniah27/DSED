@@ -1,10 +1,10 @@
 // Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-// Date        : Thu Dec 12 16:25:29 2024
+// Date        : Fri Dec 13 12:14:25 2024
 // Host        : PC_CSDVerisure running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
-//               c:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.v
+//               C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.v
 // Design      : blk_mem_gen_0
 // Purpose     : This verilog netlist is a functional simulation representation of the design and should not be modified
 //               or synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -16,13 +16,13 @@
 (* NotValidForBitStream *)
 module blk_mem_gen_0
    (clka,
-    ena,
+    rsta,
     wea,
     addra,
     dina,
     douta);
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA CLK" *) input clka;
-  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA EN" *) input ena;
+  (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA RST" *) input rsta;
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA WE" *) input [0:0]wea;
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA ADDR" *) input [18:0]addra;
   (* x_interface_info = "xilinx.com:interface:bram:1.0 BRAM_PORTA DIN" *) input [7:0]dina;
@@ -32,7 +32,7 @@ module blk_mem_gen_0
   wire clka;
   wire [7:0]dina;
   wire [7:0]douta;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire NLW_U0_dbiterr_UNCONNECTED;
   wire NLW_U0_rsta_busy_UNCONNECTED;
@@ -81,7 +81,7 @@ module blk_mem_gen_0
   (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     16.114203 mW" *) 
   (* C_FAMILY = "artix7" *) 
   (* C_HAS_AXI_ID = "0" *) 
-  (* C_HAS_ENA = "1" *) 
+  (* C_HAS_ENA = "0" *) 
   (* C_HAS_ENB = "0" *) 
   (* C_HAS_INJECTERR = "0" *) 
   (* C_HAS_MEM_OUTPUT_REGS_A = "1" *) 
@@ -90,7 +90,7 @@ module blk_mem_gen_0
   (* C_HAS_MUX_OUTPUT_REGS_B = "0" *) 
   (* C_HAS_REGCEA = "0" *) 
   (* C_HAS_REGCEB = "0" *) 
-  (* C_HAS_RSTA = "0" *) 
+  (* C_HAS_RSTA = "1" *) 
   (* C_HAS_RSTB = "0" *) 
   (* C_HAS_SOFTECC_INPUT_REGS_A = "0" *) 
   (* C_HAS_SOFTECC_OUTPUT_REGS_B = "0" *) 
@@ -109,7 +109,7 @@ module blk_mem_gen_0
   (* C_READ_WIDTH_B = "8" *) 
   (* C_RSTRAM_A = "0" *) 
   (* C_RSTRAM_B = "0" *) 
-  (* C_RST_PRIORITY_A = "CE" *) 
+  (* C_RST_PRIORITY_A = "SR" *) 
   (* C_RST_PRIORITY_B = "CE" *) 
   (* C_SIM_COLLISION_CHECK = "ALL" *) 
   (* C_USE_BRAM_BLOCK = "0" *) 
@@ -141,14 +141,14 @@ module blk_mem_gen_0
         .douta(douta),
         .doutb(NLW_U0_doutb_UNCONNECTED[7:0]),
         .eccpipece(1'b0),
-        .ena(ena),
+        .ena(1'b0),
         .enb(1'b0),
         .injectdbiterr(1'b0),
         .injectsbiterr(1'b0),
         .rdaddrecc(NLW_U0_rdaddrecc_UNCONNECTED[18:0]),
         .regcea(1'b0),
         .regceb(1'b0),
-        .rsta(1'b0),
+        .rsta(rsta),
         .rsta_busy(NLW_U0_rsta_busy_UNCONNECTED),
         .rstb(1'b0),
         .rstb_busy(NLW_U0_rstb_busy_UNCONNECTED),
@@ -199,13 +199,13 @@ endmodule
 module blk_mem_gen_0_blk_mem_gen_generic_cstr
    (douta,
     clka,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [7:0]douta;
   input clka;
-  input ena;
+  input rsta;
   input [18:0]addra;
   input [7:0]dina;
   input [0:0]wea;
@@ -214,7 +214,6 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
   wire clka;
   wire [7:0]dina;
   wire [7:0]douta;
-  wire ena;
   wire ram_douta;
   wire ram_ena__0;
   wire \ram_ena_inferred__0/i__n_0 ;
@@ -287,6 +286,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
   wire \ramloop[7].ram.r_n_0 ;
   wire \ramloop[8].ram.r_n_0 ;
   wire \ramloop[9].ram.r_n_0 ;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_mux \has_mux_a.A 
@@ -357,71 +357,62 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[18:16]),
         .clka(clka),
         .douta(douta),
-        .ena(ena),
         .wea(wea));
-  LUT4 #(
-    .INIT(16'h0004)) 
+  LUT3 #(
+    .INIT(8'h01)) 
     ram_ena
-       (.I0(addra[18]),
-        .I1(ena),
-        .I2(addra[17]),
-        .I3(addra[16]),
+       (.I0(addra[16]),
+        .I1(addra[17]),
+        .I2(addra[18]),
         .O(ram_ena_n_0));
-  LUT4 #(
-    .INIT(16'h0400)) 
+  LUT3 #(
+    .INIT(8'h10)) 
     \ram_ena_inferred__0/i_ 
        (.I0(addra[18]),
-        .I1(addra[16]),
-        .I2(addra[17]),
-        .I3(ena),
+        .I1(addra[17]),
+        .I2(addra[16]),
         .O(\ram_ena_inferred__0/i__n_0 ));
-  LUT4 #(
-    .INIT(16'h1000)) 
+  LUT3 #(
+    .INIT(8'h10)) 
     \ram_ena_inferred__1/i_ 
        (.I0(addra[16]),
         .I1(addra[18]),
         .I2(addra[17]),
-        .I3(ena),
         .O(\ram_ena_inferred__1/i__n_0 ));
-  LUT4 #(
-    .INIT(16'h4000)) 
+  LUT3 #(
+    .INIT(8'h40)) 
     \ram_ena_inferred__2/i_ 
        (.I0(addra[18]),
-        .I1(addra[17]),
-        .I2(ena),
-        .I3(addra[16]),
+        .I1(addra[16]),
+        .I2(addra[17]),
         .O(\ram_ena_inferred__2/i__n_0 ));
-  LUT4 #(
-    .INIT(16'h0400)) 
+  LUT3 #(
+    .INIT(8'h10)) 
     \ram_ena_inferred__3/i_ 
        (.I0(addra[16]),
-        .I1(ena),
-        .I2(addra[17]),
-        .I3(addra[18]),
+        .I1(addra[17]),
+        .I2(addra[18]),
         .O(\ram_ena_inferred__3/i__n_0 ));
-  LUT4 #(
-    .INIT(16'h4000)) 
+  LUT3 #(
+    .INIT(8'h40)) 
     \ram_ena_inferred__4/i_ 
        (.I0(addra[17]),
-        .I1(ena),
+        .I1(addra[16]),
         .I2(addra[18]),
-        .I3(addra[16]),
         .O(\ram_ena_inferred__4/i__n_0 ));
-  LUT4 #(
-    .INIT(16'h4000)) 
+  LUT3 #(
+    .INIT(8'h40)) 
     \ram_ena_inferred__5/i_ 
        (.I0(addra[16]),
-        .I1(ena),
-        .I2(addra[18]),
-        .I3(addra[17]),
+        .I1(addra[18]),
+        .I2(addra[17]),
         .O(\ram_ena_inferred__5/i__n_0 ));
-  LUT4 #(
-    .INIT(16'h8000)) 
+  LUT3 #(
+    .INIT(8'h80)) 
     \ram_ena_inferred__6/i_ 
        (.I0(addra[18]),
-        .I1(ena),
-        .I2(addra[17]),
-        .I3(addra[16]),
+        .I1(addra[17]),
+        .I2(addra[16]),
         .O(ram_ena__0));
   blk_mem_gen_0_blk_mem_gen_prim_width \ramloop[0].ram.r 
        (.DOUTA(ram_douta),
@@ -429,7 +420,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized9 \ramloop[10].ram.r 
        (.DOUTA(\ramloop[10].ram.r_n_0 ),
@@ -437,7 +428,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized10 \ramloop[11].ram.r 
        (.DOUTA(\ramloop[11].ram.r_n_0 ),
@@ -445,7 +436,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized11 \ramloop[12].ram.r 
        (.DOUTA(\ramloop[12].ram.r_n_0 ),
@@ -453,7 +444,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized12 \ramloop[13].ram.r 
        (.DOUTA(\ramloop[13].ram.r_n_0 ),
@@ -461,7 +452,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized13 \ramloop[14].ram.r 
        (.DOUTA(\ramloop[14].ram.r_n_0 ),
@@ -469,7 +460,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized14 \ramloop[15].ram.r 
        (.DOUTA(\ramloop[15].ram.r_n_0 ),
@@ -477,7 +468,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized15 \ramloop[16].ram.r 
        (.DOUTA(\ramloop[16].ram.r_n_0 ),
@@ -485,7 +476,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized16 \ramloop[17].ram.r 
        (.DOUTA(\ramloop[17].ram.r_n_0 ),
@@ -493,7 +484,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized17 \ramloop[18].ram.r 
        (.DOUTA(\ramloop[18].ram.r_n_0 ),
@@ -501,7 +492,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized18 \ramloop[19].ram.r 
        (.DOUTA(\ramloop[19].ram.r_n_0 ),
@@ -509,7 +500,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized0 \ramloop[1].ram.r 
        (.DOUTA(\ramloop[1].ram.r_n_0 ),
@@ -517,7 +508,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized19 \ramloop[20].ram.r 
        (.DOUTA(\ramloop[20].ram.r_n_0 ),
@@ -525,7 +516,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized20 \ramloop[21].ram.r 
        (.DOUTA(\ramloop[21].ram.r_n_0 ),
@@ -533,7 +524,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized21 \ramloop[22].ram.r 
        (.DOUTA(\ramloop[22].ram.r_n_0 ),
@@ -541,7 +532,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized22 \ramloop[23].ram.r 
        (.DOUTA(\ramloop[23].ram.r_n_0 ),
@@ -549,7 +540,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[2]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized23 \ramloop[24].ram.r 
        (.DOUTA(\ramloop[24].ram.r_n_0 ),
@@ -557,7 +548,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized24 \ramloop[25].ram.r 
        (.DOUTA(\ramloop[25].ram.r_n_0 ),
@@ -565,7 +556,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized25 \ramloop[26].ram.r 
        (.DOUTA(\ramloop[26].ram.r_n_0 ),
@@ -573,7 +564,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized26 \ramloop[27].ram.r 
        (.DOUTA(\ramloop[27].ram.r_n_0 ),
@@ -581,7 +572,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized27 \ramloop[28].ram.r 
        (.DOUTA(\ramloop[28].ram.r_n_0 ),
@@ -589,7 +580,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized28 \ramloop[29].ram.r 
        (.DOUTA(\ramloop[29].ram.r_n_0 ),
@@ -597,7 +588,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized1 \ramloop[2].ram.r 
        (.DOUTA(\ramloop[2].ram.r_n_0 ),
@@ -605,7 +596,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized29 \ramloop[30].ram.r 
        (.DOUTA(\ramloop[30].ram.r_n_0 ),
@@ -613,7 +604,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized30 \ramloop[31].ram.r 
        (.DOUTA(\ramloop[31].ram.r_n_0 ),
@@ -621,7 +612,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[3]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized31 \ramloop[32].ram.r 
        (.DOUTA(\ramloop[32].ram.r_n_0 ),
@@ -629,7 +620,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized32 \ramloop[33].ram.r 
        (.DOUTA(\ramloop[33].ram.r_n_0 ),
@@ -637,7 +628,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized33 \ramloop[34].ram.r 
        (.DOUTA(\ramloop[34].ram.r_n_0 ),
@@ -645,7 +636,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized34 \ramloop[35].ram.r 
        (.DOUTA(\ramloop[35].ram.r_n_0 ),
@@ -653,7 +644,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized35 \ramloop[36].ram.r 
        (.DOUTA(\ramloop[36].ram.r_n_0 ),
@@ -661,7 +652,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized36 \ramloop[37].ram.r 
        (.DOUTA(\ramloop[37].ram.r_n_0 ),
@@ -669,7 +660,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized37 \ramloop[38].ram.r 
        (.DOUTA(\ramloop[38].ram.r_n_0 ),
@@ -677,7 +668,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized38 \ramloop[39].ram.r 
        (.DOUTA(\ramloop[39].ram.r_n_0 ),
@@ -685,7 +676,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[4]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized2 \ramloop[3].ram.r 
        (.DOUTA(\ramloop[3].ram.r_n_0 ),
@@ -693,7 +684,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized39 \ramloop[40].ram.r 
        (.DOUTA(\ramloop[40].ram.r_n_0 ),
@@ -701,7 +692,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized40 \ramloop[41].ram.r 
        (.DOUTA(\ramloop[41].ram.r_n_0 ),
@@ -709,7 +700,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized41 \ramloop[42].ram.r 
        (.DOUTA(\ramloop[42].ram.r_n_0 ),
@@ -717,7 +708,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized42 \ramloop[43].ram.r 
        (.DOUTA(\ramloop[43].ram.r_n_0 ),
@@ -725,7 +716,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized43 \ramloop[44].ram.r 
        (.DOUTA(\ramloop[44].ram.r_n_0 ),
@@ -733,7 +724,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized44 \ramloop[45].ram.r 
        (.DOUTA(\ramloop[45].ram.r_n_0 ),
@@ -741,7 +732,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized45 \ramloop[46].ram.r 
        (.DOUTA(\ramloop[46].ram.r_n_0 ),
@@ -749,7 +740,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized46 \ramloop[47].ram.r 
        (.DOUTA(\ramloop[47].ram.r_n_0 ),
@@ -757,7 +748,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[5]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized47 \ramloop[48].ram.r 
        (.DOUTA(\ramloop[48].ram.r_n_0 ),
@@ -765,7 +756,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized48 \ramloop[49].ram.r 
        (.DOUTA(\ramloop[49].ram.r_n_0 ),
@@ -773,7 +764,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized3 \ramloop[4].ram.r 
        (.DOUTA(\ramloop[4].ram.r_n_0 ),
@@ -781,7 +772,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized49 \ramloop[50].ram.r 
        (.DOUTA(\ramloop[50].ram.r_n_0 ),
@@ -789,7 +780,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized50 \ramloop[51].ram.r 
        (.DOUTA(\ramloop[51].ram.r_n_0 ),
@@ -797,7 +788,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized51 \ramloop[52].ram.r 
        (.DOUTA(\ramloop[52].ram.r_n_0 ),
@@ -805,7 +796,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized52 \ramloop[53].ram.r 
        (.DOUTA(\ramloop[53].ram.r_n_0 ),
@@ -813,7 +804,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized53 \ramloop[54].ram.r 
        (.DOUTA(\ramloop[54].ram.r_n_0 ),
@@ -821,7 +812,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized54 \ramloop[55].ram.r 
        (.DOUTA(\ramloop[55].ram.r_n_0 ),
@@ -829,7 +820,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[6]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized55 \ramloop[56].ram.r 
        (.DOUTA(\ramloop[56].ram.r_n_0 ),
@@ -837,7 +828,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized56 \ramloop[57].ram.r 
        (.DOUTA(\ramloop[57].ram.r_n_0 ),
@@ -845,7 +836,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized57 \ramloop[58].ram.r 
        (.DOUTA(\ramloop[58].ram.r_n_0 ),
@@ -853,7 +844,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized58 \ramloop[59].ram.r 
        (.DOUTA(\ramloop[59].ram.r_n_0 ),
@@ -861,7 +852,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized4 \ramloop[5].ram.r 
        (.DOUTA(\ramloop[5].ram.r_n_0 ),
@@ -869,7 +860,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized59 \ramloop[60].ram.r 
        (.DOUTA(\ramloop[60].ram.r_n_0 ),
@@ -877,7 +868,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized60 \ramloop[61].ram.r 
        (.DOUTA(\ramloop[61].ram.r_n_0 ),
@@ -885,7 +876,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized61 \ramloop[62].ram.r 
        (.DOUTA(\ramloop[62].ram.r_n_0 ),
@@ -893,7 +884,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized62 \ramloop[63].ram.r 
        (.DOUTA(\ramloop[63].ram.r_n_0 ),
@@ -901,7 +892,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[7]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized5 \ramloop[6].ram.r 
        (.DOUTA(\ramloop[6].ram.r_n_0 ),
@@ -909,7 +900,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized6 \ramloop[7].ram.r 
        (.DOUTA(\ramloop[7].ram.r_n_0 ),
@@ -917,7 +908,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[0]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized7 \ramloop[8].ram.r 
        (.DOUTA(\ramloop[8].ram.r_n_0 ),
@@ -925,7 +916,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
   blk_mem_gen_0_blk_mem_gen_prim_width__parameterized8 \ramloop[9].ram.r 
        (.DOUTA(\ramloop[9].ram.r_n_0 ),
@@ -933,7 +924,7 @@ module blk_mem_gen_0_blk_mem_gen_generic_cstr
         .addra(addra[15:0]),
         .clka(clka),
         .dina(dina[1]),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -941,7 +932,6 @@ endmodule
 module blk_mem_gen_0_blk_mem_gen_mux
    (douta,
     addra,
-    ena,
     wea,
     clka,
     DOUTA,
@@ -1010,7 +1000,6 @@ module blk_mem_gen_0_blk_mem_gen_mux
     \DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_61 );
   output [7:0]douta;
   input [2:0]addra;
-  input ena;
   input [0:0]wea;
   input clka;
   input [0:0]DOUTA;
@@ -1161,10 +1150,6 @@ module blk_mem_gen_0_blk_mem_gen_mux
   wire \douta[6]_INST_0_i_2_n_0 ;
   wire \douta[7]_INST_0_i_1_n_0 ;
   wire \douta[7]_INST_0_i_2_n_0 ;
-  wire ena;
-  wire \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[2]_i_1_n_0 ;
-  wire \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[3]_i_1_n_0 ;
-  wire \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[4]_i_1_n_0 ;
   wire \no_softecc_sel_reg.ce_pri.sel_pipe[2]_i_1_n_0 ;
   wire \no_softecc_sel_reg.ce_pri.sel_pipe[3]_i_1_n_0 ;
   wire \no_softecc_sel_reg.ce_pri.sel_pipe[4]_i_1_n_0 ;
@@ -1372,80 +1357,52 @@ module blk_mem_gen_0_blk_mem_gen_mux
         .I4(sel_pipe_d1[2]),
         .I5(\DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_61 ),
         .O(\douta[7]_INST_0_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[2]_i_1 
-       (.I0(sel_pipe[2]),
-        .I1(ena),
-        .I2(sel_pipe_d1[2]),
-        .O(\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[3]_i_1 
-       (.I0(sel_pipe[3]),
-        .I1(ena),
-        .I2(sel_pipe_d1[3]),
-        .O(\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT3 #(
-    .INIT(8'hB8)) 
-    \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[4]_i_1 
-       (.I0(sel_pipe[4]),
-        .I1(ena),
-        .I2(sel_pipe_d1[4]),
-        .O(\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[4]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
-    \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2] 
+    \no_softecc_norm_sel2.has_mem_regs.sr_pri.sel_pipe_d1_reg[2] 
        (.C(clka),
         .CE(1'b1),
-        .D(\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[2]_i_1_n_0 ),
+        .D(sel_pipe[2]),
         .Q(sel_pipe_d1[2]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
-    \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3] 
+    \no_softecc_norm_sel2.has_mem_regs.sr_pri.sel_pipe_d1_reg[3] 
        (.C(clka),
         .CE(1'b1),
-        .D(\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[3]_i_1_n_0 ),
+        .D(sel_pipe[3]),
         .Q(sel_pipe_d1[3]),
         .R(1'b0));
   FDRE #(
     .INIT(1'b0)) 
-    \no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[4] 
+    \no_softecc_norm_sel2.has_mem_regs.sr_pri.sel_pipe_d1_reg[4] 
        (.C(clka),
         .CE(1'b1),
-        .D(\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1[4]_i_1_n_0 ),
+        .D(sel_pipe[4]),
         .Q(sel_pipe_d1[4]),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair2" *) 
-  LUT4 #(
-    .INIT(16'hFB08)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT3 #(
+    .INIT(8'hE2)) 
     \no_softecc_sel_reg.ce_pri.sel_pipe[2]_i_1 
        (.I0(addra[0]),
-        .I1(ena),
-        .I2(wea),
-        .I3(sel_pipe[2]),
+        .I1(wea),
+        .I2(sel_pipe[2]),
         .O(\no_softecc_sel_reg.ce_pri.sel_pipe[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair1" *) 
-  LUT4 #(
-    .INIT(16'hFB08)) 
+  (* SOFT_HLUTNM = "soft_lutpair0" *) 
+  LUT3 #(
+    .INIT(8'hE2)) 
     \no_softecc_sel_reg.ce_pri.sel_pipe[3]_i_1 
        (.I0(addra[1]),
-        .I1(ena),
-        .I2(wea),
-        .I3(sel_pipe[3]),
+        .I1(wea),
+        .I2(sel_pipe[3]),
         .O(\no_softecc_sel_reg.ce_pri.sel_pipe[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair0" *) 
-  LUT4 #(
-    .INIT(16'hFB08)) 
+  LUT3 #(
+    .INIT(8'hE2)) 
     \no_softecc_sel_reg.ce_pri.sel_pipe[4]_i_1 
        (.I0(addra[2]),
-        .I1(ena),
-        .I2(wea),
-        .I3(sel_pipe[4]),
+        .I1(wea),
+        .I2(sel_pipe[4]),
         .O(\no_softecc_sel_reg.ce_pri.sel_pipe[4]_i_1_n_0 ));
   FDRE #(
     .INIT(1'b0)) 
@@ -1478,14 +1435,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1495,7 +1452,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper \prim_noinit.ram 
@@ -1504,7 +1461,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1513,14 +1470,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized0
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1530,7 +1487,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized0
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0 \prim_noinit.ram 
@@ -1539,7 +1496,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized0
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1548,14 +1505,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized1
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1565,7 +1522,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized1
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1 \prim_noinit.ram 
@@ -1574,7 +1531,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized1
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1583,14 +1540,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized10
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1600,7 +1557,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized10
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10 \prim_noinit.ram 
@@ -1609,7 +1566,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized10
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1618,14 +1575,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized11
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1635,7 +1592,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized11
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11 \prim_noinit.ram 
@@ -1644,7 +1601,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized11
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1653,14 +1610,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized12
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1670,7 +1627,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized12
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12 \prim_noinit.ram 
@@ -1679,7 +1636,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized12
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1688,14 +1645,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized13
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1705,7 +1662,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized13
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13 \prim_noinit.ram 
@@ -1714,7 +1671,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized13
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1723,14 +1680,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized14
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1740,7 +1697,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized14
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14 \prim_noinit.ram 
@@ -1749,7 +1706,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized14
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1758,14 +1715,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized15
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1775,7 +1732,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized15
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15 \prim_noinit.ram 
@@ -1784,7 +1741,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized15
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1793,14 +1750,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized16
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1810,7 +1767,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized16
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16 \prim_noinit.ram 
@@ -1819,7 +1776,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized16
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1828,14 +1785,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized17
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1845,7 +1802,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized17
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17 \prim_noinit.ram 
@@ -1854,7 +1811,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized17
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1863,14 +1820,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized18
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1880,7 +1837,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized18
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18 \prim_noinit.ram 
@@ -1889,7 +1846,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized18
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1898,14 +1855,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized19
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1915,7 +1872,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized19
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19 \prim_noinit.ram 
@@ -1924,7 +1881,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized19
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1933,14 +1890,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized2
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1950,7 +1907,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized2
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2 \prim_noinit.ram 
@@ -1959,7 +1916,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized2
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -1968,14 +1925,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized20
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -1985,7 +1942,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized20
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20 \prim_noinit.ram 
@@ -1994,7 +1951,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized20
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2003,14 +1960,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized21
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2020,7 +1977,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized21
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21 \prim_noinit.ram 
@@ -2029,7 +1986,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized21
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2038,14 +1995,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized22
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2055,7 +2012,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized22
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22 \prim_noinit.ram 
@@ -2064,7 +2021,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized22
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2073,14 +2030,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized23
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2090,7 +2047,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized23
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23 \prim_noinit.ram 
@@ -2099,7 +2056,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized23
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2108,14 +2065,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized24
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2125,7 +2082,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized24
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24 \prim_noinit.ram 
@@ -2134,7 +2091,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized24
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2143,14 +2100,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized25
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2160,7 +2117,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized25
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25 \prim_noinit.ram 
@@ -2169,7 +2126,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized25
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2178,14 +2135,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized26
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2195,7 +2152,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized26
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26 \prim_noinit.ram 
@@ -2204,7 +2161,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized26
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2213,14 +2170,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized27
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2230,7 +2187,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized27
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27 \prim_noinit.ram 
@@ -2239,7 +2196,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized27
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2248,14 +2205,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized28
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2265,7 +2222,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized28
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28 \prim_noinit.ram 
@@ -2274,7 +2231,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized28
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2283,14 +2240,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized29
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2300,7 +2257,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized29
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29 \prim_noinit.ram 
@@ -2309,7 +2266,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized29
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2318,14 +2275,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized3
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2335,7 +2292,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized3
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3 \prim_noinit.ram 
@@ -2344,7 +2301,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized3
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2353,14 +2310,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized30
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2370,7 +2327,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized30
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30 \prim_noinit.ram 
@@ -2379,7 +2336,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized30
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2388,14 +2345,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized31
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2405,7 +2362,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized31
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31 \prim_noinit.ram 
@@ -2414,7 +2371,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized31
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2423,14 +2380,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized32
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2440,7 +2397,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized32
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32 \prim_noinit.ram 
@@ -2449,7 +2406,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized32
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2458,14 +2415,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized33
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2475,7 +2432,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized33
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33 \prim_noinit.ram 
@@ -2484,7 +2441,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized33
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2493,14 +2450,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized34
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2510,7 +2467,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized34
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34 \prim_noinit.ram 
@@ -2519,7 +2476,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized34
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2528,14 +2485,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized35
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2545,7 +2502,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized35
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35 \prim_noinit.ram 
@@ -2554,7 +2511,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized35
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2563,14 +2520,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized36
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2580,7 +2537,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized36
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36 \prim_noinit.ram 
@@ -2589,7 +2546,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized36
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2598,14 +2555,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized37
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2615,7 +2572,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized37
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37 \prim_noinit.ram 
@@ -2624,7 +2581,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized37
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2633,14 +2590,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized38
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2650,7 +2607,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized38
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38 \prim_noinit.ram 
@@ -2659,7 +2616,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized38
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2668,14 +2625,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized39
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2685,7 +2642,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized39
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39 \prim_noinit.ram 
@@ -2694,7 +2651,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized39
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2703,14 +2660,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized4
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2720,7 +2677,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized4
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4 \prim_noinit.ram 
@@ -2729,7 +2686,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized4
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2738,14 +2695,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized40
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2755,7 +2712,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized40
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40 \prim_noinit.ram 
@@ -2764,7 +2721,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized40
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2773,14 +2730,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized41
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2790,7 +2747,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized41
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41 \prim_noinit.ram 
@@ -2799,7 +2756,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized41
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2808,14 +2765,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized42
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2825,7 +2782,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized42
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42 \prim_noinit.ram 
@@ -2834,7 +2791,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized42
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2843,14 +2800,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized43
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2860,7 +2817,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized43
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43 \prim_noinit.ram 
@@ -2869,7 +2826,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized43
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2878,14 +2835,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized44
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2895,7 +2852,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized44
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44 \prim_noinit.ram 
@@ -2904,7 +2861,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized44
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2913,14 +2870,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized45
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2930,7 +2887,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized45
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45 \prim_noinit.ram 
@@ -2939,7 +2896,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized45
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2948,14 +2905,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized46
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -2965,7 +2922,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized46
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46 \prim_noinit.ram 
@@ -2974,7 +2931,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized46
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -2983,14 +2940,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized47
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3000,7 +2957,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized47
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47 \prim_noinit.ram 
@@ -3009,7 +2966,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized47
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3018,14 +2975,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized48
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3035,7 +2992,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized48
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48 \prim_noinit.ram 
@@ -3044,7 +3001,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized48
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3053,14 +3010,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized49
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3070,7 +3027,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized49
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49 \prim_noinit.ram 
@@ -3079,7 +3036,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized49
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3088,14 +3045,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized5
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3105,7 +3062,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized5
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5 \prim_noinit.ram 
@@ -3114,7 +3071,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized5
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3123,14 +3080,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized50
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3140,7 +3097,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized50
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50 \prim_noinit.ram 
@@ -3149,7 +3106,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized50
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3158,14 +3115,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized51
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3175,7 +3132,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized51
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51 \prim_noinit.ram 
@@ -3184,7 +3141,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized51
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3193,14 +3150,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized52
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3210,7 +3167,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized52
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52 \prim_noinit.ram 
@@ -3219,7 +3176,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized52
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3228,14 +3185,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized53
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3245,7 +3202,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized53
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53 \prim_noinit.ram 
@@ -3254,7 +3211,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized53
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3263,14 +3220,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized54
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3280,7 +3237,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized54
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54 \prim_noinit.ram 
@@ -3289,7 +3246,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized54
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3298,14 +3255,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized55
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3315,7 +3272,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized55
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55 \prim_noinit.ram 
@@ -3324,7 +3281,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized55
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3333,14 +3290,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized56
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3350,7 +3307,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized56
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56 \prim_noinit.ram 
@@ -3359,7 +3316,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized56
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3368,14 +3325,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized57
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3385,7 +3342,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized57
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57 \prim_noinit.ram 
@@ -3394,7 +3351,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized57
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3403,14 +3360,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized58
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3420,7 +3377,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized58
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58 \prim_noinit.ram 
@@ -3429,7 +3386,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized58
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3438,14 +3395,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized59
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3455,7 +3412,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized59
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59 \prim_noinit.ram 
@@ -3464,7 +3421,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized59
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3473,14 +3430,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized6
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3490,7 +3447,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized6
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6 \prim_noinit.ram 
@@ -3499,7 +3456,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized6
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3508,14 +3465,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized60
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3525,7 +3482,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized60
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60 \prim_noinit.ram 
@@ -3534,7 +3491,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized60
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3543,14 +3500,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized61
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3560,7 +3517,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized61
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61 \prim_noinit.ram 
@@ -3569,7 +3526,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized61
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3578,14 +3535,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized62
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3595,7 +3552,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized62
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62 \prim_noinit.ram 
@@ -3604,7 +3561,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized62
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3613,14 +3570,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized7
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3630,7 +3587,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized7
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7 \prim_noinit.ram 
@@ -3639,7 +3596,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized7
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3648,14 +3605,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized8
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3665,7 +3622,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized8
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8 \prim_noinit.ram 
@@ -3674,7 +3631,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized8
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3683,14 +3640,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized9
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3700,7 +3657,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized9
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9 \prim_noinit.ram 
@@ -3709,7 +3666,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_width__parameterized9
         .addra(addra),
         .clka(clka),
         .dina(dina),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -3718,14 +3675,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -3737,7 +3694,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -3925,8 +3882,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -3959,12 +3916,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -4135,8 +4092,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -4169,12 +4126,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -4185,14 +4142,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -4204,7 +4161,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -4392,8 +4349,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -4426,12 +4383,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -4602,8 +4559,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -4636,12 +4593,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -4652,14 +4609,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -4671,7 +4628,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -4859,8 +4816,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -4893,12 +4850,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -5069,8 +5026,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -5103,12 +5060,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -5119,14 +5076,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -5138,7 +5095,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -5326,8 +5283,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -5360,12 +5317,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -5536,8 +5493,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -5570,12 +5527,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -5586,14 +5543,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -5605,7 +5562,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -5793,8 +5750,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -5827,12 +5784,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -6003,8 +5960,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -6037,12 +5994,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -6053,14 +6010,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -6072,7 +6029,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -6260,8 +6217,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -6294,12 +6251,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -6470,8 +6427,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -6504,12 +6461,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -6520,14 +6477,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -6539,7 +6496,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -6727,8 +6684,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -6761,12 +6718,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -6937,8 +6894,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -6971,12 +6928,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -6987,14 +6944,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -7006,7 +6963,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -7194,8 +7151,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -7228,12 +7185,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -7404,8 +7361,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -7438,12 +7395,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -7454,14 +7411,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -7473,7 +7430,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -7661,8 +7618,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -7695,12 +7652,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -7871,8 +7828,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -7905,12 +7862,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -7921,14 +7878,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -7940,7 +7897,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -8128,8 +8085,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -8162,12 +8119,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -8338,8 +8295,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -8372,12 +8329,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -8388,14 +8345,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -8407,7 +8364,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -8595,8 +8552,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -8629,12 +8586,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -8805,8 +8762,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -8839,12 +8796,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -8855,14 +8812,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -8874,7 +8831,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -9062,8 +9019,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -9096,12 +9053,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -9272,8 +9229,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -9306,12 +9263,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -9322,14 +9279,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -9341,7 +9298,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -9529,8 +9486,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -9563,12 +9520,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -9739,8 +9696,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -9773,12 +9730,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -9789,14 +9746,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -9808,7 +9765,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -9996,8 +9953,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -10030,12 +9987,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -10206,8 +10163,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -10240,12 +10197,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -10256,14 +10213,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -10275,7 +10232,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -10463,8 +10420,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -10497,12 +10454,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -10673,8 +10630,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -10707,12 +10664,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -10723,14 +10680,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -10742,7 +10699,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -10930,8 +10887,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -10964,12 +10921,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -11140,8 +11097,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -11174,12 +11131,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -11190,14 +11147,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -11209,7 +11166,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -11397,8 +11354,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -11431,12 +11388,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -11607,8 +11564,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -11641,12 +11598,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -11657,14 +11614,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -11676,7 +11633,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -11864,8 +11821,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -11898,12 +11855,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -12074,8 +12031,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -12108,12 +12065,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -12124,14 +12081,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -12143,7 +12100,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -12331,8 +12288,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -12365,12 +12322,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -12541,8 +12498,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -12575,12 +12532,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -12591,14 +12548,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -12610,7 +12567,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -12798,8 +12755,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -12832,12 +12789,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -13008,8 +12965,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -13042,12 +12999,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -13058,14 +13015,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -13077,7 +13034,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -13265,8 +13222,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -13299,12 +13256,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -13475,8 +13432,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -13509,12 +13466,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -13525,14 +13482,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -13544,7 +13501,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -13732,8 +13689,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -13766,12 +13723,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -13942,8 +13899,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -13976,12 +13933,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -13992,14 +13949,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -14011,7 +13968,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -14199,8 +14156,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -14233,12 +14190,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -14409,8 +14366,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -14443,12 +14400,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -14459,14 +14416,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -14478,7 +14435,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -14666,8 +14623,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -14700,12 +14657,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -14876,8 +14833,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -14910,12 +14867,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -14926,14 +14883,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -14945,7 +14902,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -15133,8 +15090,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -15167,12 +15124,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -15343,8 +15300,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -15377,12 +15334,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -15393,14 +15350,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -15412,7 +15369,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -15600,8 +15557,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -15634,12 +15591,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -15810,8 +15767,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -15844,12 +15801,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -15860,14 +15817,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -15879,7 +15836,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -16067,8 +16024,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -16101,12 +16058,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -16277,8 +16234,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -16311,12 +16268,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -16327,14 +16284,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -16346,7 +16303,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -16534,8 +16491,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -16568,12 +16525,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -16744,8 +16701,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -16778,12 +16735,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -16794,14 +16751,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -16813,7 +16770,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -17001,8 +16958,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -17035,12 +16992,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -17211,8 +17168,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -17245,12 +17202,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -17261,14 +17218,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -17280,7 +17237,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -17468,8 +17425,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -17502,12 +17459,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -17678,8 +17635,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -17712,12 +17669,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -17728,14 +17685,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -17747,7 +17704,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -17935,8 +17892,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -17969,12 +17926,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -18145,8 +18102,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -18179,12 +18136,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -18195,14 +18152,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -18214,7 +18171,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -18402,8 +18359,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -18436,12 +18393,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -18612,8 +18569,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -18646,12 +18603,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -18662,14 +18619,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -18681,7 +18638,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -18869,8 +18826,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -18903,12 +18860,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -19079,8 +19036,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -19113,12 +19070,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -19129,14 +19086,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -19148,7 +19105,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -19336,8 +19293,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -19370,12 +19327,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -19546,8 +19503,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -19580,12 +19537,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -19596,14 +19553,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -19615,7 +19572,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -19803,8 +19760,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -19837,12 +19794,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -20013,8 +19970,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -20047,12 +20004,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -20063,14 +20020,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -20082,7 +20039,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -20270,8 +20227,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -20304,12 +20261,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -20480,8 +20437,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -20514,12 +20471,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -20530,14 +20487,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -20549,7 +20506,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -20737,8 +20694,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -20771,12 +20728,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -20947,8 +20904,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -20981,12 +20938,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -20997,14 +20954,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -21016,7 +20973,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -21204,8 +21161,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -21238,12 +21195,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -21414,8 +21371,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -21448,12 +21405,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -21464,14 +21421,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -21483,7 +21440,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -21671,8 +21628,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -21705,12 +21662,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -21881,8 +21838,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -21915,12 +21872,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -21931,14 +21888,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -21950,7 +21907,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -22138,8 +22095,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -22172,12 +22129,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -22348,8 +22305,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -22382,12 +22339,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -22398,14 +22355,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -22417,7 +22374,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -22605,8 +22562,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -22639,12 +22596,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -22815,8 +22772,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -22849,12 +22806,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -22865,14 +22822,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -22884,7 +22841,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -23072,8 +23029,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -23106,12 +23063,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -23282,8 +23239,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -23316,12 +23273,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -23332,14 +23289,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -23351,7 +23308,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -23539,8 +23496,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -23573,12 +23530,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -23749,8 +23706,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -23783,12 +23740,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -23799,14 +23756,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -23818,7 +23775,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -24006,8 +23963,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -24040,12 +23997,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -24216,8 +24173,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -24250,12 +24207,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -24266,14 +24223,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -24285,7 +24242,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -24473,8 +24430,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -24507,12 +24464,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -24683,8 +24640,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -24717,12 +24674,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -24733,14 +24690,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -24752,7 +24709,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -24940,8 +24897,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -24974,12 +24931,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -25150,8 +25107,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -25184,12 +25141,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -25200,14 +25157,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -25219,7 +25176,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -25407,8 +25364,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -25441,12 +25398,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -25617,8 +25574,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -25651,12 +25608,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -25667,14 +25624,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -25686,7 +25643,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -25874,8 +25831,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -25908,12 +25865,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -26084,8 +26041,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -26118,12 +26075,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -26134,14 +26091,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -26153,7 +26110,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -26341,8 +26298,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -26375,12 +26332,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -26551,8 +26508,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -26585,12 +26542,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -26601,14 +26558,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -26620,7 +26577,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -26808,8 +26765,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -26842,12 +26799,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -27018,8 +26975,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -27052,12 +27009,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -27068,14 +27025,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -27087,7 +27044,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -27275,8 +27232,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -27309,12 +27266,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -27485,8 +27442,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -27519,12 +27476,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -27535,14 +27492,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -27554,7 +27511,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -27742,8 +27699,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -27776,12 +27733,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -27952,8 +27909,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -27986,12 +27943,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -28002,14 +27959,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -28021,7 +27978,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -28209,8 +28166,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -28243,12 +28200,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -28419,8 +28376,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -28453,12 +28410,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -28469,14 +28426,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -28488,7 +28445,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -28676,8 +28633,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -28710,12 +28667,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -28886,8 +28843,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -28920,12 +28877,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -28936,14 +28893,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -28955,7 +28912,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -29143,8 +29100,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -29177,12 +29134,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -29353,8 +29310,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -29387,12 +29344,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -29403,14 +29360,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -29422,7 +29379,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -29610,8 +29567,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -29644,12 +29601,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -29820,8 +29777,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -29854,12 +29811,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -29870,14 +29827,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -29889,7 +29846,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -30077,8 +30034,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -30111,12 +30068,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -30287,8 +30244,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -30321,12 +30278,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -30337,14 +30294,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -30356,7 +30313,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -30544,8 +30501,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -30578,12 +30535,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -30754,8 +30711,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -30788,12 +30745,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -30804,14 +30761,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -30823,7 +30780,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -31011,8 +30968,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -31045,12 +31002,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -31221,8 +31178,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -31255,12 +31212,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -31271,14 +31228,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -31290,7 +31247,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -31478,8 +31435,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -31512,12 +31469,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -31688,8 +31645,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -31722,12 +31679,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -31738,14 +31695,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -31757,7 +31714,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -31945,8 +31902,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -31979,12 +31936,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -32155,8 +32112,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -32189,12 +32146,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -32205,14 +32162,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -32224,7 +32181,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -32412,8 +32369,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -32446,12 +32403,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -32622,8 +32579,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -32656,12 +32613,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -32672,14 +32629,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -32691,7 +32648,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -32879,8 +32836,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -32913,12 +32870,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -33089,8 +33046,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -33123,12 +33080,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -33139,14 +33096,14 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9
    (DOUTA,
     clka,
     ENA,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [0:0]DOUTA;
   input clka;
   input ENA;
-  input ena;
+  input rsta;
   input [15:0]addra;
   input [0:0]dina;
   input [0:0]wea;
@@ -33158,7 +33115,7 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9
   wire [15:0]addra;
   wire clka;
   wire [0:0]dina;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_DBITERR_UNCONNECTED ;
   wire \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ;
@@ -33346,8 +33303,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -33380,12 +33337,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -33556,8 +33513,8 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9
     .RDADDR_COLLISION_HWCONFIG("PERFORMANCE"),
     .READ_WIDTH_A(1),
     .READ_WIDTH_B(1),
-    .RSTREG_PRIORITY_A("REGCE"),
-    .RSTREG_PRIORITY_B("REGCE"),
+    .RSTREG_PRIORITY_A("RSTREG"),
+    .RSTREG_PRIORITY_B("RSTREG"),
     .SIM_COLLISION_CHECK("ALL"),
     .SIM_DEVICE("7SERIES"),
     .SRVAL_A(36'h000000000),
@@ -33590,12 +33547,12 @@ module blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9
         .INJECTDBITERR(1'b0),
         .INJECTSBITERR(1'b0),
         .RDADDRECC(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_RDADDRECC_UNCONNECTED [8:0]),
-        .REGCEAREGCE(ena),
+        .REGCEAREGCE(1'b1),
         .REGCEB(1'b0),
         .RSTRAMARSTRAM(1'b0),
         .RSTRAMB(1'b0),
-        .RSTREGARSTREG(1'b0),
-        .RSTREGB(1'b0),
+        .RSTREGARSTREG(rsta),
+        .RSTREGB(rsta),
         .SBITERR(\NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED ),
         .WEA({wea,wea,wea,wea}),
         .WEBWE({1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0,1'b0}));
@@ -33605,13 +33562,13 @@ endmodule
 module blk_mem_gen_0_blk_mem_gen_top
    (douta,
     clka,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [7:0]douta;
   input clka;
-  input ena;
+  input rsta;
   input [18:0]addra;
   input [7:0]dina;
   input [0:0]wea;
@@ -33620,7 +33577,7 @@ module blk_mem_gen_0_blk_mem_gen_top
   wire clka;
   wire [7:0]dina;
   wire [7:0]douta;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_generic_cstr \valid.cstr 
@@ -33628,7 +33585,7 @@ module blk_mem_gen_0_blk_mem_gen_top
         .clka(clka),
         .dina(dina),
         .douta(douta),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -33640,17 +33597,17 @@ endmodule
 (* C_ENABLE_32BIT_ADDRESS = "0" *) (* C_EN_DEEPSLEEP_PIN = "0" *) (* C_EN_ECC_PIPE = "0" *) 
 (* C_EN_RDADDRA_CHG = "0" *) (* C_EN_RDADDRB_CHG = "0" *) (* C_EN_SAFETY_CKT = "0" *) 
 (* C_EN_SHUTDOWN_PIN = "0" *) (* C_EN_SLEEP_PIN = "0" *) (* C_EST_POWER_SUMMARY = "Estimated Power for IP     :     16.114203 mW" *) 
-(* C_FAMILY = "artix7" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "1" *) 
+(* C_FAMILY = "artix7" *) (* C_HAS_AXI_ID = "0" *) (* C_HAS_ENA = "0" *) 
 (* C_HAS_ENB = "0" *) (* C_HAS_INJECTERR = "0" *) (* C_HAS_MEM_OUTPUT_REGS_A = "1" *) 
 (* C_HAS_MEM_OUTPUT_REGS_B = "0" *) (* C_HAS_MUX_OUTPUT_REGS_A = "0" *) (* C_HAS_MUX_OUTPUT_REGS_B = "0" *) 
-(* C_HAS_REGCEA = "0" *) (* C_HAS_REGCEB = "0" *) (* C_HAS_RSTA = "0" *) 
+(* C_HAS_REGCEA = "0" *) (* C_HAS_REGCEB = "0" *) (* C_HAS_RSTA = "1" *) 
 (* C_HAS_RSTB = "0" *) (* C_HAS_SOFTECC_INPUT_REGS_A = "0" *) (* C_HAS_SOFTECC_OUTPUT_REGS_B = "0" *) 
 (* C_INITA_VAL = "0" *) (* C_INITB_VAL = "0" *) (* C_INIT_FILE = "blk_mem_gen_0.mem" *) 
 (* C_INIT_FILE_NAME = "no_coe_file_loaded" *) (* C_INTERFACE_TYPE = "0" *) (* C_LOAD_INIT_FILE = "0" *) 
 (* C_MEM_TYPE = "0" *) (* C_MUX_PIPELINE_STAGES = "0" *) (* C_PRIM_TYPE = "1" *) 
 (* C_READ_DEPTH_A = "524288" *) (* C_READ_DEPTH_B = "524288" *) (* C_READ_WIDTH_A = "8" *) 
 (* C_READ_WIDTH_B = "8" *) (* C_RSTRAM_A = "0" *) (* C_RSTRAM_B = "0" *) 
-(* C_RST_PRIORITY_A = "CE" *) (* C_RST_PRIORITY_B = "CE" *) (* C_SIM_COLLISION_CHECK = "ALL" *) 
+(* C_RST_PRIORITY_A = "SR" *) (* C_RST_PRIORITY_B = "CE" *) (* C_SIM_COLLISION_CHECK = "ALL" *) 
 (* C_USE_BRAM_BLOCK = "0" *) (* C_USE_BYTE_WEA = "0" *) (* C_USE_BYTE_WEB = "0" *) 
 (* C_USE_DEFAULT_DATA = "0" *) (* C_USE_ECC = "0" *) (* C_USE_SOFTECC = "0" *) 
 (* C_USE_URAM = "0" *) (* C_WEA_WIDTH = "1" *) (* C_WEB_WIDTH = "1" *) 
@@ -33790,7 +33747,7 @@ module blk_mem_gen_0_blk_mem_gen_v8_3_6
   wire clka;
   wire [7:0]dina;
   wire [7:0]douta;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   assign dbiterr = \<const0> ;
@@ -33878,7 +33835,7 @@ module blk_mem_gen_0_blk_mem_gen_v8_3_6
         .clka(clka),
         .dina(dina),
         .douta(douta),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 
@@ -33886,13 +33843,13 @@ endmodule
 module blk_mem_gen_0_blk_mem_gen_v8_3_6_synth
    (douta,
     clka,
-    ena,
+    rsta,
     addra,
     dina,
     wea);
   output [7:0]douta;
   input clka;
-  input ena;
+  input rsta;
   input [18:0]addra;
   input [7:0]dina;
   input [0:0]wea;
@@ -33901,7 +33858,7 @@ module blk_mem_gen_0_blk_mem_gen_v8_3_6_synth
   wire clka;
   wire [7:0]dina;
   wire [7:0]douta;
-  wire ena;
+  wire rsta;
   wire [0:0]wea;
 
   blk_mem_gen_0_blk_mem_gen_top \gnbram.gnativebmg.native_blk_mem_gen 
@@ -33909,7 +33866,7 @@ module blk_mem_gen_0_blk_mem_gen_v8_3_6_synth
         .clka(clka),
         .dina(dina),
         .douta(douta),
-        .ena(ena),
+        .rsta(rsta),
         .wea(wea));
 endmodule
 `ifndef GLBL

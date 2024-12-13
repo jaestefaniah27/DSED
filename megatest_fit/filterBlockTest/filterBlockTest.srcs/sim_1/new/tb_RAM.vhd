@@ -8,7 +8,7 @@ END tb_RAM;
 ARCHITECTURE behavior OF tb_RAM IS
     -- Señales para conectar al DUT (Device Under Test)
     SIGNAL clka    : STD_LOGIC := '0';
-    SIGNAL ena     : STD_LOGIC := '1';
+    SIGNAL rsta    : STD_LOGIC := '0';
     SIGNAL wea     : STD_LOGIC_VECTOR(0 DOWNTO 0) := (OTHERS => '0');
     SIGNAL addra   : STD_LOGIC_VECTOR(18 DOWNTO 0) := (OTHERS => '0');
     SIGNAL dina    : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');
@@ -31,7 +31,7 @@ BEGIN
     DUT: ENTITY work.blk_mem_gen_0
         PORT MAP (
             clka  => clka,
-            ena   => ena,
+            rsta  => rsta,
             wea   => wea,
             addra => addra,
             dina  => dina,
@@ -62,10 +62,13 @@ BEGIN
         WAIT FOR 5*clk_period;
         dina <= "01010101";            -- Dato a escribir
         WAIT FOR 2*clk_period;
-        wea <= "1";                    -- Habilitar escritura
+        wea <= "0";                    -- Habilitar escritura
         WAIT FOR clk_period;
-        wea <= "0";                    -- Desabilitar escritura
-
+        wea <= "0"; 
+        wait for 4 * clk_period;
+        rsta <= '1';                   -- Desabilitar escritura
+        wait for 4 * clk_period;
+        rsta <= '0';
         -- Terminar simulación
         WAIT;
     END PROCESS;

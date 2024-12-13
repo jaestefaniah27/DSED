@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="clk_12Mhz_synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1732100020">
-  <File Type="RDS-PROPCONSTRS" Name="clk_12Mhz_drc_synth.rpt"/>
   <File Type="PA-TCL" Name="clk_12Mhz.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="clk_12Mhz_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="clk_12Mhz.vds"/>
   <File Type="RDS-UTIL" Name="clk_12Mhz_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="clk_12Mhz_utilization_synth.pb"/>

@@ -12,14 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="2500000001fs"></ZoomEndTime>
-      <Cursor1Time time="2500000000fs"></Cursor1Time>
+      <ZoomEndTime time="2542069633fs"></ZoomEndTime>
+      <Cursor1Time time="3500000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="124"></NameColumnWidth>
+      <NameColumnWidth column_width="120"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
+   <WVObjectSize size="7" />
    <wave_markers>
       <marker time="2041658000" label="" />
       <marker time="2208398000" label="" />
@@ -31,6 +31,10 @@
    <wvobject fp_name="/tb_RAM/clka" type="logic">
       <obj_property name="ElementShortName">clka</obj_property>
       <obj_property name="ObjectShortName">clka</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_RAM/rsta" type="logic">
+      <obj_property name="ElementShortName">rsta</obj_property>
+      <obj_property name="ObjectShortName">rsta</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_RAM/ena" type="logic">
       <obj_property name="ElementShortName">ena</obj_property>
