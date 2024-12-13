@@ -95,22 +95,21 @@ case (state) is
             next_state <= RECORDING;
         elsif (BTNL = '1') then
             next_state <= PLAY;
-            direction_next <= to_signed(1, 19);
             act_idx_next <= (others=>'0');
         elsif (BTNR = '1') then
             next_state <= PLAY;
-            direction_next <= to_signed(-1, 19);
-            act_idx_next <= (others=>'0');
+            act_idx_next <= fin_idx;
+        elsif (BTNC = '1') then
+            next_state <= PLAY;
         else 
             next_state <= IDLE;            
         end if;
     when RECORDING =>
-    if(BTNU = '1') then
+    if (BTNU = '1') then
         if (sample_from_micro_ready = '1') then
             next_state <= SAVING;
         else 
             next_state <= RECORDING;
-            saving_counter_next <= (others=>'0');
         end if;
     else next_state <= IDLE;
     end if;
@@ -123,24 +122,60 @@ case (state) is
     end if;
     when PLAY =>
     if (BTNL = '1') then
-        direction_next <= to_signed(1, 19);
         act_idx_next <= (others=>'0');
     elsif (BTNR = '1') then
-        direction_next <= to_signed(-1, 19);
+        act_idx_next <= fin_idx;
     elsif (BTNC = '1') then
         next_state <= IDLE;
     else next_state <= PLAY;
     end if;
 end case;
 end process;
+din <= sample_from_micro;
 
 PROCESS_SAVING: process(state, saving_counter)
 begin
 if state = SAVING then
-    din <= sample_from_micro;
     if saving_counter = 0 then
-        -- CONTINUAR AQUI
+        wea <= '1';
+        saving_counter_next <= saving_counter  + 1;
+    elsif saving_counter < 3 then
+        saving_counter_next <= saving_counter  + 1;
+    elsif saving_counter = 3 then        
+        saving_counter_next <= (others=>'0');
+    else saving_counter_next <= saving_counter;
     end if;
+else wea <= '0';
+end if;
+end process;
+
+DELETE_AUDIO: process(state, BTND)
+begin
+if state = IDLE and BTND = '1' then 
+    fin_idx_next <= (others=>'0');
+end if;
+end process;
+AUDIO_SYSTEM_CONTROL: process(state)
+begin
+
+end process;
+PLAY_PROCESS: process(state)
+begin
+if state = PLAY then
+    case (SW) is
+        when "00" => --AUDIO GRABADO: DIRECTAMENTE DE LA MEMORIA
+            to_jack <= dout;
+            if (sample_req = '1') then
+                act_idx_next <= std_logic_vector(signed(act_idx) + 1);
+            else act_idx_next <= act_idx;
+            end if;
+        when "01" => -- LPF
+        
+        when "11" => -- HPF
+        
+        when "10" => --AUDIO AL REVES
+            direction_next <= to_signed(-1, 19);
+end case;
 end if;
 end process;
 
