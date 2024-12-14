@@ -1,0 +1,23 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Fri Dec 13 20:38:43 2024
+# Process ID: 12556
+# Current directory: C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/filterBlockTest
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent11104 C:\Users\jaest\OneDrive\Documentos\4_TELECO\DSED\proyecto_dsed_github\DSED\megatest_fit\filterBlockTest\filterBlockTest.xpr
+# Log file: C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/filterBlockTest/vivado.log
+# Journal file: C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/filterBlockTest\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/filterBlockTest/filterBlockTest.xpr
+INFO: [ProjectBase 1-489] The host OS only allows 260 characters in a normal path. The project is stored in a path with more than 80 characters. If you experience issues with IP, Block Designs, or files not being found, please consider moving the project to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter.
+Current project path is 'C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/filterBlockTest'
+INFO: [Project 1-313] Project file moved from 'C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/filterBlockTest' since last save.
+CRITICAL WARNING: [Project 1-311] Could not find the file 'C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED/megatest_fit/firBlock/tb_fir5stage_behav.wcfg', nor could it be found using path 'C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/megatest_fit/firBlock/tb_fir5stage_behav.wcfg'.
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'C:/Xilinx/Vivado/2017.2/data/ip'.
+open_project: Time (s): cpu = 00:00:11 ; elapsed = 00:00:06 . Memory (MB): peak = 805.977 ; gain = 22.902

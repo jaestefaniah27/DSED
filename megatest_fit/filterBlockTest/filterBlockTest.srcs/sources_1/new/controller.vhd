@@ -44,7 +44,7 @@ entity controller is
            addr : out STD_LOGIC_VECTOR (18 downto 0);
            din : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
-           wea : out STD_LOGIC;
+           we : out STD_LOGIC;
            filter_select : in STD_LOGIC;
            sample_to_filter : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_to_filter_en : out STD_LOGIC;
@@ -114,7 +114,7 @@ case (state) is
     else next_state <= IDLE;
     end if;
     when SAVING =>
-    if (saving_counter < 3) then
+    if (saving_counter < 2) then
         next_state <= SAVING;
     elsif (BTNU = '1') then
         next_state <= RECORDING;
@@ -135,17 +135,15 @@ din <= sample_from_micro;
 
 PROCESS_SAVING: process(state, saving_counter)
 begin
+we <= '0';
 if state = SAVING then
     if saving_counter = 0 then
-        wea <= '1';
+        we <= '1';
         saving_counter_next <= saving_counter  + 1;
-    elsif saving_counter < 3 then
+    elsif saving_counter = 1 then
         saving_counter_next <= saving_counter  + 1;
-    elsif saving_counter = 3 then        
-        saving_counter_next <= (others=>'0');
-    else saving_counter_next <= saving_counter;
+    else saving_counter_next <= (others=>'0');
     end if;
-else wea <= '0';
 end if;
 end process;
 
@@ -155,26 +153,48 @@ if state = IDLE and BTND = '1' then
     fin_idx_next <= (others=>'0');
 end if;
 end process;
-AUDIO_SYSTEM_CONTROL: process(state)
-begin
 
+AUDIO_REC_PLAY_CONTROL: process(state)
+begin
+case (state) is 
+    when IDLE =>
+        play_en <= '0';
+        rec_en <= '0';
+    when RECORDING | SAVING =>
+        play_en <= '0';
+        rec_en <= '1';
+    when others => -- PLAY
+        play_en <= '1';
+        rec_en <= '0';
+end case;
 end process;
-PLAY_PROCESS: process(state)
+
+sample_to_filter <= dout;
+sample_to_filter_en <= sample_req; 
+PLAY_PROCESS: process(state, sample_req)
 begin
 if state = PLAY then
     case (SW) is
-        when "00" => --AUDIO GRABADO: DIRECTAMENTE DE LA MEMORIA
+        when "00" => -- AUDIO GRABADO: DIRECTAMENTE DE LA MEMORIA
             to_jack <= dout;
             if (sample_req = '1') then
                 act_idx_next <= std_logic_vector(signed(act_idx) + 1);
             else act_idx_next <= act_idx;
             end if;
         when "01" => -- LPF
-        
+            to_jack <= sample_from_filter;
+            if (sample_req = '1') then
+                act_idx_next <= std_logic_vector(signed(act_idx) + 1);
+            else act_idx_next <= act_idx;
+            end if;        
         when "11" => -- HPF
         
-        when "10" => --AUDIO AL REVES
-            direction_next <= to_signed(-1, 19);
+        when others => -- "10" AUDIO AL REVES
+            to_jack <= dout;
+            if (sample_req = '1') then
+                act_idx_next <= std_logic_vector(signed(act_idx) - 1);
+            else act_idx_next <= act_idx;
+            end if;        
 end case;
 end if;
 end process;
