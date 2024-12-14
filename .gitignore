@@ -1,0 +1,3 @@
+# Ignorar los archivos generados por Vivado y otros archivos temporales
+*.log
+*.pb
