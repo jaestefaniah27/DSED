@@ -54,12 +54,12 @@ architecture Behavioral of sampleRegister is
     signal sen_reg : std_logic;
 
     -- Señal escalada de entrada (sample_in - 128)
-    signal sample_in_scaled : std_logic_vector(sample_size - 1 downto 0);
+--    signal sample_in_scaled : std_logic_vector(sample_size - 1 downto 0);
 
 begin
 
     -- Escalado de la muestra de entrada
-    sample_in_scaled <= std_logic_vector(signed(sample_in)); -- QUITAR -128 VA EN EL CONTROL
+--    sample_in_scaled <= std_logic_vector(signed(sample_in)); -- QUITAR -128 VA EN EL CONTROL
 
     -- Proceso de actualización del shift register
     process(clk_12Mhz, rst)
@@ -72,16 +72,14 @@ begin
             s_reg4 <= (others => '0');
             sen_reg <= '0';
         elsif rising_edge(clk_12Mhz) then
+            sen_reg <= sample_en;
             if sample_en = '1' then
-                -- Desplaza las muestras previas y agrega la nueva en s_reg0
+                -- Desplaza las muestras previas
                 s_reg4 <= s_reg3;
                 s_reg3 <= s_reg2;
                 s_reg2 <= s_reg1;
                 s_reg1 <= s_reg0;
-                s_reg0 <= sample_in_scaled;
-
-                -- Actualiza sen
-                sen_reg <= sample_en;
+                s_reg0 <= sample_in;
             end if;
         end if;
     end process;

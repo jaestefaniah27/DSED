@@ -1,6 +1,6 @@
 @echo off
 set xv_path=C:\\Xilinx\\Vivado\\2017.2\\bin
-call %xv_path%/xelab  -wto ecd6828ba78a47338bba8dc04ed5101e -m64 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_fir5stage_behav xil_defaultlib.tb_fir5stage xil_defaultlib.glbl -log elaborate.log
+call %xv_path%/xelab  -wto 88ceea8abab94014a9d10c49574ec305 -m64 --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_firterBlock_behav xil_defaultlib.tb_firterBlock xil_defaultlib.glbl -log elaborate.log
 if "%errorlevel%"=="0" goto SUCCESS
 if "%errorlevel%"=="1" goto END
 :END

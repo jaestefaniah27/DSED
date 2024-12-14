@@ -1,0 +1,66 @@
+Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
+| Date         : Wed Nov 20 14:56:36 2024
+| Host         : PC_CSDVerisure running 64-bit major release  (build 9200)
+| Command      : report_methodology -file simpleAudioSystem_methodology_drc_routed.rpt -rpx simpleAudioSystem_methodology_drc_routed.rpx
+| Design       : simpleAudioSystem
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Routed
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 6
++-----------+----------+------------------------------------------------+------------+
+| Rule      | Severity | Description                                    | Violations |
++-----------+----------+------------------------------------------------+------------+
+| TIMING-6  | Warning  | No common primary clock between related clocks | 2          |
+| TIMING-18 | Warning  | Missing input or output delay                  | 4          |
++-----------+----------+------------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+TIMING-6#1 Warning
+No common primary clock between related clocks  
+The clocks clk_12Mhz_clk_12Mhz and clk_12Mhz_clk_12Mhz_1 are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_12Mhz_clk_12Mhz] -to [get_clocks clk_12Mhz_clk_12Mhz_1]
+Related violations: <none>
+
+TIMING-6#2 Warning
+No common primary clock between related clocks  
+The clocks clk_12Mhz_clk_12Mhz_1 and clk_12Mhz_clk_12Mhz are related (timed together) but they have no common primary clock. The design could fail in hardware. To find a timing path between these clocks, run the following command: report_timing -from [get_clocks clk_12Mhz_clk_12Mhz_1] -to [get_clocks clk_12Mhz_clk_12Mhz]
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on micro_data relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on rst relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An output delay is missing on jack_pwm relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An output delay is missing on micro_clk relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+
