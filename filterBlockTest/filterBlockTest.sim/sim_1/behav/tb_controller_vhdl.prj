@@ -26,6 +26,7 @@ vhdl xil_defaultlib  "../../../filterBlockTest.srcs/sim_1/new/tb_sample_register
 vhdl xil_defaultlib  "../../../filterBlockTest.srcs/sim_1/new/tb_filterBlock.vhd"
 vhdl xil_defaultlib  "../../../filterBlockTest.srcs/sim_1/new/tb_RAM.vhd"
 vhdl xil_defaultlib  "../../../filterBlockTest.srcs/sim_1/new/tb_playing_reg.vhd"
+vhdl xil_defaultlib  "../../../filterBlockTest.srcs/sim_1/new/audioSystem.vhd"
 
 # Do not sort compile order
 nosort

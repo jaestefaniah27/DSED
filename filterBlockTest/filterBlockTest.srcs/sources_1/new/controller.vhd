@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 13.12.2024 12:56:57
+-- Create Date: 14.12.2024 19:18:20
 -- Design Name: 
 -- Module Name: controller - Behavioral
 -- Project Name: 
@@ -39,164 +39,123 @@ entity controller is
            sample_from_micro_ready : in STD_LOGIC;
            rec_en : out STD_LOGIC;
            play_en : out STD_LOGIC;
-           to_jack : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
+           
            sample_req : in STD_LOGIC;
+           to_jack : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            addr : out STD_LOGIC_VECTOR (18 downto 0);
-           din : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
-           dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
-           we : out STD_LOGIC;
-           filter_select : in STD_LOGIC;
+           din, dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
+           we, filter_select : out STD_LOGIC;
            sample_to_filter : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_to_filter_en : out STD_LOGIC;
            sample_from_filter : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
-           sample_from_filter_ready : in STD_LOGIC;
-           BTNU : in STD_LOGIC;
-           BTND : in STD_LOGIC;
-           BTNR : in STD_LOGIC;
-           BTNC : in STD_LOGIC;
-           BTNL : in STD_LOGIC;
-           SW : in STD_LOGIC_VECTOR (1 downto 0));
+           sample_from_filter_en : in STD_LOGIC;
+           SW : in STD_LOGIC_VECTOR(1 downto 0);
+           BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC);
 end controller;
 
-architecture Behavioral of controller is
-type state_type is (IDLE, RECORDING, SAVING, PLAY);
-signal state, next_state : state_type;
-signal act_idx, fin_idx, act_idx_next, fin_idx_next  : std_logic_vector(18 downto 0);
-signal direction, direction_next : signed(18 downto 0);
-signal saving_counter, saving_counter_next : unsigned(1 downto 0);
+ARCHITECTURE Behavioral OF controller IS
+    SIGNAL addr_idx, addr_idx_next, fin_idx, fin_idx_next : std_logic_vector(18 DOWNTO 0);
+    SIGNAL sample_to_jack, sample_to_jack_next : std_logic_vector(sample_size - 1 DOWNTO 0);
+    SIGNAL counter, counter_next : unsigned(1 DOWNTO 0);
+    SIGNAL PLAYING, PLAYING_NEXT : STD_LOGIC;
+    
+BEGIN
+
+
+    -- REG
+REG: PROCESS(clk_12Mhz, rst, sample_req, sample_from_micro_ready, BTNU)
+BEGIN
+    IF (rst = '1') THEN
+        addr_idx <= (others => '0');
+        fin_idx <= (others=>'0');
+        sample_to_jack <= (others => '0');
+        counter <= (others => '0');
+        PLAYING <= '0';
+    ELSIF rising_edge(clk_12Mhz) THEN
+        addr_idx <= addr_idx_next;
+        fin_idx <= fin_idx_next;
+        counter <= counter_next;
+        PLAYING <= PLAYING_NEXT;
+        IF (sample_req = '1' and BTNU = '0') THEN -- Reproduciendo
+            sample_to_jack <= sample_to_jack_next;
+            counter <= (others => '0'); -- contador se utiliza para saber cuando meter muestras de la RAM al filtro
+            -- se reinicia cuando se requiere una muestra para el altavoz
+        elsif (sample_from_micro_ready = '1' and BTNU = '1') then -- Grabando, se utiliza BTNU como enable del modo grabar
+            counter <= (others=>'0'); -- contador se utiliza para escribir en la RAM
+            -- se reinicia cuando hay que guardar una muestra del microfono en la RAM
+        END IF;
+    END IF;
+END PROCESS;
+
+rec_en <= BTNU; -- se activa el microfono cuando se quiere grabar
+play_en <= PLAYING;
+PLAY_PAUSE: process(BTNU, BTND, BTNR, BTNC, BTNL, PLAYING)
 begin
-addr <= act_idx;
-rec_en <= '0';
-play_en <= '0';
---registers
-process(clk_12Mhz, rst)
-begin
-if (rst = '1') then
-    act_idx <= (others=>'0');
-    fin_idx <= (others=>'0');
-    direction <= (others=>'0');
-    state <= IDLE;
-    saving_counter <= (others=>'0');
-elsif rising_edge(clk_12Mhz) then
-    act_idx <= act_idx_next;
-    fin_idx <= fin_idx_next;
-    direction <= direction_next;
-    state <= next_state;
-    saving_counter <= saving_counter_next;    
+if (BTNU = '1') then
+    PLAYING_NEXT <= '0';
+elsif (BTNR = '0' and BTNC = '0' and BTNL = '1' and BTND = '0') 
+or (BTNR = '1' and BTNC = '0' and BTNL = '0' and BTND = '0') then
+    PLAYING_NEXT <= '1';
+elsif (BTNU = '0' and BTNR = '0' and BTNC = '1' and BTNL = '0' and BTND = '0') then
+    PLAYING_NEXT <= not PLAYING;
+else 
+    PLAYING_NEXT <= PLAYING;
 end if;
 end process;
 
---btn process
-PROCESS_NEXT_STATE: process(state, BTNU, BTND, BTNR, BTNC, BTNL, sample_from_micro_ready, saving_counter)
-begin
-case (state) is
-    when IDLE =>
-        if (BTNU = '1') then
-            next_state <= RECORDING;
-        elsif (BTNL = '1') then
-            next_state <= PLAY;
-            act_idx_next <= (others=>'0');
-        elsif (BTNR = '1') then
-            next_state <= PLAY;
-            act_idx_next <= fin_idx;
-        elsif (BTNC = '1') then
-            next_state <= PLAY;
+-- Lógica de salida para sample_to_jack, filter_select y counter_next
+sample_to_jack_next <= dout WHEN (SW = "00" OR SW = "10") ELSE sample_from_filter;
+filter_select <= '1' WHEN (SW = "11") ELSE '0';
+counter_next <= counter WHEN counter = "11" ELSE counter + 1;
+sample_to_filter_en <= '1' WHEN to_integer(counter) = 2 ELSE '0';
+we <= '1' when to_integer(counter) = 2 and BTNU = '1' else '0'; -- se escribe en la RAM cuando se esta grabando y se esperado a que se incremente la direccion
+addr <= fin_idx when (BTNU = '1') else addr_idx; -- Addr_idx para reproducir, fin_idx para grabar.
+to_jack <= sample_to_jack;  -- Datos de salida
+sample_to_filter <= dout;  -- Muestra del filtro
+
+-- RAM_ADDR_MANAGER
+RAM_ADDR_MANAGER: PROCESS(sample_req, sample_from_micro_ready, SW, fin_idx, addr_idx, BTNR, BTNL, BTNU, BTND)
+BEGIN
+    -- BTNU = '1': grabando
+    IF (BTNU = '1') then 
+        if (signed(fin_idx) = -1) then
+            fin_idx_next <= fin_idx; 
+        elsif (sample_from_micro_ready = '1') then
+            fin_idx_next <= std_logic_vector(unsigned(fin_idx) + 1);
         else 
-            next_state <= IDLE;            
+            fin_idx_next <= fin_idx;
         end if;
-    when RECORDING =>
-    if (BTNU = '1') then
-        if (sample_from_micro_ready = '1') then
-            next_state <= SAVING;
-        else 
-            next_state <= RECORDING;
-        end if;
-    else next_state <= IDLE;
-    end if;
-    when SAVING =>
-    if (saving_counter < 2) then
-        next_state <= SAVING;
-    elsif (BTNU = '1') then
-        next_state <= RECORDING;
-    else next_state <= IDLE;
-    end if;
-    when PLAY =>
-    if (BTNL = '1') then
-        act_idx_next <= (others=>'0');
-    elsif (BTNR = '1') then
-        act_idx_next <= fin_idx;
-    elsif (BTNC = '1') then
-        next_state <= IDLE;
-    else next_state <= PLAY;
-    end if;
-end case;
-end process;
-din <= sample_from_micro;
+    -- BTND = '1' "delete" audio
+    elsif (BTND = '1') then
+        addr_idx_next <= (others=>'0');
+        fin_idx_next <= (others=>'0');
+    -- Condición de control para BTNR
+    ELSIF (BTNR = '1') THEN
+        addr_idx_next <= fin_idx;
+    -- Condición de control para BTNL
+    ELSIF (BTNL = '1') THEN
+        addr_idx_next <= (others => '0');
+    -- Condición de control cuando sample_req está activo
+    ELSIF (sample_req = '1') THEN
+        CASE SW IS
+            WHEN "10" =>  -- Si SW es "10", restar 1 a la dirección
+                IF to_integer(unsigned(addr_idx)) = 0 THEN
+                    addr_idx_next <= (others => '0');  -- No puede ser menor que 0
+                ELSE
+                    addr_idx_next <= std_logic_vector(unsigned(addr_idx) - 1);
+                END IF;
+            WHEN OTHERS =>  -- Si SW es otro valor, sumar 1 a la dirección
+                 IF addr_idx = fin_idx THEN
+                    addr_idx_next <= addr_idx;  -- Mantener la misma dirección si llegamos a fin_idx
+                ELSE
+                   addr_idx_next <= std_logic_vector(unsigned(addr_idx) + 1);
+                END IF;
+       END CASE;
+    ELSE
+        -- En caso de no cumplir ninguna condición, mantener la dirección actual
+        addr_idx_next <= addr_idx;
+        fin_idx_next <= fin_idx;
+    END IF;
+END PROCESS;
 
-PROCESS_SAVING: process(state, saving_counter)
-begin
-we <= '0';
-if state = SAVING then
-    if saving_counter = 0 then
-        we <= '1';
-        saving_counter_next <= saving_counter  + 1;
-    elsif saving_counter = 1 then
-        saving_counter_next <= saving_counter  + 1;
-    else saving_counter_next <= (others=>'0');
-    end if;
-end if;
-end process;
-
-DELETE_AUDIO: process(state, BTND)
-begin
-if state = IDLE and BTND = '1' then 
-    fin_idx_next <= (others=>'0');
-end if;
-end process;
-
-AUDIO_REC_PLAY_CONTROL: process(state)
-begin
-case (state) is 
-    when IDLE =>
-        play_en <= '0';
-        rec_en <= '0';
-    when RECORDING | SAVING =>
-        play_en <= '0';
-        rec_en <= '1';
-    when others => -- PLAY
-        play_en <= '1';
-        rec_en <= '0';
-end case;
-end process;
-
-sample_to_filter <= dout;
-sample_to_filter_en <= sample_req; 
-PLAY_PROCESS: process(state, sample_req)
-begin
-if state = PLAY then
-    case (SW) is
-        when "00" => -- AUDIO GRABADO: DIRECTAMENTE DE LA MEMORIA
-            to_jack <= dout;
-            if (sample_req = '1') then
-                act_idx_next <= std_logic_vector(signed(act_idx) + 1);
-            else act_idx_next <= act_idx;
-            end if;
-        when "01" => -- LPF
-            to_jack <= sample_from_filter;
-            if (sample_req = '1') then
-                act_idx_next <= std_logic_vector(signed(act_idx) + 1);
-            else act_idx_next <= act_idx;
-            end if;        
-        when "11" => -- HPF
-        
-        when others => -- "10" AUDIO AL REVES
-            to_jack <= dout;
-            if (sample_req = '1') then
-                act_idx_next <= std_logic_vector(signed(act_idx) - 1);
-            else act_idx_next <= act_idx;
-            end if;        
-end case;
-end if;
-end process;
-
-end Behavioral;
+END Behavioral;

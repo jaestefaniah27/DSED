@@ -3,126 +3,154 @@
    <wave_state>
    </wave_state>
    <db_ref_list>
-      <db_ref path="tb_playing_reg_behav.wdb" id="1">
+      <db_ref path="tb_controller_behav.wdb" id="1">
          <top_modules>
             <top_module name="glbl" />
             <top_module name="packagedsed" />
-            <top_module name="tb_playing_reg" />
+            <top_module name="tb_controller" />
          </top_modules>
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="2300000001fs"></ZoomEndTime>
-      <Cursor1Time time="1708306000fs"></Cursor1Time>
+      <ZoomStartTime time="991539007088fs"></ZoomStartTime>
+      <ZoomEndTime time="1002892198583fs"></ZoomEndTime>
+      <Cursor1Time time="1001000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="202"></NameColumnWidth>
+      <NameColumnWidth column_width="198"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="26" />
-   <wvobject fp_name="/tb_playing_reg/clk_12Mhz" type="logic">
+   <WVObjectSize size="33" />
+   <wvobject fp_name="/tb_controller/DUT/clk_12Mhz" type="logic">
       <obj_property name="ElementShortName">clk_12Mhz</obj_property>
       <obj_property name="ObjectShortName">clk_12Mhz</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/rst" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/rst" type="logic">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/sample_req" type="logic">
-      <obj_property name="ElementShortName">sample_req</obj_property>
-      <obj_property name="ObjectShortName">sample_req</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/to_jack" type="array">
-      <obj_property name="ElementShortName">to_jack[7:0]</obj_property>
-      <obj_property name="ObjectShortName">to_jack[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/sample_to_jack_next" type="array">
-      <obj_property name="ElementShortName">sample_to_jack_next[7:0]</obj_property>
-      <obj_property name="ObjectShortName">sample_to_jack_next[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/addr" type="array">
-      <obj_property name="ElementShortName">addr[18:0]</obj_property>
-      <obj_property name="ObjectShortName">addr[18:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/addr_idx" type="array">
-      <obj_property name="ElementShortName">addr_idx[18:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_idx[18:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/addr_idx_next" type="array">
-      <obj_property name="ElementShortName">addr_idx_next[18:0]</obj_property>
-      <obj_property name="ObjectShortName">addr_idx_next[18:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/dout" type="array">
-      <obj_property name="ElementShortName">dout[7:0]</obj_property>
-      <obj_property name="ObjectShortName">dout[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/filter_select" type="logic">
-      <obj_property name="ElementShortName">filter_select</obj_property>
-      <obj_property name="ObjectShortName">filter_select</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/sample_to_filter" type="array">
-      <obj_property name="ElementShortName">sample_to_filter[7:0]</obj_property>
-      <obj_property name="ObjectShortName">sample_to_filter[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/sample_to_filter_en" type="logic">
-      <obj_property name="ElementShortName">sample_to_filter_en</obj_property>
-      <obj_property name="ObjectShortName">sample_to_filter_en</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/sample_from_filter" type="array">
-      <obj_property name="ElementShortName">sample_from_filter[7:0]</obj_property>
-      <obj_property name="ObjectShortName">sample_from_filter[7:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/sample_from_filter_en" type="logic">
-      <obj_property name="ElementShortName">sample_from_filter_en</obj_property>
-      <obj_property name="ObjectShortName">sample_from_filter_en</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/SW" type="array">
-      <obj_property name="ElementShortName">SW[1:0]</obj_property>
-      <obj_property name="ObjectShortName">SW[1:0]</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/rec_en" type="logic">
-      <obj_property name="ElementShortName">rec_en</obj_property>
-      <obj_property name="ObjectShortName">rec_en</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/sample_from_micro" type="array">
+   <wvobject fp_name="/tb_controller/DUT/sample_from_micro" type="array">
       <obj_property name="ElementShortName">sample_from_micro[7:0]</obj_property>
       <obj_property name="ObjectShortName">sample_from_micro[7:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/sample_from_micro_ready" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/sample_from_micro_ready" type="logic">
       <obj_property name="ElementShortName">sample_from_micro_ready</obj_property>
       <obj_property name="ObjectShortName">sample_from_micro_ready</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/play_en" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/rec_en" type="logic">
+      <obj_property name="ElementShortName">rec_en</obj_property>
+      <obj_property name="ObjectShortName">rec_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/play_en" type="logic">
       <obj_property name="ElementShortName">play_en</obj_property>
       <obj_property name="ObjectShortName">play_en</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/fin_idx" type="array">
-      <obj_property name="ElementShortName">fin_idx[18:0]</obj_property>
-      <obj_property name="ObjectShortName">fin_idx[18:0]</obj_property>
+   <wvobject fp_name="/tb_controller/DUT/sample_req" type="logic">
+      <obj_property name="ElementShortName">sample_req</obj_property>
+      <obj_property name="ObjectShortName">sample_req</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/BTNU" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/to_jack" type="array">
+      <obj_property name="ElementShortName">to_jack[7:0]</obj_property>
+      <obj_property name="ObjectShortName">to_jack[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/addr" type="array">
+      <obj_property name="ElementShortName">addr[18:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/din" type="array">
+      <obj_property name="ElementShortName">din[7:0]</obj_property>
+      <obj_property name="ObjectShortName">din[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/dout" type="array">
+      <obj_property name="ElementShortName">dout[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/we" type="logic">
+      <obj_property name="ElementShortName">we</obj_property>
+      <obj_property name="ObjectShortName">we</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/filter_select" type="logic">
+      <obj_property name="ElementShortName">filter_select</obj_property>
+      <obj_property name="ObjectShortName">filter_select</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/sample_to_filter" type="array">
+      <obj_property name="ElementShortName">sample_to_filter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_to_filter[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/sample_to_filter_en" type="logic">
+      <obj_property name="ElementShortName">sample_to_filter_en</obj_property>
+      <obj_property name="ObjectShortName">sample_to_filter_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/sample_from_filter" type="array">
+      <obj_property name="ElementShortName">sample_from_filter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_from_filter[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/sample_from_filter_en" type="logic">
+      <obj_property name="ElementShortName">sample_from_filter_en</obj_property>
+      <obj_property name="ObjectShortName">sample_from_filter_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/SW" type="array">
+      <obj_property name="ElementShortName">SW[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SW[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/BTNU" type="logic">
       <obj_property name="ElementShortName">BTNU</obj_property>
       <obj_property name="ObjectShortName">BTNU</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/BTND" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/BTND" type="logic">
       <obj_property name="ElementShortName">BTND</obj_property>
       <obj_property name="ObjectShortName">BTND</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/BTNC" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/BTNC" type="logic">
       <obj_property name="ElementShortName">BTNC</obj_property>
       <obj_property name="ObjectShortName">BTNC</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/BTNR" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/BTNR" type="logic">
       <obj_property name="ElementShortName">BTNR</obj_property>
       <obj_property name="ObjectShortName">BTNR</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/BTNL" type="logic">
+   <wvobject fp_name="/tb_controller/DUT/BTNL" type="logic">
       <obj_property name="ElementShortName">BTNL</obj_property>
       <obj_property name="ObjectShortName">BTNL</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/DUT/counter" type="array">
+   <wvobject fp_name="/tb_controller/DUT/addr_idx" type="array">
+      <obj_property name="ElementShortName">addr_idx[18:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_idx[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/addr_idx_next" type="array">
+      <obj_property name="ElementShortName">addr_idx_next[18:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_idx_next[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/fin_idx" type="array">
+      <obj_property name="ElementShortName">fin_idx[18:0]</obj_property>
+      <obj_property name="ObjectShortName">fin_idx[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/fin_idx_next" type="array">
+      <obj_property name="ElementShortName">fin_idx_next[18:0]</obj_property>
+      <obj_property name="ObjectShortName">fin_idx_next[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/sample_to_jack" type="array">
+      <obj_property name="ElementShortName">sample_to_jack[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_to_jack[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/sample_to_jack_next" type="array">
+      <obj_property name="ElementShortName">sample_to_jack_next[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_to_jack_next[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/counter" type="array">
       <obj_property name="ElementShortName">counter[1:0]</obj_property>
       <obj_property name="ObjectShortName">counter[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/counter_next" type="array">
+      <obj_property name="ElementShortName">counter_next[1:0]</obj_property>
+      <obj_property name="ObjectShortName">counter_next[1:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/PLAYING" type="logic">
+      <obj_property name="ElementShortName">PLAYING</obj_property>
+      <obj_property name="ObjectShortName">PLAYING</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_controller/DUT/PLAYING_NEXT" type="logic">
+      <obj_property name="ElementShortName">PLAYING_NEXT</obj_property>
+      <obj_property name="ObjectShortName">PLAYING_NEXT</obj_property>
    </wvobject>
 </wave_config>
