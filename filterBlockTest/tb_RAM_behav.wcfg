@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="63006167269fs"></ZoomStartTime>
-      <ZoomEndTime time="164006167269fs"></ZoomEndTime>
-      <Cursor1Time time="100000000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="2300000001fs"></ZoomEndTime>
+      <Cursor1Time time="1708306000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="174"></NameColumnWidth>
-      <ValueColumnWidth column_width="59"></ValueColumnWidth>
+      <NameColumnWidth column_width="202"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="26" />
    <wvobject fp_name="/tb_playing_reg/clk_12Mhz" type="logic">
       <obj_property name="ElementShortName">clk_12Mhz</obj_property>
       <obj_property name="ObjectShortName">clk_12Mhz</obj_property>
@@ -28,10 +28,6 @@
    <wvobject fp_name="/tb_playing_reg/rst" type="logic">
       <obj_property name="ElementShortName">rst</obj_property>
       <obj_property name="ObjectShortName">rst</obj_property>
-   </wvobject>
-   <wvobject fp_name="/tb_playing_reg/en" type="logic">
-      <obj_property name="ElementShortName">en</obj_property>
-      <obj_property name="ObjectShortName">en</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_playing_reg/sample_req" type="logic">
       <obj_property name="ElementShortName">sample_req</obj_property>
@@ -81,19 +77,47 @@
       <obj_property name="ElementShortName">sample_from_filter_en</obj_property>
       <obj_property name="ObjectShortName">sample_from_filter_en</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/fin_idx" type="array">
-      <obj_property name="ElementShortName">fin_idx[18:0]</obj_property>
-      <obj_property name="ObjectShortName">fin_idx[18:0]</obj_property>
-   </wvobject>
    <wvobject fp_name="/tb_playing_reg/SW" type="array">
       <obj_property name="ElementShortName">SW[1:0]</obj_property>
       <obj_property name="ObjectShortName">SW[1:0]</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/BTNR" type="logic">
+   <wvobject fp_name="/tb_playing_reg/rec_en" type="logic">
+      <obj_property name="ElementShortName">rec_en</obj_property>
+      <obj_property name="ObjectShortName">rec_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/sample_from_micro" type="array">
+      <obj_property name="ElementShortName">sample_from_micro[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_from_micro[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/sample_from_micro_ready" type="logic">
+      <obj_property name="ElementShortName">sample_from_micro_ready</obj_property>
+      <obj_property name="ObjectShortName">sample_from_micro_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/play_en" type="logic">
+      <obj_property name="ElementShortName">play_en</obj_property>
+      <obj_property name="ObjectShortName">play_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/fin_idx" type="array">
+      <obj_property name="ElementShortName">fin_idx[18:0]</obj_property>
+      <obj_property name="ObjectShortName">fin_idx[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/BTNU" type="logic">
+      <obj_property name="ElementShortName">BTNU</obj_property>
+      <obj_property name="ObjectShortName">BTNU</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/BTND" type="logic">
+      <obj_property name="ElementShortName">BTND</obj_property>
+      <obj_property name="ObjectShortName">BTND</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/BTNC" type="logic">
+      <obj_property name="ElementShortName">BTNC</obj_property>
+      <obj_property name="ObjectShortName">BTNC</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_playing_reg/DUT/BTNR" type="logic">
       <obj_property name="ElementShortName">BTNR</obj_property>
       <obj_property name="ObjectShortName">BTNR</obj_property>
    </wvobject>
-   <wvobject fp_name="/tb_playing_reg/BTNL" type="logic">
+   <wvobject fp_name="/tb_playing_reg/DUT/BTNL" type="logic">
       <obj_property name="ElementShortName">BTNL</obj_property>
       <obj_property name="ObjectShortName">BTNL</obj_property>
    </wvobject>

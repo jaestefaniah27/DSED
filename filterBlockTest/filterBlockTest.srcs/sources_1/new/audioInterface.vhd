@@ -61,13 +61,16 @@ port (
 end audioInterface;
 
 architecture Behavioral of audioInterface is
-signal en_2_cycles, en_4_cycles, micro_clk_enable, jack_PWM_enable : std_logic;
+signal en_2_cycles, en_4_cycles, micro_clk_enable, jack_PWM_enable, en_2_cycles_play_enable, en_4_cycles_play_enable : std_logic;
 constant micro_LR_CONST, jack_sd_CONST : STD_LOGIC := '1';
 begin
+en_4_cycles_play_enable <= en_4_cycles and record_enable;
+en_2_cycles_play_enable <= en_2_cycles and play_enable;
+
 INPUT : entity work.inputMicrophone(Behavioral) port map (
         clk_12Mhz => clk_12Mhz,
         rst => rst,
-        en_4_cycles => en_4_cycles,
+        en_4_cycles => en_4_cycles_play_enable,
         micro_data => micro_data,
         sample_out => sample_out,
         sample_out_ready => sample_out_ready);
@@ -75,7 +78,7 @@ INPUT : entity work.inputMicrophone(Behavioral) port map (
 OUTPUT : entity work.outputMicrophone(Behavioral) port map (
          clk_12Mhz => clk_12Mhz,
          rst => rst,
-         en_2_cycles => en_2_cycles,
+         en_2_cycles => en_2_cycles_play_enable,
          sample_in => sample_in,
          sample_request => sample_request,
          pwm_pulse => jack_PWM_enable);     
@@ -87,8 +90,8 @@ ENABLES : entity work.gen_enables(Behavioral) port map (
           en_2_cycles => en_2_cycles,
           en_4_cycles => en_4_cycles);
 
-micro_clk <= micro_clk_enable when (record_enable = '1') else '0';
-jack_pwm <= jack_PWM_enable when (play_enable = '1') else '0';
+micro_clk <= micro_clk_enable and record_enable;
+jack_pwm <= jack_PWM_enable and play_enable;
 
 micro_LR <= micro_LR_CONST;
 jack_sd <= jack_sd_CONST; 
