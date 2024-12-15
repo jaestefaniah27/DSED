@@ -39,12 +39,12 @@ entity controller is
            sample_from_micro_ready : in STD_LOGIC;
            rec_en : out STD_LOGIC;
            play_en : out STD_LOGIC;
-           
            sample_req : in STD_LOGIC;
            to_jack : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            addr : out STD_LOGIC_VECTOR (18 downto 0);
            din, dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
-           we, filter_select : out STD_LOGIC;
+           we : out STD_LOGIC_VECTOR(0 downto 0);
+           filter_select : out STD_LOGIC;
            sample_to_filter : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_to_filter_en : out STD_LOGIC;
            sample_from_filter : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
@@ -60,9 +60,7 @@ ARCHITECTURE Behavioral OF controller IS
     SIGNAL PLAYING, PLAYING_NEXT : STD_LOGIC;
     
 BEGIN
-
-
-    -- REG
+-- REG
 REG: PROCESS(clk_12Mhz, rst, sample_req, sample_from_micro_ready, BTNU)
 BEGIN
     IF (rst = '1') THEN
@@ -104,14 +102,15 @@ end if;
 end process;
 
 -- Lógica de salida para sample_to_jack, filter_select y counter_next
-sample_to_jack_next <= dout WHEN (SW = "00" OR SW = "10") ELSE sample_from_filter;
+sample_to_jack_next <=  dout WHEN (SW = "00" OR SW = "10") ELSE 
+                        std_logic_vector(to_unsigned(to_integer(signed(sample_from_filter)) + 128, 8));
 filter_select <= '1' WHEN (SW = "11") ELSE '0';
 counter_next <= counter WHEN counter = "11" ELSE counter + 1;
 sample_to_filter_en <= '1' WHEN to_integer(counter) = 2 ELSE '0';
-we <= '1' when to_integer(counter) = 2 and BTNU = '1' else '0'; -- se escribe en la RAM cuando se esta grabando y se esperado a que se incremente la direccion
+we(0) <= '1' when to_integer(counter) = 2 and BTNU = '1' else '0'; -- se escribe en la RAM cuando se esta grabando y se esperado a que se incremente la direccion
 addr <= fin_idx when (BTNU = '1') else addr_idx; -- Addr_idx para reproducir, fin_idx para grabar.
 to_jack <= sample_to_jack;  -- Datos de salida
-sample_to_filter <= dout;  -- Muestra del filtro
+sample_to_filter <= std_logic_vector(to_signed(to_integer(unsigned(dout)) - 128, 8)); -- Escalado de valores para que se operen correctamente en el filtro
 
 -- RAM_ADDR_MANAGER
 RAM_ADDR_MANAGER: PROCESS(sample_req, sample_from_micro_ready, SW, fin_idx, addr_idx, BTNR, BTNL, BTNU, BTND)

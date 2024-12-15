@@ -56,8 +56,7 @@ port (
     sample_request : out STD_LOGIC;
     --To/ From the mini - jack
     jack_sd : out STD_LOGIC;
-    jack_pwm : out STD_LOGIC
-) ;
+    jack_pwm : out STD_LOGIC);
 end audioInterface;
 
 architecture Behavioral of audioInterface is

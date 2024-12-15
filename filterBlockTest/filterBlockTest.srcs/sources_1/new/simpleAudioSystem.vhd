@@ -48,8 +48,7 @@ architecture Behavioral of simpleAudioSystem is
 component clk_12Mhz port (
     clk_12Mhz : out STD_LOGIC;
     reset : in STD_LOGIC;
-    clk_100Mhz : in STD_LOGIC
-);
+    clk_100Mhz : in STD_LOGIC);
 end component;
 signal clk_12Mhz_signal : STD_LOGIC;
 signal sample_out_sample_in : STD_LOGIC_VECTOR ( sample_size - 1 downto 0);

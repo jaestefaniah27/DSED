@@ -25,16 +25,14 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use work.packageDSED.all;
 
-entity filterBlock is
-    Port (
+entity filterBlock is Port(
         clk_12Mhz : in STD_LOGIC;
         rst       : in STD_LOGIC;
         sample_in : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
         sample_en : in STD_LOGIC;
         filterSelect : in STD_LOGIC;
         sample_out : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
-        sample_out_ready : out STD_LOGIC
-    );
+        sample_out_ready : out STD_LOGIC);
 end filterBlock;
 
 architecture Behavioral of filterBlock is
