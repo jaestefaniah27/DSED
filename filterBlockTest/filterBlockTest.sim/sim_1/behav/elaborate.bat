@@ -1,6 +1,6 @@
 @echo off
 set xv_path=C:\\Xilinx\\Vivado\\2017.2\\bin
-call %xv_path%/xelab  -wto 871cb6f83729447094823337528d0915 -m64 --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_3_6 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot tb_audioSystem_behav xil_defaultlib.tb_audioSystem xil_defaultlib.glbl -log elaborate.log
+call %xv_path%/xelab  -wto 871cb6f83729447094823337528d0915 -m64 --debug typical --relax --mt 2 -L xil_defaultlib -L blk_mem_gen_v8_3_6 -L unisims_ver -L unimacro_ver -L secureip -L xpm --snapshot LED_driver_tb_behav xil_defaultlib.LED_driver_tb xil_defaultlib.glbl -log elaborate.log
 if "%errorlevel%"=="0" goto SUCCESS
 if "%errorlevel%"=="1" goto END
 :END

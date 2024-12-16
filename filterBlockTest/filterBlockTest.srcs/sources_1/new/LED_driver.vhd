@@ -13,40 +13,17 @@ entity LED_driver is
 end LED_driver;
 
 architecture Behavioral of LED_driver is
-signal led_reg, led_next : std_logic_vector(15 downto 0);
-signal counter, counter_next : unsigned(3 downto 0);
 begin
-
-process(clk_12Mhz, rst, counter)
-begin
-if rst = '1' then
-    counter <= (others=>'0');
-    led_reg <= (others=>'0');
-elsif rising_edge(clk_12Mhz) then
-    counter <= counter_next;
-    if (counter = 0) then
-        led_reg <= led_next;
-    end if;
-end if; 
-end process;
-     
---next_state_logic
-NEXT_STATE_LOGIC: process(counter)
-begin
-if (counter = "1111") then
-    counter_next <= "0000";
-else
-    counter_next <= counter + 1;
-end if;
-end process;
--- output_logic
-LED <= led_reg;
-process(counter, act_idx, fin_idx)
-begin
-if  counter < unsigned(act_idx) or counter = unsigned(fin_idx) then --
-    led_next(to_integer(counter)) <= '1';    
-else
-    led_next(to_integer(counter)) <= '0';
-end if;
-end process;
+    process(act_idx, fin_idx)
+        variable act_temp, fin_temp : STD_LOGIC_VECTOR (15 downto 0);
+    begin
+        -- Generar LED = 2^x - 1
+        act_temp := (others => '0');
+        fin_temp := (others => '0');
+        if (unsigned(act_idx ) = 0) then act_temp := (others=>'0'); else
+            act_temp(to_integer(unsigned(act_idx) - 1) downto 0) := (others => '1');
+        end if;
+            fin_temp(to_integer(unsigned(fin_idx))) := '1';
+        LED <= act_temp or fin_temp;
+    end process;
 end Behavioral;

@@ -12,25 +12,14 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0fs"></ZoomStartTime>
-      <ZoomEndTime time="278400000001fs"></ZoomEndTime>
-      <Cursor1Time time="42385057000fs"></Cursor1Time>
+      <ZoomEndTime time="752839180786027fs"></ZoomEndTime>
+      <Cursor1Time time="126637681223000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="146"></NameColumnWidth>
+      <NameColumnWidth column_width="138"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="6" />
-   <wave_markers>
-      <marker time="2268400000000" label="" />
-      <marker time="1780400000000" label="" />
-      <marker time="2024400000000" label="" />
-      <marker time="816400000000" label="" />
-      <marker time="3072400000000" label="" />
-      <marker time="6922000000000" label="" />
-      <marker time="5960400000000" label="" />
-      <marker time="4996400000000" label="" />
-      <marker time="4036400000000" label="" />
-   </wave_markers>
+   <WVObjectSize size="8" />
    <wvobject fp_name="/LED_driver_tb/clk_12Mhz" type="logic">
       <obj_property name="ElementShortName">clk_12Mhz</obj_property>
       <obj_property name="ObjectShortName">clk_12Mhz</obj_property>
@@ -47,15 +36,24 @@
    <wvobject fp_name="/LED_driver_tb/fin_idx" type="array">
       <obj_property name="ElementShortName">fin_idx[3:0]</obj_property>
       <obj_property name="ObjectShortName">fin_idx[3:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LED_driver_tb/act_idx_19" type="array">
+      <obj_property name="ElementShortName">act_idx_19[18:0]</obj_property>
+      <obj_property name="ObjectShortName">act_idx_19[18:0]</obj_property>
+      <obj_property name="Radix">BINARYRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LED_driver_tb/fin_idx_next_19" type="array">
+      <obj_property name="ElementShortName">fin_idx_next_19[18:0]</obj_property>
+      <obj_property name="ObjectShortName">fin_idx_next_19[18:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/LED_driver_tb/fin_idx" type="array">
+      <obj_property name="ElementShortName">fin_idx[3:0]</obj_property>
+      <obj_property name="ObjectShortName">fin_idx[3:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/LED_driver_tb/LED" type="array">
       <obj_property name="ElementShortName">LED[15:0]</obj_property>
       <obj_property name="ObjectShortName">LED[15:0]</obj_property>
       <obj_property name="Radix">BINARYRADIX</obj_property>
-   </wvobject>
-   <wvobject fp_name="/LED_driver_tb/uut/counter" type="array">
-      <obj_property name="ElementShortName">counter[3:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
    </wvobject>
 </wave_config>

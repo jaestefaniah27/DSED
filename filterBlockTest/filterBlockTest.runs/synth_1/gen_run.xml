@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <GenRun Id="synth_1" LaunchPart="xc7a100tcsg324-1" LaunchTime="1734374200">
-  <File Type="RDS-PROPCONSTRS" Name="audioSystem_drc_synth.rpt"/>
   <File Type="PA-TCL" Name="audioSystem.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="audioSystem_drc_synth.rpt"/>
   <File Type="RDS-RDS" Name="audioSystem.vds"/>
   <File Type="RDS-UTIL" Name="audioSystem_utilization_synth.rpt"/>
   <File Type="RDS-UTIL-PB" Name="audioSystem_utilization_synth.pb"/>
@@ -155,6 +155,6 @@
     <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2017"/>
     <Step Id="synth_design"/>
   </Strategy>
-  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
   <BlockFileSet Type="BlockSrcs" Name="clk_12Mhz"/>
+  <BlockFileSet Type="BlockSrcs" Name="blk_mem_gen_0"/>
 </GenRun>

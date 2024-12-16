@@ -22,15 +22,17 @@ architecture Behavioral of LED_driver_tb is
     -- Señales para conectar al UUT
     signal clk_12Mhz : STD_LOGIC := '0';
     signal rst : STD_LOGIC := '0';
-    signal act_idx, act_idx_next : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
-    signal fin_idx, fin_idx_next : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
+    signal act_idx_19, act_idx_next_19 : STD_LOGIC_VECTOR(18 downto 0) := (others => '0');
+    signal fin_idx_19, fin_idx_next_19 : STD_LOGIC_VECTOR(18 downto 0) := (others => '0');
+    signal act_idx, fin_idx : std_logic_vector(3 downto 0);
     signal LED : STD_LOGIC_VECTOR(15 downto 0);
     
     -- Período del reloj
     constant clk_period : time := 83.333 ns; -- 12 MHz = 83.333 ns
     constant sample_period : time := 50 us;
 begin
-
+act_idx <= act_idx_19(18 downto 15);
+fin_idx <= fin_idx_19(18 downto 15);
     -- Instancia del UUT
     uut: LED_driver
         Port map (
@@ -51,13 +53,21 @@ begin
             wait for clk_period / 2;
         end loop;
     end process;
-    sample_process : process
-    begin
-        act_idx_next <= std_logic_vector(unsigned(act_idx) + 1);
+    act_idx_process : process
+    begin        
+        act_idx_next_19 <= std_logic_vector(unsigned(act_idx_19) + 32);
         wait for sample_period;
-        act_idx <= act_idx_next;
+        act_idx_19 <= act_idx_next_19;        
         wait for clk_period;
     end process;
+
+    fin_idx_process : process
+    begin        
+        fin_idx_next_19 <= std_logic_vector(unsigned(fin_idx_19) + 50);
+        wait for sample_period;
+        fin_idx_19 <= fin_idx_next_19;        
+        wait for clk_period;
+    end process;    
     -- Proceso de estímulos
     stimulus_process: process
     begin
