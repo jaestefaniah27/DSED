@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/SDverisure/Documents/4 TELECO/DSED/Punto_1_test_ok/Punto_1_test_ok/Punto_1_test_ok.runs/clk_12Mhz_synth_1'
+HD_PWD='C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.runs/clk_12Mhz_synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

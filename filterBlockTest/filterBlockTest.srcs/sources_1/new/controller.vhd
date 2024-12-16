@@ -51,7 +51,8 @@ entity controller is
            sample_from_filter : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_from_filter_en : in STD_LOGIC;
            SW : in STD_LOGIC_VECTOR(1 downto 0);
-           BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC);
+           BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC;
+           act_idx_led, fin_idx_led : out STD_LOGIC_VECTOR(3 downto 0));
 end controller;
 
 ARCHITECTURE Behavioral OF controller IS
@@ -62,7 +63,7 @@ ARCHITECTURE Behavioral OF controller IS
     SIGNAL BTNC_DELAYED, BTNC_DELAYED_NEXT : STD_LOGIC; -- SE REGISTRA EL ESTADO DEL BTNC PARA DETECTAR EL FLANCO
 BEGIN
 -- REG
-REG: PROCESS(clk_12Mhz, rst, sample_req, sample_from_micro_ready, BTNU)
+REG: PROCESS(clk_12Mhz, rst, sample_req, sample_from_micro_ready, BTNU, addr_idx_next, fin_idx_next, counter_next, PLAYING_NEXT, BTNC_DELAYED_NEXT, sample_to_jack_next)
 BEGIN
     IF (rst = '1') THEN
         addr_idx <= (others => '0');
@@ -108,6 +109,9 @@ end if;
 end process;
 
 -- Lógica de salida
+act_idx_led <= addr_idx(18 downto 15);
+fin_idx_led <= fin_idx(18 downto 15);
+
 sample_to_jack_next <=  dout WHEN (SW = "00" OR SW = "10") ELSE 
                         std_logic_vector(to_unsigned(to_integer(signed(sample_from_filter)) + 128, 8));
 filter_select <= '1' WHEN (SW = "11") ELSE '0';

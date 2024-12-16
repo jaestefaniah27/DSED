@@ -12,15 +12,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6038754750000fs"></ZoomStartTime>
-      <ZoomEndTime time="7159754750001fs"></ZoomEndTime>
-      <Cursor1Time time="4811440000000fs"></Cursor1Time>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="16457234042568fs"></ZoomEndTime>
+      <Cursor1Time time="4000000000000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="162"></NameColumnWidth>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
       <ValueColumnWidth column_width="58"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="23" />
+   <WVObjectSize size="24" />
    <wave_markers>
       <marker time="2268400000000" label="" />
       <marker time="1780400000000" label="" />
@@ -97,6 +97,10 @@
    <wvobject fp_name="/tb_audioSystem/DUT/BTNU" type="logic">
       <obj_property name="ElementShortName">BTNU</obj_property>
       <obj_property name="ObjectShortName">BTNU</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/LED" type="array">
+      <obj_property name="ElementShortName">LED[15:0]</obj_property>
+      <obj_property name="ObjectShortName">LED[15:0]</obj_property>
    </wvobject>
    <wvobject fp_name="/tb_audioSystem/DUT/rec_en" type="logic">
       <obj_property name="ElementShortName">rec_en</obj_property>

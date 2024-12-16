@@ -41,11 +41,12 @@ entity audioSystem is
            BTNC : in STD_LOGIC;
            BTNR : in STD_LOGIC;
            SW : in STD_LOGIC_VECTOR (1 downto 0);
-           micro_lr : out STD_LOGIC;
+           micro_LR : out STD_LOGIC;
            micro_data : in STD_LOGIC;
            jack_pwm : out STD_LOGIC;
            jack_sd : out STD_LOGIC;
-           micro_clk : out STD_LOGIC);
+           micro_clk : out STD_LOGIC;
+           LED : out STD_LOGIC_VECTOR(15 downto 0));
 end audioSystem;
 
 architecture Behavioral of audioSystem is
@@ -98,6 +99,16 @@ component blk_mem_gen_0 IS
     douta : OUT STD_LOGIC_VECTOR(sample_size - 1 DOWNTO 0));
 end component;
 
+component LED_driver is
+    Port (
+        clk_12Mhz : in STD_LOGIC;
+        rst : in STD_LOGIC;
+        act_idx : in STD_LOGIC_VECTOR (3 downto 0); -- Índice actual de lectura
+        fin_idx : in STD_LOGIC_VECTOR (3 downto 0); -- Dirección de memoria
+        LED : out STD_LOGIC_VECTOR (15 downto 0)     -- LEDs de salida
+    );
+end component;
+
 component controller is
     Port ( clk_12Mhz : in STD_LOGIC;
            rst : in STD_LOGIC;
@@ -117,13 +128,15 @@ component controller is
            sample_from_filter : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_from_filter_en : in STD_LOGIC;
            SW : in STD_LOGIC_VECTOR(1 downto 0);
-           BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC);
+           BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC;
+           act_idx_led, fin_idx_led : out STD_LOGIC_VECTOR(3 downto 0));
 end component;
 
 signal sample_from_micro, to_jack, sample_to_filter, sample_from_filter, din, dout : std_logic_vector(sample_size - 1 downto 0);
 signal sample_from_micro_ready, rec_en, play_en, sample_req, filter_select, sample_to_filter_en, sample_from_filter_en, clk_12Mhz_signal : std_logic;
 signal addr : std_logic_vector(18 downto 0);
 signal we : std_logic_vector(0 downto 0);
+signal act_idx_led, fin_idx_led : std_logic_vector(3 downto 0);
 begin
 
     u_clk_12Mhz : clk_12Mhz
@@ -170,7 +183,14 @@ begin
             dina   => din,
             douta  => dout
         );
-
+    u_led_driver : LED_driver
+        port map (
+            clk_12Mhz   => clk_12Mhz_signal,
+            rst         => rst,
+            act_idx     => act_idx_led,
+            fin_idx     => fin_idx_led,
+            LED         => LED     
+        );
     u_controller : controller
         port map(
             clk_12Mhz               => clk_12Mhz_signal,
@@ -195,7 +215,9 @@ begin
             BTND                    => BTND,  
             BTNC                    => BTNC,  
             BTNR                    => BTNR,  
-            BTNL                    => BTNL   
+            BTNL                    => BTNL,
+            act_idx_led             => act_idx_led,
+            fin_idx_led             => fin_idx_led
         );
 
 end Behavioral;

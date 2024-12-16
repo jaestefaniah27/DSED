@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/SDverisure/Documents/4 TELECO/DSED/Punto_1_test_ok/Punto_1_test_ok/Punto_1_test_ok.runs/synth_1'
+HD_PWD='C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -40,4 +40,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log simpleAudioSystem.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source simpleAudioSystem.tcl
+EAStep vivado -log audioSystem.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source audioSystem.tcl

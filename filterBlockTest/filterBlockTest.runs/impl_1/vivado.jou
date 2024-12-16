@@ -2,11 +2,11 @@
 # Vivado v2017.2 (64-bit)
 # SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
 # IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
-# Start of session at: Wed Nov 20 14:56:10 2024
-# Process ID: 33908
-# Current directory: C:/Users/SDverisure/Documents/4 TELECO/DSED/Punto_1_test_ok/Punto_1_test_ok/Punto_1_test_ok.runs/impl_1
-# Command line: vivado.exe -log simpleAudioSystem.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source simpleAudioSystem.tcl -notrace
-# Log file: C:/Users/SDverisure/Documents/4 TELECO/DSED/Punto_1_test_ok/Punto_1_test_ok/Punto_1_test_ok.runs/impl_1/simpleAudioSystem.vdi
-# Journal file: C:/Users/SDverisure/Documents/4 TELECO/DSED/Punto_1_test_ok/Punto_1_test_ok/Punto_1_test_ok.runs/impl_1\vivado.jou
+# Start of session at: Mon Dec 16 19:37:05 2024
+# Process ID: 25960
+# Current directory: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.runs/impl_1
+# Command line: vivado.exe -log audioSystem.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source audioSystem.tcl -notrace
+# Log file: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.runs/impl_1/audioSystem.vdi
+# Journal file: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
-source simpleAudioSystem.tcl -notrace
+source audioSystem.tcl -notrace

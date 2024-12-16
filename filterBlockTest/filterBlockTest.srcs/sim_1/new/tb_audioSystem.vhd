@@ -20,6 +20,7 @@ architecture test of tb_audioSystem is
     signal jack_pwm     : std_logic;
     signal jack_sd      : std_logic;
     signal micro_clk    : std_logic;
+    signal LED          : std_logic_vector(15 downto 0);
 
     -- Período de reloj
     constant clk_period : time := 10 ns;
@@ -41,7 +42,8 @@ begin
             micro_data  => micro_data,
             jack_pwm    => jack_pwm,
             jack_sd     => jack_sd,
-            micro_clk   => micro_clk
+            micro_clk   => micro_clk,
+            LED         => LED
         );
 
     -- Generación del reloj
@@ -76,7 +78,7 @@ begin
         wait for 100 * 8 * clk_period;
         -- Activar grabación (BTNL)
         BTNU <= '1';
-        wait for 10000 * 8 * clk_period;
+        wait for 27000 ms;
         BTNU <= '0';
         wait for 100 * 8 * clk_period;
 

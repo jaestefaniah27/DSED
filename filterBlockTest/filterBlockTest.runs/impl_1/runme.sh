@@ -24,7 +24,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/SDverisure/Documents/4 TELECO/DSED/Punto_1_test_ok/Punto_1_test_ok/Punto_1_test_ok.runs/impl_1'
+HD_PWD='C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
@@ -42,6 +42,6 @@ EAStep()
 
 # pre-commands:
 /bin/touch .init_design.begin.rst
-EAStep vivado -log simpleAudioSystem.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source simpleAudioSystem.tcl -notrace
+EAStep vivado -log audioSystem.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source audioSystem.tcl -notrace
 
 
