@@ -52,15 +52,18 @@ begin
         clk_100Mhz <= '0';
         wait for clk_period / 2;
     end process;
-    pseudo_random_micro_data: process
-        variable t : time := 0 ns;
+    pseudo_random_micro_data : process
+        variable cnt : integer := 0;  -- Contador
     begin
-        micro_data <= '0';
         wait for 1 ns;  -- Espera mínima
+        cnt := cnt + 1;
     
-        -- Generación pseudoaleatoria
-        t := t + 1 ns;
-        micro_data <= std_logic(to_bit((t mod 1300 ns = 0 ns) xor (t mod 2100 ns = 0 ns) xor (t mod 3700 ns = 0 ns)));
+        -- Generación pseudoaleatoria usando if-then-else
+        if ( (cnt mod 3 = 0) xor (cnt mod 7= 0) xor (cnt mod 11 = 0) ) then
+            micro_data <= '1';
+        else
+            micro_data <= '0';
+        end if;
     end process;
 
     -- Estímulos de prueba
@@ -68,56 +71,56 @@ begin
     begin
         -- Reset inicial
         rst <= '1';
-        wait for 5 * clk_period;
+        wait for 5 * 8 * clk_period;
         rst <= '0';
-        wait for 100 * clk_period
+        wait for 100 * 8 * clk_period;
         -- Activar grabación (BTNL)
         BTNU <= '1';
-        wait for 10000 * clk_period;
+        wait for 10000 * 8 * clk_period;
         BTNU <= '0';
-        wait for 100 * clk_period;
+        wait for 100 * 8 * clk_period;
 
         -- Cambiar switches para reproducción
         -- SW = "00": reproducción normal
         SW <= "00";
         BTNL <= '1';
-        wait for 50 * clk_period;
+        wait for 50 * 8 * clk_period;
         BTNL <= '0';
-        wait for 12000 * clk_period; -- reproduccion completa
+        wait for 12000 * 8 * clk_period; -- reproduccion completa
         BTNL <= '1';
-        wait for 50* clk_period;
+        wait for 50* 8 * clk_period;
         BTNL <= '0'; --reproduccion de nuevo pero vamos a probar a pausar con BTNC
-        wait for 3000 * clk_period;
+        wait for 3000 * 8 * clk_period;
         BTNC <= '1';
-        wait for 50 * clk_period; -- pausa
+        wait for 50 * 8 * clk_period; -- pausa
         BTNC <= '0';
-        wait for 3000 * clk_period;
+        wait for 3000 * 8 * clk_period;
         BTNC <= '1';
-        wait for 50 * clk_period; -- continua reproduciendo
+        wait for 50 * 8 * clk_period; -- continua reproduciendo
         BTNC <= '0';
-        wait for 10000 * clk_period;
+        wait for 10000 * 8 * clk_period;
         -- SW = "10": reproducción en reversa
         SW <= "10";
-        wait for 12000 * clk_period;
+        wait for 12000 * 8 * clk_period;
         
         BTNR <= '1';
-        wait for 50 * clk_period;
+        wait for 50 * 8 * clk_period;
         BTNR <= '0';
-        wait for 12000 * clk_period;
+        wait for 12000 * 8 * clk_period;
         -- SW = "01": reproducción con filtro pasa bajos
         SW <= "01";
-        wait for 12000 * clk_period;
+        wait for 12000 * 8 * clk_period;
 
         -- SW = "11": reproducción con filtro pasa altos
         BTNL <= '1';
-        wait for 50 * clk_period;
+        wait for 50 * 8 * clk_period;
         BTNL <= '0';
         SW <= "11";
-        wait for 12000 * clk_period;
+        wait for 12000 * 8 * clk_period;
 
         -- Activar borrado de memoria (BTNC)
         BTND <= '1';
-        wait for 20 * clk_period;
+        wait for 20 * 8 * clk_period;
         BTND <= '0';
 
         -- Fin de la simulación

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_audioSystem_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="packagedsed" />
+            <top_module name="tb_audioSystem" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="6038754750000fs"></ZoomStartTime>
+      <ZoomEndTime time="7159754750001fs"></ZoomEndTime>
+      <Cursor1Time time="4811440000000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="162"></NameColumnWidth>
+      <ValueColumnWidth column_width="58"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="23" />
+   <wave_markers>
+      <marker time="2268400000000" label="" />
+      <marker time="1780400000000" label="" />
+      <marker time="2024400000000" label="" />
+      <marker time="816400000000" label="" />
+      <marker time="3072400000000" label="" />
+      <marker time="6922000000000" label="" />
+      <marker time="5960400000000" label="" />
+      <marker time="4996400000000" label="" />
+      <marker time="4036400000000" label="" />
+   </wave_markers>
+   <wvobject fp_name="/tb_audioSystem/DUT/clk_12Mhz_signal" type="logic">
+      <obj_property name="ElementShortName">clk_12Mhz_signal</obj_property>
+      <obj_property name="ObjectShortName">clk_12Mhz_signal</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_from_micro" type="array">
+      <obj_property name="ElementShortName">sample_from_micro[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_from_micro[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_from_micro_ready" type="logic">
+      <obj_property name="ElementShortName">sample_from_micro_ready</obj_property>
+      <obj_property name="ObjectShortName">sample_from_micro_ready</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/din" type="array">
+      <obj_property name="ElementShortName">din[7:0]</obj_property>
+      <obj_property name="ObjectShortName">din[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/we[0]" type="logic">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">[0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/addr" type="array">
+      <obj_property name="ElementShortName">addr[18:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[18:0]</obj_property>
+      <obj_property name="CustomSignalColor">#FFFF00</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/dout" type="array">
+      <obj_property name="ElementShortName">dout[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dout[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/to_jack" type="array">
+      <obj_property name="ElementShortName">to_jack[7:0]</obj_property>
+      <obj_property name="ObjectShortName">to_jack[7:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_to_filter" type="array">
+      <obj_property name="ElementShortName">sample_to_filter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_to_filter[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_from_filter" type="array">
+      <obj_property name="ElementShortName">sample_from_filter[7:0]</obj_property>
+      <obj_property name="ObjectShortName">sample_from_filter[7:0]</obj_property>
+      <obj_property name="Radix">SIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_to_filter_en" type="logic">
+      <obj_property name="ElementShortName">sample_to_filter_en</obj_property>
+      <obj_property name="ObjectShortName">sample_to_filter_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_from_filter_en" type="logic">
+      <obj_property name="ElementShortName">sample_from_filter_en</obj_property>
+      <obj_property name="ObjectShortName">sample_from_filter_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/SW" type="array">
+      <obj_property name="ElementShortName">SW[1:0]</obj_property>
+      <obj_property name="ObjectShortName">SW[1:0]</obj_property>
+      <obj_property name="CustomSignalColor">#00FFFF</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/filter_select" type="logic">
+      <obj_property name="ElementShortName">filter_select</obj_property>
+      <obj_property name="ObjectShortName">filter_select</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/BTNU" type="logic">
+      <obj_property name="ElementShortName">BTNU</obj_property>
+      <obj_property name="ObjectShortName">BTNU</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/rec_en" type="logic">
+      <obj_property name="ElementShortName">rec_en</obj_property>
+      <obj_property name="ObjectShortName">rec_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/jack_pwm" type="logic">
+      <obj_property name="ElementShortName">jack_pwm</obj_property>
+      <obj_property name="ObjectShortName">jack_pwm</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/play_en" type="logic">
+      <obj_property name="ElementShortName">play_en</obj_property>
+      <obj_property name="ObjectShortName">play_en</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/sample_req" type="logic">
+      <obj_property name="ElementShortName">sample_req</obj_property>
+      <obj_property name="ObjectShortName">sample_req</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/BTNR" type="logic">
+      <obj_property name="ElementShortName">BTNR</obj_property>
+      <obj_property name="ObjectShortName">BTNR</obj_property>
+      <obj_property name="CustomSignalColor">#008080</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/BTNC" type="logic">
+      <obj_property name="ElementShortName">BTNC</obj_property>
+      <obj_property name="ObjectShortName">BTNC</obj_property>
+      <obj_property name="CustomSignalColor">#008000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/BTNL" type="logic">
+      <obj_property name="ElementShortName">BTNL</obj_property>
+      <obj_property name="ObjectShortName">BTNL</obj_property>
+      <obj_property name="CustomSignalColor">#F0E68C</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_audioSystem/DUT/BTND" type="logic">
+      <obj_property name="ElementShortName">BTND</obj_property>
+      <obj_property name="ObjectShortName">BTND</obj_property>
+      <obj_property name="CustomSignalColor">#FF0000</obj_property>
+      <obj_property name="UseCustomSignalColor">true</obj_property>
+   </wvobject>
+</wave_config>

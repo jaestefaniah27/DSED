@@ -60,12 +60,12 @@ port (
 end audioInterface;
 
 architecture Behavioral of audioInterface is
-signal en_2_cycles, en_4_cycles, micro_clk_enable, jack_PWM_enable, en_2_cycles_play_enable, en_4_cycles_play_enable : std_logic;
+signal sample_request_from_jack, en_2_cycles, en_4_cycles, micro_clk_enable, jack_PWM_enable, en_2_cycles_play_enable, en_4_cycles_play_enable : std_logic;
 constant micro_LR_CONST, jack_sd_CONST : STD_LOGIC := '1';
 begin
 en_4_cycles_play_enable <= en_4_cycles and record_enable;
 en_2_cycles_play_enable <= en_2_cycles and play_enable;
-
+sample_request <= sample_request_from_jack and play_enable;
 INPUT : entity work.inputMicrophone(Behavioral) port map (
         clk_12Mhz => clk_12Mhz,
         rst => rst,
@@ -79,7 +79,7 @@ OUTPUT : entity work.outputMicrophone(Behavioral) port map (
          rst => rst,
          en_2_cycles => en_2_cycles_play_enable,
          sample_in => sample_in,
-         sample_request => sample_request,
+         sample_request => sample_request_from_jack,
          pwm_pulse => jack_PWM_enable);     
 
 ENABLES : entity work.gen_enables(Behavioral) port map (

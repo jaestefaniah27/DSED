@@ -108,7 +108,8 @@ component controller is
            sample_req : in STD_LOGIC;
            to_jack : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            addr : out STD_LOGIC_VECTOR (18 downto 0);
-           din, dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
+           din : out STD_LOGIC_VECTOR ( sample_size - 1 downto 0);
+           dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            we : out STD_LOGIC_VECTOR(0 downto 0);
            filter_select : out STD_LOGIC;
            sample_to_filter : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);

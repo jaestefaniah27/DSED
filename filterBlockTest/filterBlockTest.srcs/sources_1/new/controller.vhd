@@ -42,7 +42,8 @@ entity controller is
            sample_req : in STD_LOGIC;
            to_jack : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            addr : out STD_LOGIC_VECTOR (18 downto 0);
-           din, dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
+           din : out STD_LOGIC_VECTOR(sample_size - 1 downto 0);
+           dout : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            we : out STD_LOGIC_VECTOR(0 downto 0);
            filter_select : out STD_LOGIC;
            sample_to_filter : out STD_LOGIC_VECTOR (sample_size - 1 downto 0);
@@ -58,7 +59,7 @@ ARCHITECTURE Behavioral OF controller IS
     SIGNAL sample_to_jack, sample_to_jack_next : std_logic_vector(sample_size - 1 DOWNTO 0);
     SIGNAL counter, counter_next : unsigned(1 DOWNTO 0);
     SIGNAL PLAYING, PLAYING_NEXT : STD_LOGIC;
-    
+    SIGNAL BTNC_DELAYED, BTNC_DELAYED_NEXT : STD_LOGIC; -- SE REGISTRA EL ESTADO DEL BTNC PARA DETECTAR EL FLANCO
 BEGIN
 -- REG
 REG: PROCESS(clk_12Mhz, rst, sample_req, sample_from_micro_ready, BTNU)
@@ -69,11 +70,13 @@ BEGIN
         sample_to_jack <= (others => '0');
         counter <= (others => '0');
         PLAYING <= '0';
+        BTNC_DELAYED <= '0';
     ELSIF rising_edge(clk_12Mhz) THEN
         addr_idx <= addr_idx_next;
         fin_idx <= fin_idx_next;
         counter <= counter_next;
         PLAYING <= PLAYING_NEXT;
+        BTNC_DELAYED <= BTNC_DELAYED_NEXT;
         IF (sample_req = '1' and BTNU = '0') THEN -- Reproduciendo
             sample_to_jack <= sample_to_jack_next;
             counter <= (others => '0'); -- contador se utiliza para saber cuando meter muestras de la RAM al filtro
@@ -87,21 +90,24 @@ END PROCESS;
 
 rec_en <= BTNU; -- se activa el microfono cuando se quiere grabar
 play_en <= PLAYING;
-PLAY_PAUSE: process(BTNU, BTND, BTNR, BTNC, BTNL, PLAYING)
+BTNC_DELAYED_NEXT <= BTNC;
+PLAY_PAUSE: process(BTNU, BTND, BTNR, BTNC, BTNC_DELAYED, BTNL, PLAYING)
 begin
 if (BTNU = '1') then
     PLAYING_NEXT <= '0';
 elsif (BTNR = '0' and BTNC = '0' and BTNL = '1' and BTND = '0') 
 or (BTNR = '1' and BTNC = '0' and BTNL = '0' and BTND = '0') then
     PLAYING_NEXT <= '1';
-elsif (BTNU = '0' and BTNR = '0' and BTNC = '1' and BTNL = '0' and BTND = '0') then
+elsif (BTNU = '0' and BTNR = '0' and BTNC = '1' and BTNC_DELAYED = '0' and BTNL = '0' and BTND = '0') then
     PLAYING_NEXT <= not PLAYING;
+elsif (BTND = '1') then
+    PLAYING_NEXT <= '0';
 else 
     PLAYING_NEXT <= PLAYING;
 end if;
 end process;
 
--- Lógica de salida para sample_to_jack, filter_select y counter_next
+-- Lógica de salida
 sample_to_jack_next <=  dout WHEN (SW = "00" OR SW = "10") ELSE 
                         std_logic_vector(to_unsigned(to_integer(signed(sample_from_filter)) + 128, 8));
 filter_select <= '1' WHEN (SW = "11") ELSE '0';
@@ -111,7 +117,7 @@ we(0) <= '1' when to_integer(counter) = 2 and BTNU = '1' else '0'; -- se escribe
 addr <= fin_idx when (BTNU = '1') else addr_idx; -- Addr_idx para reproducir, fin_idx para grabar.
 to_jack <= sample_to_jack;  -- Datos de salida
 sample_to_filter <= std_logic_vector(to_signed(to_integer(unsigned(dout)) - 128, 8)); -- Escalado de valores para que se operen correctamente en el filtro
-
+din <= sample_from_micro;
 -- RAM_ADDR_MANAGER
 RAM_ADDR_MANAGER: PROCESS(sample_req, sample_from_micro_ready, SW, fin_idx, addr_idx, BTNR, BTNL, BTNU, BTND)
 BEGIN

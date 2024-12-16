@@ -44,7 +44,7 @@ end outputMicrophone;
 architecture Behavioral of outputMicrophone is
 signal r_reg, r_next : unsigned(8 downto 0);
 signal buf_reg, buf_next : std_logic;
-
+signal sample_req_aux, sample_req_aux_next : std_logic;
 begin
 --register and output buffer
 process(clk_12Mhz, rst, en_2_cycles)
@@ -52,17 +52,22 @@ begin
 if (rst = '1') then
     r_reg <= (others=>'0');
     buf_reg <= '0';
-elsif rising_edge(clk_12Mhz) and (en_2_cycles = '1') then
-    r_reg <= r_next;
-    buf_reg <= buf_next;
+    sample_req_aux <= '0';
+elsif rising_edge(clk_12Mhz) then
+    sample_req_aux <= sample_req_aux_next;
+    if (en_2_cycles = '1') then
+        r_reg <= r_next;
+        buf_reg <= buf_next;
+    end if;
 end if;
 end process;
 --next state logic
 r_next <= (others=>'0') when (r_reg = 299) else r_reg + 1;
+sample_req_aux_next <= '1' when (r_next = 0) else '0';
 --output_logic
 buf_next <=
     '1' when (r_reg < unsigned(sample_in)) else -- or (unsigned(sample_in) = 0)
     '0';
 pwm_pulse <= buf_reg;
-sample_request <= '1' when (r_reg = 0) else '0';
+sample_request <= sample_req_aux when r_reg = 0 else '0';
 end Behavioral;

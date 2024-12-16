@@ -24,7 +24,8 @@ architecture test of tb_controller is
     signal to_jack            : std_logic_vector(sample_size - 1 downto 0);
     signal addr               : std_logic_vector(18 downto 0);
     signal din, dout          : std_logic_vector(sample_size - 1 downto 0) := (others => '0');
-    signal we, filter_select  : std_logic;
+    signal filter_select      : std_logic;
+    signal we                 : std_logic_vector(0 downto 0);
     signal sample_to_filter   : std_logic_vector(sample_size - 1 downto 0);
     signal sample_to_filter_en : std_logic;
     signal sample_from_filter : std_logic_vector(sample_size - 1 downto 0) := (others => '0');
