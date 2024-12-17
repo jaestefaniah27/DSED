@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="20" Path="C:/Users/jaest/OneDrive/Documentos/4_TELECO/DSED/proyecto_dsed_github/DSED_2_porque_DSED_no_funca/DSED/filterBlockTest/filterBlockTest.xpr">
+<Project Version="7" Minor="20" Path="C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="871cb6f83729447094823337528d0915"/>

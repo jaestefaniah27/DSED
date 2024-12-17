@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-| Date         : Mon Dec 16 19:37:44 2024
+| Date         : Tue Dec 17 15:53:30 2024
 | Host         : PC_CSDVerisure running 64-bit major release  (build 9200)
 | Command      : report_drc -file audioSystem_drc_routed.rpt -pb audioSystem_drc_routed.pb -rpx audioSystem_drc_routed.rpx
 | Design       : audioSystem
@@ -24,13 +24,13 @@ Table of Contents
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>
-             Violations found: 40
+             Violations found: 24
 +-----------+----------+-----------------------------------------------------+------------+
 | Rule      | Severity | Description                                         | Violations |
 +-----------+----------+-----------------------------------------------------+------------+
 | CFGBVS-1  | Warning  | Missing CFGBVS and CONFIG_VOLTAGE Design Properties | 1          |
 | CHECK-3   | Warning  | Report rule limit reached                           | 1          |
-| PDRC-153  | Warning  | Gated clock check                                   | 17         |
+| PDRC-153  | Warning  | Gated clock check                                   | 1          |
 | PLCK-12   | Warning  | Clock Placer Checks                                 | 1          |
 | REQP-1839 | Warning  | RAMB36 async control check                          | 20         |
 +-----------+----------+-----------------------------------------------------+------------+
@@ -58,86 +58,6 @@ Related violations: <none>
 PDRC-153#1 Warning
 Gated clock check  
 Net u_audioInterface/OUTPUT/fin_idx_reg[18][0] is a gated clock net sourced by a combinational pin u_audioInterface/OUTPUT/fin_idx_next_reg[18]_i_2/O, cell u_audioInterface/OUTPUT/fin_idx_next_reg[18]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#2 Warning
-Gated clock check  
-Net u_led_driver/led_next_reg[0]_i_1_n_0 is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[0]_i_1/O, cell u_led_driver/led_next_reg[0]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#3 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[10] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[10]_i_1/O, cell u_led_driver/led_next_reg[10]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#4 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[11] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[11]_i_1/O, cell u_led_driver/led_next_reg[11]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#5 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[12] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[12]_i_1/O, cell u_led_driver/led_next_reg[12]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#6 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[13] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[13]_i_1/O, cell u_led_driver/led_next_reg[13]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#7 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[14] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[14]_i_1/O, cell u_led_driver/led_next_reg[14]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#8 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[15] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[15]_i_2/O, cell u_led_driver/led_next_reg[15]_i_2. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#9 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[1] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[1]_i_1/O, cell u_led_driver/led_next_reg[1]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#10 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[2] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[2]_i_1/O, cell u_led_driver/led_next_reg[2]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#11 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[3] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[3]_i_1/O, cell u_led_driver/led_next_reg[3]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#12 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[4] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[4]_i_1/O, cell u_led_driver/led_next_reg[4]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#13 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[5] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[5]_i_1/O, cell u_led_driver/led_next_reg[5]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#14 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[6] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[6]_i_1/O, cell u_led_driver/led_next_reg[6]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#15 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[7] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[7]_i_1/O, cell u_led_driver/led_next_reg[7]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#16 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[8] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[8]_i_1/O, cell u_led_driver/led_next_reg[8]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
-Related violations: <none>
-
-PDRC-153#17 Warning
-Gated clock check  
-Net u_led_driver/mux1_out[9] is a gated clock net sourced by a combinational pin u_led_driver/led_next_reg[9]_i_1/O, cell u_led_driver/led_next_reg[9]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
 Related violations: <none>
 
 PLCK-12#1 Warning

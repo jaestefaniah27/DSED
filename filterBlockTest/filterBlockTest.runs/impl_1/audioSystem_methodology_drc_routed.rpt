@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -----------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-| Date         : Mon Dec 16 19:37:45 2024
+| Date         : Tue Dec 17 15:53:31 2024
 | Host         : PC_CSDVerisure running 64-bit major release  (build 9200)
 | Command      : report_methodology -file audioSystem_methodology_drc_routed.rpt -rpx audioSystem_methodology_drc_routed.rpx
 | Design       : audioSystem
@@ -23,13 +23,13 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 83
+             Violations found: 71
 +-----------+----------+------------------------------------------------+------------+
 | Rule      | Severity | Description                                    | Violations |
 +-----------+----------+------------------------------------------------+------------+
 | TIMING-6  | Warning  | No common primary clock between related clocks | 2          |
-| TIMING-18 | Warning  | Missing input or output delay                  | 27         |
-| TIMING-20 | Warning  | Non-clocked latch                              | 54         |
+| TIMING-18 | Warning  | Missing input or output delay                  | 31         |
+| TIMING-20 | Warning  | Non-clocked latch                              | 38         |
 +-----------+----------+------------------------------------------------+------------+
 
 2. REPORT DETAILS
@@ -81,100 +81,120 @@ Related violations: <none>
 
 TIMING-18#8 Warning
 Missing input or output delay  
-An input delay is missing on micro_data relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An input delay is missing on SW[2] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#9 Warning
 Missing input or output delay  
-An input delay is missing on rst relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An input delay is missing on micro_data relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#10 Warning
 Missing input or output delay  
-An output delay is missing on LED[0] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An input delay is missing on rst relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#11 Warning
 Missing input or output delay  
-An output delay is missing on LED[10] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED16_B relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#12 Warning
 Missing input or output delay  
-An output delay is missing on LED[11] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED16_G relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#13 Warning
 Missing input or output delay  
-An output delay is missing on LED[12] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED16_R relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#14 Warning
 Missing input or output delay  
-An output delay is missing on LED[13] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[0] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#15 Warning
 Missing input or output delay  
-An output delay is missing on LED[14] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[10] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#16 Warning
 Missing input or output delay  
-An output delay is missing on LED[15] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[11] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#17 Warning
 Missing input or output delay  
-An output delay is missing on LED[1] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[12] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#18 Warning
 Missing input or output delay  
-An output delay is missing on LED[2] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[13] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#19 Warning
 Missing input or output delay  
-An output delay is missing on LED[3] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[14] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#20 Warning
 Missing input or output delay  
-An output delay is missing on LED[4] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[15] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#21 Warning
 Missing input or output delay  
-An output delay is missing on LED[5] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[1] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#22 Warning
 Missing input or output delay  
-An output delay is missing on LED[6] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[2] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#23 Warning
 Missing input or output delay  
-An output delay is missing on LED[7] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[3] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#24 Warning
 Missing input or output delay  
-An output delay is missing on LED[8] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[4] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#25 Warning
 Missing input or output delay  
-An output delay is missing on LED[9] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[5] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#26 Warning
 Missing input or output delay  
-An output delay is missing on jack_pwm relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+An output delay is missing on LED[6] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
 
 TIMING-18#27 Warning
+Missing input or output delay  
+An output delay is missing on LED[7] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#28 Warning
+Missing input or output delay  
+An output delay is missing on LED[8] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#29 Warning
+Missing input or output delay  
+An output delay is missing on LED[9] relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#30 Warning
+Missing input or output delay  
+An output delay is missing on jack_pwm relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
+Related violations: <none>
+
+TIMING-18#31 Warning
 Missing input or output delay  
 An output delay is missing on micro_clk relative to clock(s) VIRTUAL_clk_12Mhz_clk_12Mhz 
 Related violations: <none>
@@ -367,86 +387,6 @@ Related violations: <none>
 TIMING-20#38 Warning
 Non-clocked latch  
 The latch u_controller/fin_idx_next_reg[9] cannot be properly analyzed as its control pin u_controller/fin_idx_next_reg[9]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#39 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[0] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[0]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#40 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[10] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[10]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#41 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[11] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[11]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#42 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[12] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[12]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#43 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[13] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[13]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#44 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[14] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[14]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#45 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[15] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[15]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#46 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[1] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[1]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#47 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[2] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[2]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#48 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[3] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[3]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#49 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[4] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[4]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#50 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[5] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[5]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#51 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[6] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[6]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#52 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[7] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[7]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#53 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[8] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[8]/G is not reached by a timing clock
-Related violations: <none>
-
-TIMING-20#54 Warning
-Non-clocked latch  
-The latch u_led_driver/led_next_reg[9] cannot be properly analyzed as its control pin u_led_driver/led_next_reg[9]/G is not reached by a timing clock
 Related violations: <none>
 
 

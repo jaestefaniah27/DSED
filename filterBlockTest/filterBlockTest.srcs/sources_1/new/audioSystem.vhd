@@ -2,7 +2,7 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 15.12.2024 17:11:31
+-- Create Date: 15.12.2024 16:11:31
 -- Design Name: 
 -- Module Name: audioSystem - Behavioral
 -- Project Name: 
@@ -40,13 +40,16 @@ entity audioSystem is
            BTNL : in STD_LOGIC;
            BTNC : in STD_LOGIC;
            BTNR : in STD_LOGIC;
-           SW : in STD_LOGIC_VECTOR (1 downto 0);
+           SW : in STD_LOGIC_VECTOR (2 downto 0);
            micro_LR : out STD_LOGIC;
            micro_data : in STD_LOGIC;
            jack_pwm : out STD_LOGIC;
            jack_sd : out STD_LOGIC;
            micro_clk : out STD_LOGIC;
-           LED : out STD_LOGIC_VECTOR(15 downto 0));
+           LED : out STD_LOGIC_VECTOR(15 downto 0);
+           LED16_R : out STD_LOGIC;
+           LED16_G : out STD_LOGIC;
+           LED16_B : out STD_LOGIC);
 end audioSystem;
 
 architecture Behavioral of audioSystem is
@@ -105,7 +108,9 @@ component LED_driver is
         rst : in STD_LOGIC;
         act_idx : in STD_LOGIC_VECTOR (3 downto 0); -- Índice actual de lectura
         fin_idx : in STD_LOGIC_VECTOR (3 downto 0); -- Dirección de memoria
-        LED : out STD_LOGIC_VECTOR (15 downto 0)     -- LEDs de salida
+        playing, recording: in STD_LOGIC;
+        LED : out STD_LOGIC_VECTOR (15 downto 0);     -- LEDs de salida
+        LED16_B, LED16_G, LED16_R : out STD_LOGIC
     );
 end component;
 
@@ -127,9 +132,10 @@ component controller is
            sample_to_filter_en : out STD_LOGIC;
            sample_from_filter : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_from_filter_en : in STD_LOGIC;
-           SW : in STD_LOGIC_VECTOR(1 downto 0);
+           SW : in STD_LOGIC_VECTOR(2 downto 0);
            BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC;
-           act_idx_led, fin_idx_led : out STD_LOGIC_VECTOR(3 downto 0));
+           act_idx_led, fin_idx_led : out STD_LOGIC_VECTOR(3 downto 0);
+           PLAYING_LED, RECORDING_LED: out STD_LOGIC);
 end component;
 
 signal sample_from_micro, to_jack, sample_to_filter, sample_from_filter, din, dout : std_logic_vector(sample_size - 1 downto 0);
@@ -137,6 +143,7 @@ signal sample_from_micro_ready, rec_en, play_en, sample_req, filter_select, samp
 signal addr : std_logic_vector(18 downto 0);
 signal we : std_logic_vector(0 downto 0);
 signal act_idx_led, fin_idx_led : std_logic_vector(3 downto 0);
+signal playing_led, recording_led : std_logic;
 begin
 
     u_clk_12Mhz : clk_12Mhz
@@ -189,7 +196,12 @@ begin
             rst         => rst,
             act_idx     => act_idx_led,
             fin_idx     => fin_idx_led,
-            LED         => LED     
+            LED         => LED,
+            playing     => playing_led,
+            recording   => recording_led,
+            LED16_R     => LED16_R,
+            LED16_G     => LED16_G,
+            LED16_B     => LED16_B 
         );
     u_controller : controller
         port map(
@@ -217,7 +229,9 @@ begin
             BTNR                    => BTNR,  
             BTNL                    => BTNL,
             act_idx_led             => act_idx_led,
-            fin_idx_led             => fin_idx_led
+            fin_idx_led             => fin_idx_led,
+            PLAYING_LED             => playing_led,
+            RECORDING_LED           => recording_led
         );
 
 end Behavioral;

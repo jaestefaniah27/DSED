@@ -50,9 +50,10 @@ entity controller is
            sample_to_filter_en : out STD_LOGIC;
            sample_from_filter : in STD_LOGIC_VECTOR (sample_size - 1 downto 0);
            sample_from_filter_en : in STD_LOGIC;
-           SW : in STD_LOGIC_VECTOR(1 downto 0);
+           SW : in STD_LOGIC_VECTOR(2 downto 0);
            BTNU, BTND, BTNC, BTNR, BTNL : in STD_LOGIC;
-           act_idx_led, fin_idx_led : out STD_LOGIC_VECTOR(3 downto 0));
+           act_idx_led, fin_idx_led : out STD_LOGIC_VECTOR(3 downto 0);
+           PLAYING_LED, RECORDING_LED: out STD_LOGIC);
 end controller;
 
 ARCHITECTURE Behavioral OF controller IS
@@ -111,10 +112,12 @@ end process;
 -- Lógica de salida
 act_idx_led <= addr_idx(18 downto 15);
 fin_idx_led <= fin_idx(18 downto 15);
+playing_led <= PLAYING;
+recording_led <= BTNU;
 
-sample_to_jack_next <=  dout WHEN (SW = "00" OR SW = "10") ELSE 
+sample_to_jack_next <=  dout WHEN (SW(1 downto 0) = "00" OR SW(1 downto 0) = "10") ELSE 
                         std_logic_vector(to_unsigned(to_integer(signed(sample_from_filter)) + 128, 8));
-filter_select <= '1' WHEN (SW = "11") ELSE '0';
+filter_select <= '1' WHEN (SW(1 downto 0) = "11") ELSE '0';
 counter_next <= counter WHEN counter = "11" ELSE counter + 1;
 sample_to_filter_en <= '1' WHEN to_integer(counter) = 2 ELSE '0';
 we(0) <= '1' when to_integer(counter) = 2 and BTNU = '1' else '0'; -- se escribe en la RAM cuando se esta grabando y se esperado a que se incremente la direccion
@@ -146,16 +149,20 @@ BEGIN
         addr_idx_next <= (others => '0');
     -- Condición de control cuando sample_req está activo
     ELSIF (sample_req = '1') THEN
-        CASE SW IS
+        CASE SW(1 downto 0) IS
             WHEN "10" =>  -- Si SW es "10", restar 1 a la dirección
                 IF to_integer(unsigned(addr_idx)) = 0 THEN
                     addr_idx_next <= (others => '0');  -- No puede ser menor que 0
-                ELSE
+                ELSIF (SW(2) = '1') and (unsigned(addr_idx) - 2) >= 0 then
+                    addr_idx_next <= std_logic_vector(unsigned(addr_idx) - 2);
+                ELSE 
                     addr_idx_next <= std_logic_vector(unsigned(addr_idx) - 1);
                 END IF;
             WHEN OTHERS =>  -- Si SW es otro valor, sumar 1 a la dirección
                  IF addr_idx = fin_idx THEN
                     addr_idx_next <= addr_idx;  -- Mantener la misma dirección si llegamos a fin_idx
+                ELSIF SW(2) = '1' and std_logic_vector(unsigned(addr_idx) + 2) <= fin_idx then
+                    addr_idx_next <= std_logic_vector(unsigned(addr_idx) + 2);
                 ELSE
                    addr_idx_next <= std_logic_vector(unsigned(addr_idx) + 1);
                 END IF;

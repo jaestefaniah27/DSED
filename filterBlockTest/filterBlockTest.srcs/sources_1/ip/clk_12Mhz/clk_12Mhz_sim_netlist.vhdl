@@ -3,8 +3,8 @@
 -- Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
 -- Date        : Mon Dec 16 11:53:52 2024
 -- Host        : PC_CSDVerisure running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.srcs/sources_1/ip/clk_12Mhz/clk_12Mhz_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top clk_12Mhz -prefix
+--               clk_12Mhz_ clk_12Mhz_sim_netlist.vhdl
 -- Design      : clk_12Mhz
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -20,8 +20,6 @@ entity clk_12Mhz_clk_12Mhz_clk_wiz is
     reset : in STD_LOGIC;
     clk_100Mhz : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of clk_12Mhz_clk_12Mhz_clk_wiz : entity is "clk_12Mhz_clk_wiz";
 end clk_12Mhz_clk_12Mhz_clk_wiz;
 
 architecture STRUCTURE of clk_12Mhz_clk_12Mhz_clk_wiz is
@@ -173,11 +171,11 @@ entity clk_12Mhz is
     reset : in STD_LOGIC;
     clk_100Mhz : in STD_LOGIC
   );
+  attribute NotValidForBitStream : boolean;
+  attribute NotValidForBitStream of clk_12Mhz : entity is true;
 end clk_12Mhz;
 
 architecture STRUCTURE of clk_12Mhz is
-  attribute NotValidForBitStream : boolean;
-  attribute NotValidForBitStream of STRUCTURE : architecture is true;
 begin
 inst: entity work.clk_12Mhz_clk_12Mhz_clk_wiz
      port map (

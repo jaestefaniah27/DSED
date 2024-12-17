@@ -3,8 +3,8 @@
 // Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
 // Date        : Mon Dec 16 11:53:52 2024
 // Host        : PC_CSDVerisure running 64-bit major release  (build 9200)
-// Command     : write_verilog -force -mode synth_stub
-//               C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.srcs/sources_1/ip/clk_12Mhz/clk_12Mhz_stub.v
+// Command     : write_verilog -force -mode synth_stub -rename_top clk_12Mhz -prefix
+//               clk_12Mhz_ clk_12Mhz_stub.v
 // Design      : clk_12Mhz
 // Purpose     : Stub declaration of top-level module interface
 // Device      : xc7a100tcsg324-1
