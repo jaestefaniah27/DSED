@@ -25,7 +25,7 @@ use IEEE.STD_LOGIC_ARITH.ALL;
 use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 entity contador_3bits is
-    Port ( clk       : in  STD_LOGIC;
+    Port ( clk_12Mhz       : in  STD_LOGIC;
            rst       : in  STD_LOGIC;
            sen       : in  STD_LOGIC;
            mux_sel   : out STD_LOGIC_VECTOR(2 downto 0);
@@ -38,19 +38,21 @@ architecture Behavioral of contador_3bits is
     signal count_enable_reg, count_enable_next: std_logic;
 begin
 --reg
-    process(clk, rst, sen)
+    process(clk_12Mhz, rst, sen)
     begin
-        if rst = '1' then
-            r_reg <= "000"; -- Reset asincrónico
-            count_enable_reg <= '0';
-            sample_out_ready_reg <= '0';
-        elsif rising_edge(clk) then
-            if sen = '1' then
-                count_enable_reg <= '1';
-            else
-                r_reg <= r_next;
-                count_enable_reg <= count_enable_next;
-                sample_out_ready_reg <= sample_out_ready_next;
+        if rising_edge(clk_12Mhz) then
+            if rst = '1' then
+                r_reg <= "000"; -- Reset asincrï¿½nico
+                count_enable_reg <= '0';
+                sample_out_ready_reg <= '0';
+            else 
+                if sen = '1' then
+                    count_enable_reg <= '1';
+                else
+                    r_reg <= r_next;
+                    count_enable_reg <= count_enable_next;
+                    sample_out_ready_reg <= sample_out_ready_next;
+                end if;
             end if;
         end if;
     end process;

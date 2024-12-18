@@ -1,10 +1,10 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
--- Date        : Fri Dec 13 12:14:23 2024
+-- Date        : Wed Dec 18 11:26:02 2024
 -- Host        : PC_CSDVerisure running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim -rename_top blk_mem_gen_0 -prefix
---               blk_mem_gen_0_ blk_mem_gen_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim
+--               C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0_sim_netlist.vhdl
 -- Design      : blk_mem_gen_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -85,6 +85,8 @@ entity blk_mem_gen_0_blk_mem_gen_mux is
     \DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_60\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_61\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_mux : entity is "blk_mem_gen_mux";
 end blk_mem_gen_0_blk_mem_gen_mux;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_mux is
@@ -377,7 +379,7 @@ begin
       I5 => \DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_61\(0),
       O => \douta[7]_INST_0_i_2_n_0\
     );
-\no_softecc_norm_sel2.has_mem_regs.sr_pri.sel_pipe_d1_reg[2]\: unisim.vcomponents.FDRE
+\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[2]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -388,7 +390,7 @@ begin
       Q => sel_pipe_d1(2),
       R => '0'
     );
-\no_softecc_norm_sel2.has_mem_regs.sr_pri.sel_pipe_d1_reg[3]\: unisim.vcomponents.FDRE
+\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[3]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -399,7 +401,7 @@ begin
       Q => sel_pipe_d1(3),
       R => '0'
     );
-\no_softecc_norm_sel2.has_mem_regs.sr_pri.sel_pipe_d1_reg[4]\: unisim.vcomponents.FDRE
+\no_softecc_norm_sel2.has_mem_regs.WITHOUT_ECC_PIPE.ce_pri.sel_pipe_d1_reg[4]\: unisim.vcomponents.FDRE
     generic map(
       INIT => '0'
     )
@@ -483,11 +485,12 @@ entity blk_mem_gen_0_blk_mem_gen_prim_wrapper is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_prim_wrapper : entity is "blk_mem_gen_prim_wrapper";
 end blk_mem_gen_0_blk_mem_gen_prim_wrapper;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_prim_wrapper is
@@ -682,8 +685,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -722,8 +725,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -898,8 +901,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -939,8 +942,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -958,7 +961,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized0\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -1159,8 +1161,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -1199,8 +1201,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -1375,8 +1377,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -1416,8 +1418,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -1435,7 +1437,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized1\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -1636,8 +1637,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -1676,8 +1677,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -1852,8 +1853,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -1893,8 +1894,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -1912,7 +1913,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized10\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -2113,8 +2113,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -2153,8 +2153,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -2329,8 +2329,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -2370,8 +2370,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -2389,7 +2389,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized11\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -2590,8 +2589,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -2630,8 +2629,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -2806,8 +2805,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -2847,8 +2846,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -2866,7 +2865,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized12\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -3067,8 +3065,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -3107,8 +3105,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -3283,8 +3281,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -3324,8 +3322,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -3343,7 +3341,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized13\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -3544,8 +3541,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -3584,8 +3581,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -3760,8 +3757,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -3801,8 +3798,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -3820,7 +3817,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized14\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -4021,8 +4017,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -4061,8 +4057,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -4237,8 +4233,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -4278,8 +4274,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -4297,7 +4293,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized15\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -4498,8 +4493,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -4538,8 +4533,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -4714,8 +4709,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -4755,8 +4750,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -4774,7 +4769,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized16\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -4975,8 +4969,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -5015,8 +5009,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -5191,8 +5185,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -5232,8 +5226,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -5251,7 +5245,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized17\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -5452,8 +5445,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -5492,8 +5485,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -5668,8 +5661,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -5709,8 +5702,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -5728,7 +5721,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized18\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -5929,8 +5921,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -5969,8 +5961,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -6145,8 +6137,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -6186,8 +6178,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -6205,7 +6197,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized19\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -6406,8 +6397,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -6446,8 +6437,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -6622,8 +6613,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -6663,8 +6654,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -6682,7 +6673,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized2\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -6883,8 +6873,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -6923,8 +6913,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -7099,8 +7089,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -7140,8 +7130,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -7159,7 +7149,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized20\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -7360,8 +7349,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -7400,8 +7389,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -7576,8 +7565,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -7617,8 +7606,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -7636,7 +7625,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized21\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -7837,8 +7825,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -7877,8 +7865,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -8053,8 +8041,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -8094,8 +8082,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -8113,7 +8101,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized22\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -8314,8 +8301,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -8354,8 +8341,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -8530,8 +8517,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -8571,8 +8558,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -8590,7 +8577,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized23\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -8791,8 +8777,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -8831,8 +8817,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -9007,8 +8993,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -9048,8 +9034,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -9067,7 +9053,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized24\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -9268,8 +9253,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -9308,8 +9293,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -9484,8 +9469,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -9525,8 +9510,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -9544,7 +9529,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized25\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -9745,8 +9729,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -9785,8 +9769,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -9961,8 +9945,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -10002,8 +9986,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -10021,7 +10005,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized26\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -10222,8 +10205,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -10262,8 +10245,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -10438,8 +10421,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -10479,8 +10462,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -10498,7 +10481,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized27\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -10699,8 +10681,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -10739,8 +10721,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -10915,8 +10897,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -10956,8 +10938,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -10975,7 +10957,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized28\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -11176,8 +11157,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -11216,8 +11197,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -11392,8 +11373,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -11433,8 +11414,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -11452,7 +11433,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized29\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -11653,8 +11633,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -11693,8 +11673,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -11869,8 +11849,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -11910,8 +11890,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -11929,7 +11909,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized3\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -12130,8 +12109,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -12170,8 +12149,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -12346,8 +12325,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -12387,8 +12366,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -12406,7 +12385,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized30\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -12607,8 +12585,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -12647,8 +12625,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -12823,8 +12801,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -12864,8 +12842,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -12883,7 +12861,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized31\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -13084,8 +13061,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -13124,8 +13101,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -13300,8 +13277,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -13341,8 +13318,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -13360,7 +13337,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized32\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -13561,8 +13537,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -13601,8 +13577,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -13777,8 +13753,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -13818,8 +13794,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -13837,7 +13813,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized33\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -14038,8 +14013,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -14078,8 +14053,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -14254,8 +14229,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -14295,8 +14270,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -14314,7 +14289,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized34\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -14515,8 +14489,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -14555,8 +14529,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -14731,8 +14705,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -14772,8 +14746,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -14791,7 +14765,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized35\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -14992,8 +14965,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -15032,8 +15005,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -15208,8 +15181,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -15249,8 +15222,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -15268,7 +15241,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized36\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -15469,8 +15441,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -15509,8 +15481,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -15685,8 +15657,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -15726,8 +15698,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -15745,7 +15717,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized37\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -15946,8 +15917,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -15986,8 +15957,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -16162,8 +16133,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -16203,8 +16174,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -16222,7 +16193,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized38\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -16423,8 +16393,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -16463,8 +16433,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -16639,8 +16609,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -16680,8 +16650,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -16699,7 +16669,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized39\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -16900,8 +16869,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -16940,8 +16909,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -17116,8 +17085,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -17157,8 +17126,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -17176,7 +17145,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized4\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -17377,8 +17345,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -17417,8 +17385,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -17593,8 +17561,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -17634,8 +17602,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -17653,7 +17621,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized40\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -17854,8 +17821,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -17894,8 +17861,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -18070,8 +18037,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -18111,8 +18078,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -18130,7 +18097,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized41\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -18331,8 +18297,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -18371,8 +18337,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -18547,8 +18513,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -18588,8 +18554,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -18607,7 +18573,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized42\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -18808,8 +18773,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -18848,8 +18813,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -19024,8 +18989,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -19065,8 +19030,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -19084,7 +19049,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized43\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -19285,8 +19249,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -19325,8 +19289,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -19501,8 +19465,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -19542,8 +19506,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -19561,7 +19525,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized44\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -19762,8 +19725,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -19802,8 +19765,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -19978,8 +19941,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -20019,8 +19982,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -20038,7 +20001,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized45\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -20239,8 +20201,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -20279,8 +20241,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -20455,8 +20417,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -20496,8 +20458,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -20515,7 +20477,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized46\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -20716,8 +20677,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -20756,8 +20717,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -20932,8 +20893,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -20973,8 +20934,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -20992,7 +20953,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized47\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -21193,8 +21153,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -21233,8 +21193,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -21409,8 +21369,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -21450,8 +21410,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -21469,7 +21429,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized48\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -21670,8 +21629,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -21710,8 +21669,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -21886,8 +21845,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -21927,8 +21886,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -21946,7 +21905,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized49\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -22147,8 +22105,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -22187,8 +22145,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -22363,8 +22321,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -22404,8 +22362,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -22423,7 +22381,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized5\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -22624,8 +22581,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -22664,8 +22621,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -22840,8 +22797,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -22881,8 +22838,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -22900,7 +22857,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized50\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -23101,8 +23057,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -23141,8 +23097,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -23317,8 +23273,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -23358,8 +23314,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -23377,7 +23333,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized51\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -23578,8 +23533,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -23618,8 +23573,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -23794,8 +23749,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -23835,8 +23790,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -23854,7 +23809,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized52\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -24055,8 +24009,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -24095,8 +24049,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -24271,8 +24225,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -24312,8 +24266,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -24331,7 +24285,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized53\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -24532,8 +24485,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -24572,8 +24525,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -24748,8 +24701,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -24789,8 +24742,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -24808,7 +24761,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized54\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -25009,8 +24961,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -25049,8 +25001,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -25225,8 +25177,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -25266,8 +25218,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -25285,7 +25237,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized55\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -25486,8 +25437,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -25526,8 +25477,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -25702,8 +25653,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -25743,8 +25694,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -25762,7 +25713,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized56\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -25963,8 +25913,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -26003,8 +25953,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -26179,8 +26129,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -26220,8 +26170,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -26239,7 +26189,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized57\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -26440,8 +26389,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -26480,8 +26429,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -26656,8 +26605,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -26697,8 +26646,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -26716,7 +26665,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized58\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -26917,8 +26865,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -26957,8 +26905,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -27133,8 +27081,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -27174,8 +27122,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -27193,7 +27141,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized59\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -27394,8 +27341,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -27434,8 +27381,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -27610,8 +27557,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -27651,8 +27598,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -27670,7 +27617,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized6\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -27871,8 +27817,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -27911,8 +27857,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -28087,8 +28033,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -28128,8 +28074,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -28147,7 +28093,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized60\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -28348,8 +28293,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -28388,8 +28333,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -28564,8 +28509,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -28605,8 +28550,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -28624,7 +28569,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized61\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -28825,8 +28769,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -28865,8 +28809,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -29041,8 +28985,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -29082,8 +29026,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -29101,7 +29045,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized62\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -29302,8 +29245,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -29342,8 +29285,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -29518,8 +29461,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -29559,8 +29502,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -29578,7 +29521,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized7\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -29779,8 +29721,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -29819,8 +29761,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -29995,8 +29937,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -30036,8 +29978,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -30055,7 +29997,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized8\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -30256,8 +30197,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -30296,8 +30237,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -30472,8 +30413,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -30513,8 +30454,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -30532,7 +30473,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_wrapper__parameterized9\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -30733,8 +30673,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -30773,8 +30713,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_B_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -30949,8 +30889,8 @@ begin
       RDADDR_COLLISION_HWCONFIG => "PERFORMANCE",
       READ_WIDTH_A => 1,
       READ_WIDTH_B => 1,
-      RSTREG_PRIORITY_A => "RSTREG",
-      RSTREG_PRIORITY_B => "RSTREG",
+      RSTREG_PRIORITY_A => "REGCE",
+      RSTREG_PRIORITY_B => "REGCE",
       SIM_COLLISION_CHECK => "ALL",
       SIM_DEVICE => "7SERIES",
       SRVAL_A => X"000000000",
@@ -30990,8 +30930,8 @@ begin
       REGCEB => '0',
       RSTRAMARSTRAM => '0',
       RSTRAMB => '0',
-      RSTREGARSTREG => rsta,
-      RSTREGB => rsta,
+      RSTREGARSTREG => '0',
+      RSTREGB => '0',
       SBITERR => \NLW_DEVICE_7SERIES.NO_BMM_INFO.SP.CASCADED_PRIM36.ram_T_SBITERR_UNCONNECTED\,
       WEA(3) => wea(0),
       WEA(2) => wea(0),
@@ -31009,11 +30949,12 @@ entity blk_mem_gen_0_blk_mem_gen_prim_width is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_prim_width : entity is "blk_mem_gen_prim_width";
 end blk_mem_gen_0_blk_mem_gen_prim_width;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_prim_width is
@@ -31025,7 +30966,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31038,7 +30978,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized0\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31056,7 +30995,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31069,7 +31007,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized1\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31087,7 +31024,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31100,7 +31036,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized10\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31118,7 +31053,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31131,7 +31065,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized11\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31149,7 +31082,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31162,7 +31094,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized12\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31180,7 +31111,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31193,7 +31123,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized13\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31211,7 +31140,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31224,7 +31152,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized14\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31242,7 +31169,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31255,7 +31181,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized15\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31273,7 +31198,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31286,7 +31210,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized16\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31304,7 +31227,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31317,7 +31239,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized17\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31335,7 +31256,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31348,7 +31268,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized18\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31366,7 +31285,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31379,7 +31297,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized19\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31397,7 +31314,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31410,7 +31326,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized2\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31428,7 +31343,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31441,7 +31355,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized20\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31459,7 +31372,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31472,7 +31384,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized21\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31490,7 +31401,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31503,7 +31413,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized22\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31521,7 +31430,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31534,7 +31442,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized23\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31552,7 +31459,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31565,7 +31471,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized24\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31583,7 +31488,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31596,7 +31500,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized25\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31614,7 +31517,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31627,7 +31529,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized26\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31645,7 +31546,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31658,7 +31558,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized27\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31676,7 +31575,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31689,7 +31587,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized28\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31707,7 +31604,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31720,7 +31616,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized29\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31738,7 +31633,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31751,7 +31645,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized3\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31769,7 +31662,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31782,7 +31674,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized30\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31800,7 +31691,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31813,7 +31703,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized31\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31831,7 +31720,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31844,7 +31732,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized32\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31862,7 +31749,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31875,7 +31761,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized33\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31893,7 +31778,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31906,7 +31790,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized34\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31924,7 +31807,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31937,7 +31819,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized35\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31955,7 +31836,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31968,7 +31848,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized36\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -31986,7 +31865,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -31999,7 +31877,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized37\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32017,7 +31894,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32030,7 +31906,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized38\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32048,7 +31923,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32061,7 +31935,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized39\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32079,7 +31952,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32092,7 +31964,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized4\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32110,7 +31981,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32123,7 +31993,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized40\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32141,7 +32010,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32154,7 +32022,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized41\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32172,7 +32039,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32185,7 +32051,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized42\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32203,7 +32068,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32216,7 +32080,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized43\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32234,7 +32097,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32247,7 +32109,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized44\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32265,7 +32126,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32278,7 +32138,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized45\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32296,7 +32155,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32309,7 +32167,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized46\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32327,7 +32184,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32340,7 +32196,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized47\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32358,7 +32213,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32371,7 +32225,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized48\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32389,7 +32242,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32402,7 +32254,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized49\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32420,7 +32271,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32433,7 +32283,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized5\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32451,7 +32300,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32464,7 +32312,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized50\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32482,7 +32329,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32495,7 +32341,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized51\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32513,7 +32358,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32526,7 +32370,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized52\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32544,7 +32387,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32557,7 +32399,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized53\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32575,7 +32416,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32588,7 +32428,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized54\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32606,7 +32445,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32619,7 +32457,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized55\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32637,7 +32474,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32650,7 +32486,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized56\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32668,7 +32503,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32681,7 +32515,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized57\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32699,7 +32532,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32712,7 +32544,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized58\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32730,7 +32561,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32743,7 +32573,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized59\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32761,7 +32590,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32774,7 +32602,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized6\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32792,7 +32619,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32805,7 +32631,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized60\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32823,7 +32648,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32836,7 +32660,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized61\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32854,7 +32677,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32867,7 +32689,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized62\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32885,7 +32706,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32898,7 +32718,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized7\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32916,7 +32735,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32929,7 +32747,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized8\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32947,7 +32764,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32960,7 +32776,6 @@ entity \blk_mem_gen_0_blk_mem_gen_prim_width__parameterized9\ is
     DOUTA : out STD_LOGIC_VECTOR ( 0 to 0 );
     clka : in STD_LOGIC;
     ENA : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 15 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 0 to 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
@@ -32978,7 +32793,6 @@ begin
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -32990,11 +32804,12 @@ entity blk_mem_gen_0_blk_mem_gen_generic_cstr is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 18 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_generic_cstr : entity is "blk_mem_gen_generic_cstr";
 end blk_mem_gen_0_blk_mem_gen_generic_cstr;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_generic_cstr is
@@ -33229,7 +33044,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[10].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized9\
@@ -33239,7 +33053,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[11].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized10\
@@ -33249,7 +33062,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[12].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized11\
@@ -33259,7 +33071,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[13].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized12\
@@ -33269,7 +33080,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[14].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized13\
@@ -33279,7 +33089,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[15].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized14\
@@ -33289,7 +33098,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[16].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized15\
@@ -33299,7 +33107,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[17].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized16\
@@ -33309,7 +33116,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[18].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized17\
@@ -33319,7 +33125,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[19].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized18\
@@ -33329,7 +33134,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[1].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized0\
@@ -33339,7 +33143,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[20].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized19\
@@ -33349,7 +33152,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[21].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized20\
@@ -33359,7 +33161,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[22].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized21\
@@ -33369,7 +33170,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[23].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized22\
@@ -33379,7 +33179,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(2),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[24].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized23\
@@ -33389,7 +33188,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[25].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized24\
@@ -33399,7 +33197,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[26].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized25\
@@ -33409,7 +33206,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[27].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized26\
@@ -33419,7 +33215,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[28].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized27\
@@ -33429,7 +33224,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[29].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized28\
@@ -33439,7 +33233,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[2].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized1\
@@ -33449,7 +33242,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[30].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized29\
@@ -33459,7 +33251,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[31].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized30\
@@ -33469,7 +33260,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(3),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[32].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized31\
@@ -33479,7 +33269,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[33].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized32\
@@ -33489,7 +33278,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[34].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized33\
@@ -33499,7 +33287,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[35].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized34\
@@ -33509,7 +33296,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[36].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized35\
@@ -33519,7 +33305,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[37].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized36\
@@ -33529,7 +33314,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[38].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized37\
@@ -33539,7 +33323,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[39].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized38\
@@ -33549,7 +33332,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(4),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[3].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized2\
@@ -33559,7 +33341,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[40].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized39\
@@ -33569,7 +33350,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[41].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized40\
@@ -33579,7 +33359,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[42].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized41\
@@ -33589,7 +33368,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[43].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized42\
@@ -33599,7 +33377,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[44].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized43\
@@ -33609,7 +33386,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[45].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized44\
@@ -33619,7 +33395,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[46].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized45\
@@ -33629,7 +33404,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[47].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized46\
@@ -33639,7 +33413,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(5),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[48].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized47\
@@ -33649,7 +33422,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[49].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized48\
@@ -33659,7 +33431,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[4].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized3\
@@ -33669,7 +33440,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[50].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized49\
@@ -33679,7 +33449,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[51].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized50\
@@ -33689,7 +33458,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[52].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized51\
@@ -33699,7 +33467,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[53].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized52\
@@ -33709,7 +33476,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[54].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized53\
@@ -33719,7 +33485,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[55].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized54\
@@ -33729,7 +33494,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(6),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[56].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized55\
@@ -33739,7 +33503,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[57].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized56\
@@ -33749,7 +33512,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[58].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized57\
@@ -33759,7 +33521,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[59].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized58\
@@ -33769,7 +33530,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[5].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized4\
@@ -33779,7 +33539,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[60].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized59\
@@ -33789,7 +33548,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[61].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized60\
@@ -33799,7 +33557,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[62].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized61\
@@ -33809,7 +33566,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[63].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized62\
@@ -33819,7 +33575,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(7),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[6].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized5\
@@ -33829,7 +33584,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[7].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized6\
@@ -33839,7 +33593,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[8].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized7\
@@ -33849,7 +33602,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 \ramloop[9].ram.r\: entity work.\blk_mem_gen_0_blk_mem_gen_prim_width__parameterized8\
@@ -33859,7 +33611,6 @@ ram_ena: unisim.vcomponents.LUT3
       addra(15 downto 0) => addra(15 downto 0),
       clka => clka,
       dina(0) => dina(1),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -33871,11 +33622,12 @@ entity blk_mem_gen_0_blk_mem_gen_top is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 18 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_top : entity is "blk_mem_gen_top";
 end blk_mem_gen_0_blk_mem_gen_top;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_top is
@@ -33886,7 +33638,6 @@ begin
       clka => clka,
       dina(7 downto 0) => dina(7 downto 0),
       douta(7 downto 0) => douta(7 downto 0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -33898,11 +33649,12 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6_synth is
   port (
     douta : out STD_LOGIC_VECTOR ( 7 downto 0 );
     clka : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     addra : in STD_LOGIC_VECTOR ( 18 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
     wea : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_v8_3_6_synth : entity is "blk_mem_gen_v8_3_6_synth";
 end blk_mem_gen_0_blk_mem_gen_v8_3_6_synth;
 
 architecture STRUCTURE of blk_mem_gen_0_blk_mem_gen_v8_3_6_synth is
@@ -33913,7 +33665,6 @@ begin
       clka => clka,
       dina(7 downto 0) => dina(7 downto 0),
       douta(7 downto 0) => douta(7 downto 0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -34058,7 +33809,7 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6 is
   attribute C_HAS_REGCEB : integer;
   attribute C_HAS_REGCEB of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
   attribute C_HAS_RSTA : integer;
-  attribute C_HAS_RSTA of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 1;
+  attribute C_HAS_RSTA of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
   attribute C_HAS_RSTB : integer;
   attribute C_HAS_RSTB of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
   attribute C_HAS_SOFTECC_INPUT_REGS_A : integer;
@@ -34096,7 +33847,7 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6 is
   attribute C_RSTRAM_B : integer;
   attribute C_RSTRAM_B of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 0;
   attribute C_RST_PRIORITY_A : string;
-  attribute C_RST_PRIORITY_A of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "SR";
+  attribute C_RST_PRIORITY_A of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "CE";
   attribute C_RST_PRIORITY_B : string;
   attribute C_RST_PRIORITY_B of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "CE";
   attribute C_SIM_COLLISION_CHECK : string;
@@ -34133,6 +33884,8 @@ entity blk_mem_gen_0_blk_mem_gen_v8_3_6 is
   attribute C_WRITE_WIDTH_B of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is 8;
   attribute C_XDEVICEFAMILY : string;
   attribute C_XDEVICEFAMILY of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "artix7";
+  attribute ORIG_REF_NAME : string;
+  attribute ORIG_REF_NAME of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "blk_mem_gen_v8_3_6";
   attribute downgradeipidentifiedwarnings : string;
   attribute downgradeipidentifiedwarnings of blk_mem_gen_0_blk_mem_gen_v8_3_6 : entity is "yes";
 end blk_mem_gen_0_blk_mem_gen_v8_3_6;
@@ -34228,7 +33981,6 @@ inst_blk_mem_gen: entity work.blk_mem_gen_0_blk_mem_gen_v8_3_6_synth
       clka => clka,
       dina(7 downto 0) => dina(7 downto 0),
       douta(7 downto 0) => douta(7 downto 0),
-      rsta => rsta,
       wea(0) => wea(0)
     );
 end STRUCTURE;
@@ -34239,7 +33991,6 @@ use UNISIM.VCOMPONENTS.ALL;
 entity blk_mem_gen_0 is
   port (
     clka : in STD_LOGIC;
-    rsta : in STD_LOGIC;
     wea : in STD_LOGIC_VECTOR ( 0 to 0 );
     addra : in STD_LOGIC_VECTOR ( 18 downto 0 );
     dina : in STD_LOGIC_VECTOR ( 7 downto 0 );
@@ -34347,7 +34098,7 @@ architecture STRUCTURE of blk_mem_gen_0 is
   attribute C_HAS_REGCEB : integer;
   attribute C_HAS_REGCEB of U0 : label is 0;
   attribute C_HAS_RSTA : integer;
-  attribute C_HAS_RSTA of U0 : label is 1;
+  attribute C_HAS_RSTA of U0 : label is 0;
   attribute C_HAS_RSTB : integer;
   attribute C_HAS_RSTB of U0 : label is 0;
   attribute C_HAS_SOFTECC_INPUT_REGS_A : integer;
@@ -34385,7 +34136,7 @@ architecture STRUCTURE of blk_mem_gen_0 is
   attribute C_RSTRAM_B : integer;
   attribute C_RSTRAM_B of U0 : label is 0;
   attribute C_RST_PRIORITY_A : string;
-  attribute C_RST_PRIORITY_A of U0 : label is "SR";
+  attribute C_RST_PRIORITY_A of U0 : label is "CE";
   attribute C_RST_PRIORITY_B : string;
   attribute C_RST_PRIORITY_B of U0 : label is "CE";
   attribute C_SIM_COLLISION_CHECK : string;
@@ -34444,7 +34195,7 @@ U0: entity work.blk_mem_gen_0_blk_mem_gen_v8_3_6
       rdaddrecc(18 downto 0) => NLW_U0_rdaddrecc_UNCONNECTED(18 downto 0),
       regcea => '0',
       regceb => '0',
-      rsta => rsta,
+      rsta => '0',
       rsta_busy => NLW_U0_rsta_busy_UNCONNECTED,
       rstb => '0',
       rstb_busy => NLW_U0_rstb_busy_UNCONNECTED,

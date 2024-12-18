@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity mul is
-    Port (  clk : in std_logic;
+    Port (  clk_12Mhz : in std_logic;
             rst : in std_logic;
             in_1 : in STD_LOGIC_VECTOR (7 downto 0);
             in_2 : in STD_LOGIC_VECTOR (7 downto 0);
@@ -51,14 +51,16 @@ mul_out_signed <= in_1_signed * in_2_signed;
 r0_next <= std_logic_vector(resize(mul_out_signed, 18));
 r1_next <= r0_reg;
 --reg
-process (clk, rst)
+process (clk_12Mhz, rst)
 begin
-if rst = '1' then
-    r0_reg <= (others=>'0');
-    r1_reg <= (others=>'0');
-elsif rising_edge(clk) then
-    r0_reg <= r0_next;
-    r1_reg <= r1_next;
+if rising_edge(clk_12Mhz) then 
+    if rst = '1' then
+        r0_reg <= (others=>'0');
+        r1_reg <= (others=>'0');
+    else
+        r0_reg <= r0_next;
+        r1_reg <= r1_next;
+    end if;
 end if;
 end process;
 --output

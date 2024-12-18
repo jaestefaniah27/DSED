@@ -1,7 +1,7 @@
 Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2017.2 (win64) Build 1909853 Thu Jun 15 18:39:09 MDT 2017
-| Date         : Tue Dec 17 15:53:15 2024
+| Date         : Wed Dec 18 12:23:13 2024
 | Host         : PC_CSDVerisure running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file audioSystem_control_sets_placed.rpt
 | Design       : audioSystem
@@ -23,7 +23,7 @@ Table of Contents
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
 | Number of unique control sets                            |    11 |
-| Unused register locations in slices containing registers |    22 |
+| Unused register locations in slices containing registers |    28 |
 +----------------------------------------------------------+-------+
 
 
@@ -33,33 +33,33 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              35 |           22 |
-| No           | No                    | Yes                    |             127 |           45 |
-| No           | Yes                   | No                     |              19 |            5 |
+| No           | No                    | No                     |              20 |           12 |
+| No           | No                    | Yes                    |               3 |            2 |
+| No           | Yes                   | No                     |              82 |           25 |
 | Yes          | No                    | No                     |               0 |            0 |
-| Yes          | No                    | Yes                    |              93 |           31 |
-| Yes          | Yes                   | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |             131 |           51 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 3. Detailed Control Set Information
 -----------------------------------
 
-+---------------------------------------------+--------------------------------------------------+-------------------------------------------+------------------+----------------+
-|                 Clock Signal                |                   Enable Signal                  |              Set/Reset Signal             | Slice Load Count | Bel Load Count |
-+---------------------------------------------+--------------------------------------------------+-------------------------------------------+------------------+----------------+
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_audioInterface/OUTPUT/sample_to_jack_reg[0][0] | rst_IBUF                                  |                2 |              8 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_audioInterface/INPUT/data0_reg_0               | rst_IBUF                                  |                2 |              8 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_audioInterface/INPUT/data1_reg_1               | rst_IBUF                                  |                3 |              8 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_audioInterface/ENABLES/E[0]                    | rst_IBUF                                  |                1 |              8 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_audioInterface/ENABLES/r_reg_reg[8][0]         | rst_IBUF                                  |                4 |             10 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_audioInterface/ENABLES/state_reg[1]_0[0]       | rst_IBUF                                  |                5 |             11 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 |                                                  |                                           |               12 |             16 |
-|  u_audioInterface/OUTPUT/fin_idx_reg[18][0] |                                                  | u_controller/fin_idx_next_reg[18]_i_3_n_0 |                5 |             19 |
-| ~BTNU_IBUF_BUFG                             |                                                  |                                           |               10 |             19 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 | u_controller/E[0]                                | rst_IBUF                                  |               14 |             40 |
-|  u_clk_12Mhz/inst/clk_12Mhz                 |                                                  | rst_IBUF                                  |               45 |            127 |
-+---------------------------------------------+--------------------------------------------------+-------------------------------------------+------------------+----------------+
++-----------------------------+---------------------------------------------+-----------------------------------+------------------+----------------+
+|         Clock Signal        |                Enable Signal                |          Set/Reset Signal         | Slice Load Count | Bel Load Count |
++-----------------------------+---------------------------------------------+-----------------------------------+------------------+----------------+
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/INPUT/data1_reg_1          | rst_IBUF                          |                3 |              8 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/INPUT/data0_reg_2          | rst_IBUF                          |                3 |              8 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/INPUT/sample_out_reg_0     | rst_IBUF                          |                2 |              8 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/OUTPUT/sample_to_jack0     | rst_IBUF                          |                3 |              8 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/ENABLES/r_reg_reg[8][0]    | rst_IBUF                          |                5 |             10 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/ENABLES/E[0]               | rst_IBUF                          |                4 |             11 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_controller/fin_idx[0]_i_2_n_0             | u_controller/fin_idx[0]_i_1_n_0   |                5 |             19 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_audioInterface/OUTPUT/addr_idx_reg[18][0] | u_controller/addr_idx[18]_i_1_n_0 |               12 |             19 |
+|  u_clk_12Mhz/inst/clk_12Mhz |                                             |                                   |               12 |             20 |
+|  u_clk_12Mhz/inst/clk_12Mhz | u_controller/E[0]                           | rst_IBUF                          |               14 |             40 |
+|  u_clk_12Mhz/inst/clk_12Mhz |                                             | rst_IBUF                          |               27 |             85 |
++-----------------------------+---------------------------------------------+-----------------------------------+------------------+----------------+
 
 
 +--------+-----------------------+

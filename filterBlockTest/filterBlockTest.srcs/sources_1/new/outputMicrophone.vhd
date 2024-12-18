@@ -49,15 +49,17 @@ begin
 --register and output buffer
 process(clk_12Mhz, rst, en_2_cycles)
 begin
-if (rst = '1') then
-    r_reg <= (others=>'0');
-    buf_reg <= '0';
-    sample_req_aux <= '0';
-elsif rising_edge(clk_12Mhz) then
-    sample_req_aux <= sample_req_aux_next;
-    if (en_2_cycles = '1') then
-        r_reg <= r_next;
-        buf_reg <= buf_next;
+if rising_edge(clk_12Mhz) then 
+    if (rst = '1') then
+        r_reg <= (others=>'0');
+        buf_reg <= '0';
+        sample_req_aux <= '0';
+    else
+        sample_req_aux <= sample_req_aux_next;
+        if (en_2_cycles = '1') then
+            r_reg <= r_next;
+            buf_reg <= buf_next;
+        end if;
     end if;
 end if;
 end process;

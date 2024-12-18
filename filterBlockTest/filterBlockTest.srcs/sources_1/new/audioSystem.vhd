@@ -95,7 +95,6 @@ end component;
 component blk_mem_gen_0 IS
   PORT (
     clka : IN STD_LOGIC;
-    rsta : IN STD_LOGIC;
     wea : IN STD_LOGIC_VECTOR(0 DOWNTO 0);
     addra : IN STD_LOGIC_VECTOR(18 DOWNTO 0);
     dina : IN STD_LOGIC_VECTOR(sample_size - 1 DOWNTO 0);
@@ -184,7 +183,6 @@ begin
     u_blk_mem_gen_0 : blk_mem_gen_0
         port map (
             clka   => clk_12Mhz_signal,
-            rsta   => rst,
             wea    => we,
             addra  => addr,
             dina   => din,

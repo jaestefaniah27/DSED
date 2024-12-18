@@ -44,12 +44,13 @@ proc step_failed { step } {
 
 set_msg_config  -ruleid {1}  -id {Project 1-311}  -new_severity {ADVISORY} 
 set_msg_config  -ruleid {2}  -id {Project 1-311}  -suppress 
+set_msg_config  -ruleid {3}  -id {Labtools 27-3361}  -suppress 
+set_msg_config  -ruleid {4}  -id {Project 1-19}  -suppress 
 
 start_step init_design
 set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
-  set_param xicom.use_bs_reader 1
   create_project -in_memory -part xc7a100tcsg324-1
   set_property design_mode GateLvl [current_fileset]
   set_param project.singleFileAddWarning.threshold 0

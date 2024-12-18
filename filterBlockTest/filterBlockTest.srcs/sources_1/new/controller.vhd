@@ -66,26 +66,28 @@ BEGIN
 -- REG
 REG: PROCESS(clk_12Mhz, rst, sample_req, sample_from_micro_ready, BTNU, addr_idx_next, fin_idx_next, counter_next, PLAYING_NEXT, BTNC_DELAYED_NEXT, sample_to_jack_next)
 BEGIN
-    IF (rst = '1') THEN
-        addr_idx <= (others => '0');
-        fin_idx <= (others=>'0');
-        sample_to_jack <= (others => '0');
-        counter <= (others => '0');
-        PLAYING <= '0';
-        BTNC_DELAYED <= '0';
-    ELSIF rising_edge(clk_12Mhz) THEN
-        addr_idx <= addr_idx_next;
-        fin_idx <= fin_idx_next;
-        counter <= counter_next;
-        PLAYING <= PLAYING_NEXT;
-        BTNC_DELAYED <= BTNC_DELAYED_NEXT;
-        IF (sample_req = '1' and BTNU = '0') THEN -- Reproduciendo
-            sample_to_jack <= sample_to_jack_next;
-            counter <= (others => '0'); -- contador se utiliza para saber cuando meter muestras de la RAM al filtro
-            -- se reinicia cuando se requiere una muestra para el altavoz
-        elsif (sample_from_micro_ready = '1' and BTNU = '1') then -- Grabando, se utiliza BTNU como enable del modo grabar
-            counter <= (others=>'0'); -- contador se utiliza para escribir en la RAM
-            -- se reinicia cuando hay que guardar una muestra del microfono en la RAM
+    IF rising_edge(clk_12Mhz) then 
+        if rst = '1' THEN
+            addr_idx <= (others => '0');
+            fin_idx <= (others=>'0');
+            sample_to_jack <= (others => '0');
+            counter <= (others => '0');
+            PLAYING <= '0';
+            BTNC_DELAYED <= '0';
+        ELSE
+            addr_idx <= addr_idx_next;
+            fin_idx <= fin_idx_next;
+            counter <= counter_next;
+            PLAYING <= PLAYING_NEXT;
+            BTNC_DELAYED <= BTNC_DELAYED_NEXT;
+            IF (sample_req = '1' and BTNU = '0') THEN -- Reproduciendo
+                sample_to_jack <= sample_to_jack_next;
+                counter <= (others => '0'); -- contador se utiliza para saber cuando meter muestras de la RAM al filtro
+                -- se reinicia cuando se requiere una muestra para el altavoz
+            elsif (sample_from_micro_ready = '1' and BTNU = '1') then -- Grabando, se utiliza BTNU como enable del modo grabar
+                counter <= (others=>'0'); -- contador se utiliza para escribir en la RAM
+                -- se reinicia cuando hay que guardar una muestra del microfono en la RAM
+            END IF;
         END IF;
     END IF;
 END PROCESS;
@@ -109,7 +111,7 @@ else
 end if;
 end process;
 
--- Lógica de salida
+-- Lï¿½gica de salida
 act_idx_led <= addr_idx(18 downto 15);
 fin_idx_led <= fin_idx(18 downto 15);
 playing_led <= PLAYING;
@@ -128,6 +130,8 @@ din <= sample_from_micro;
 -- RAM_ADDR_MANAGER
 RAM_ADDR_MANAGER: PROCESS(sample_req, sample_from_micro_ready, SW, fin_idx, addr_idx, BTNR, BTNL, BTNU, BTND)
 BEGIN
+    addr_idx_next <= addr_idx;
+    fin_idx_next <= fin_idx;
     -- BTNU = '1': grabando
     IF (BTNU = '1') then 
         if (signed(fin_idx) = -1) then
@@ -141,26 +145,27 @@ BEGIN
     elsif (BTND = '1') then
         addr_idx_next <= (others=>'0');
         fin_idx_next <= (others=>'0');
-    -- Condición de control para BTNR
+    -- Condiciï¿½n de control para BTNR
     ELSIF (BTNR = '1') THEN
         addr_idx_next <= fin_idx;
-    -- Condición de control para BTNL
+    -- Condiciï¿½n de control para BTNL
     ELSIF (BTNL = '1') THEN
         addr_idx_next <= (others => '0');
-    -- Condición de control cuando sample_req está activo
+    -- Condiciï¿½n de control cuando sample_req estï¿½ activo
     ELSIF (sample_req = '1') THEN
         CASE SW(1 downto 0) IS
-            WHEN "10" =>  -- Si SW es "10", restar 1 a la dirección
+            WHEN "10" =>  -- Si SW es "10", restar 1 a la direcciï¿½n
                 IF to_integer(unsigned(addr_idx)) = 0 THEN
                     addr_idx_next <= (others => '0');  -- No puede ser menor que 0
                 ELSIF (SW(2) = '1') and (unsigned(addr_idx) - 2) >= 0 then
                     addr_idx_next <= std_logic_vector(unsigned(addr_idx) - 2);
                 ELSE 
                     addr_idx_next <= std_logic_vector(unsigned(addr_idx) - 1);
+                    
                 END IF;
-            WHEN OTHERS =>  -- Si SW es otro valor, sumar 1 a la dirección
+            WHEN OTHERS =>  -- Si SW es otro valor, sumar 1 a la direcciï¿½n
                  IF addr_idx = fin_idx THEN
-                    addr_idx_next <= addr_idx;  -- Mantener la misma dirección si llegamos a fin_idx
+                    addr_idx_next <= addr_idx;  -- Mantener la misma direcciï¿½n si llegamos a fin_idx
                 ELSIF SW(2) = '1' and std_logic_vector(unsigned(addr_idx) + 2) <= fin_idx then
                     addr_idx_next <= std_logic_vector(unsigned(addr_idx) + 2);
                 ELSE
@@ -168,7 +173,7 @@ BEGIN
                 END IF;
        END CASE;
     ELSE
-        -- En caso de no cumplir ninguna condición, mantener la dirección actual
+        -- En caso de no cumplir ninguna condiciï¿½n, mantener la direcciï¿½n actual
         addr_idx_next <= addr_idx;
         fin_idx_next <= fin_idx;
     END IF;

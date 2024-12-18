@@ -1,0 +1,19 @@
+#-----------------------------------------------------------
+# Vivado v2017.2 (64-bit)
+# SW Build 1909853 on Thu Jun 15 18:39:09 MDT 2017
+# IP Build 1909766 on Thu Jun 15 19:58:00 MDT 2017
+# Start of session at: Wed Dec 18 11:57:52 2024
+# Process ID: 33972
+# Current directory: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent34716 C:\Users\SDverisure\Documents\4_TELECO\DSED_github\DSED\filterBlockTest\filterBlockTest.xpr
+# Log file: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/vivado.log
+# Journal file: C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/SDverisure/Documents/4_TELECO/DSED_github/DSED/filterBlockTest/filterBlockTest.xpr
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 10
+wait_on_run impl_1
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 10
+wait_on_run impl_1

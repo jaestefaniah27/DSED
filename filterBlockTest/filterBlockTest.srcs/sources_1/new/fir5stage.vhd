@@ -61,7 +61,7 @@ signal mux_sel : std_logic_vector(2 downto 0);
 
 component contador_3bits is
         Port (
-            clk              : in std_logic;
+            clk_12Mhz              : in std_logic;
             rst              : in std_logic;
             sen              : in std_logic;
             mux_sel          : out std_logic_vector(2 downto 0);
@@ -71,7 +71,7 @@ component contador_3bits is
 
     component mul is
         Port (
-            clk   : in std_logic;
+            clk_12Mhz   : in std_logic;
             rst   : in std_logic;
             in_1  : in std_logic_vector(7 downto 0);
             in_2  : in std_logic_vector(7 downto 0);
@@ -100,12 +100,14 @@ begin
 --reg
 process (clk_12Mhz, rst)
 begin
-if rst = '1' then
-    r1_reg <= (others=>'0');
-    r2_reg <= (others=>'0');
-elsif rising_edge(clk_12Mhz) then
-    r1_reg <= r1_next;
-    r2_reg <= r2_next;
+if rising_edge(clk_12Mhz) then 
+    if rst = '1' then
+        r1_reg <= (others=>'0');
+        r2_reg <= (others=>'0');
+    else
+        r1_reg <= r1_next;
+        r2_reg <= r2_next;
+    end if;
 end if;
 end process;
 
@@ -115,14 +117,14 @@ sum_o <= signed(r1_reg) + signed(r2_reg);
 --sample_out <= std_logic_vector(resize(SIGNED(r1_reg), 8));
 sample_out <= r1_reg(17) & r1_reg(13 downto 7); --r1_reg(17)
 COUNTER: contador_3bits port map (
-    clk => clk_12Mhz,
+    clk_12Mhz => clk_12Mhz,
     rst => rst,
     sen => sen,
     mux_sel => mux_sel,
     sample_out_ready => sample_out_ready);
 
 MULTIPLIER: mul port map(
-    clk => clk_12Mhz,
+    clk_12Mhz => clk_12Mhz,
     rst => rst,
     in_1 => mul_in_1,
     in_2 => mul_in_2,

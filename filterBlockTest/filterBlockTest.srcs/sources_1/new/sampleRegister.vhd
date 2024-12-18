@@ -50,10 +50,10 @@ architecture Behavioral of sampleRegister is
     -- Registros internos del shift register
     signal s_reg0, s_reg1, s_reg2, s_reg3, s_reg4 : std_logic_vector(sample_size - 1 downto 0);
 
-    -- Registro para la señal sen
+    -- Registro para la seï¿½al sen
     signal sen_reg, sen_next : std_logic;
 
-    -- Señal escalada de entrada (sample_in - 128)
+    -- Seï¿½al escalada de entrada (sample_in - 128)
 --    signal sample_in_scaled : std_logic_vector(sample_size - 1 downto 0);
 
 begin
@@ -61,25 +61,27 @@ begin
     -- Escalado de la muestra de entrada
 --    sample_in_scaled <= std_logic_vector(signed(sample_in)); -- QUITAR -128 VA EN EL CONTROL
 
-    -- Proceso de actualización del shift register
+    -- Proceso de actualizaciï¿½n del shift register
     process(clk_12Mhz, rst)
     begin
-        if rst = '1' then
-            s_reg0 <= (others => '0');
-            s_reg1 <= (others => '0');
-            s_reg2 <= (others => '0');
-            s_reg3 <= (others => '0');
-            s_reg4 <= (others => '0');
-            sen_reg <= '0';
-        elsif rising_edge(clk_12Mhz) then
-            sen_reg <= sen_next;
-            if sample_en = '1' then
-                -- Desplaza las muestras previas
-                s_reg4 <= s_reg3;
-                s_reg3 <= s_reg2;
-                s_reg2 <= s_reg1;
-                s_reg1 <= s_reg0;
-                s_reg0 <= sample_in;
+        if rising_edge(clk_12Mhz) then 
+            if rst = '1' then
+                s_reg0 <= (others => '0');
+                s_reg1 <= (others => '0');
+                s_reg2 <= (others => '0');
+                s_reg3 <= (others => '0');
+                s_reg4 <= (others => '0');
+                sen_reg <= '0';
+            else
+                sen_reg <= sen_next;
+                if sample_en = '1' then
+                    -- Desplaza las muestras previas
+                    s_reg4 <= s_reg3;
+                    s_reg3 <= s_reg2;
+                    s_reg2 <= s_reg1;
+                    s_reg1 <= s_reg0;
+                    s_reg0 <= sample_in;
+                end if;
             end if;
         end if;
     end process;

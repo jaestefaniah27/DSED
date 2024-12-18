@@ -88,7 +88,7 @@ set_property -dict { PACKAGE_PIN M17   IOSTANDARD LVCMOS33 } [get_ports { BTNR }
 set_property -dict { PACKAGE_PIN P18   IOSTANDARD LVCMOS33 } [get_ports { BTND }]; #IO_L9N_T1_DQS_D13_14 Sch=btnd
 
 ## Desactivar restricción de enrutamiento dedicado (no recomendado)
-set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets BTNU_IBUF];
+#set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets BTNU_IBUF];
 
 
 ##Pmod Headers

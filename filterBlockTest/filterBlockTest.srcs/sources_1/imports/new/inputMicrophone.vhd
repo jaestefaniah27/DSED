@@ -25,23 +25,25 @@ begin
 
 UPDATE: process(clk_12Mhz, rst, en_4_cycles)
 begin
-    if (rst = '1') then
-        state <= S0;
-        counter_reg <= (OTHERS=>'0');
-        data0_reg <= (OTHERS=>'0');
-        data1_reg <= (OTHERS=>'0');
-        sample_out_reg <= (others=>'0');
-        primer_ciclo_reg <= '0';
-        sample_out_ready_reg <= '0';
-    elsif rising_edge(clk_12Mhz) then
-        sample_out_ready_reg <= sample_out_ready_next;
-        if en_4_cycles = '1' then
-            state <= next_state;
-            counter_reg <= counter_next;
-            data0_reg <= data0_next;
-            data1_reg <= data1_next;
-            sample_out_reg <= sample_out_next;
-            primer_ciclo_reg <= primer_ciclo_next;
+    if rising_edge(clk_12Mhz) then
+        if (rst = '1') then
+            state <= S0;
+            counter_reg <= (OTHERS=>'0');
+            data0_reg <= (OTHERS=>'0');
+            data1_reg <= (OTHERS=>'0');
+            sample_out_reg <= (others=>'0');
+            primer_ciclo_reg <= '0';
+            sample_out_ready_reg <= '0';
+        else 
+            sample_out_ready_reg <= sample_out_ready_next;
+            if en_4_cycles = '1' then
+                state <= next_state;
+                counter_reg <= counter_next;
+                data0_reg <= data0_next;
+                data1_reg <= data1_next;
+                sample_out_reg <= sample_out_next;
+                primer_ciclo_reg <= primer_ciclo_next;
+            end if;
         end if;
     end if;
 end process;
