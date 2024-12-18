@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="20" Path="C:/Users/jpgpo/OneDrive - Verisure/Escritorio/Proyecto de VHDL/DSED/filterBlockTest/filterBlockTest.xpr">
+<Project Version="7" Minor="20" Path="C:/Users/SDverisure/Documents/4_TELECO/DSED_github/dsed_croqueta_player/dsed_croqueta_player.srcs/filterBlockTest/filterBlockTest.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="871cb6f83729447094823337528d0915"/>
@@ -29,7 +29,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSANumComputeUnits" Val="16"/>
-    <Option Name="WTXSimLaunchSim" Val="244"/>
+    <Option Name="WTXSimLaunchSim" Val="247"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -337,7 +337,7 @@
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>
-        <Option Name="TopModule" Val="LED_driver_tb"/>
+        <Option Name="TopModule" Val="read_text"/>
         <Option Name="TopLib" Val="xil_defaultlib"/>
         <Option Name="TransportPathDelay" Val="0"/>
         <Option Name="TransportIntDelay" Val="0"/>

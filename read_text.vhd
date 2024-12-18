@@ -38,8 +38,8 @@ architecture behavior of read_text is
     constant clk_period : time := 10 ns;
 
     -- declaración de archivos
-    file in_file : text open read_mode is "C:/Users/dsed/DSED/Archivos_texto/sample_in.dat";
-    file out_file : text open write_mode is "C:/Users/dsed/DSED/Archivos_texto/sample_out.dat";
+    file in_file : text open read_mode is "C:\Users\SDverisure\Documents\4_TELECO\DSED_github\archivos_texto\sample_in.dat";
+    file out_file : text open write_mode is "C:\Users\SDverisure\Documents\4_TELECO\DSED_github\archivos_texto\sample_out.dat";
 
 begin
     -- generador de reloj

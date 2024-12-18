@@ -8,7 +8,6 @@ END tb_RAM;
 ARCHITECTURE behavior OF tb_RAM IS
     -- Señales para conectar al DUT (Device Under Test)
     SIGNAL clka    : STD_LOGIC := '0';
-    SIGNAL rsta    : STD_LOGIC := '0';
     SIGNAL wea     : STD_LOGIC_VECTOR(0 DOWNTO 0) := (OTHERS => '0');
     SIGNAL addra   : STD_LOGIC_VECTOR(18 DOWNTO 0) := (OTHERS => '0');
     SIGNAL dina    : STD_LOGIC_VECTOR(7 DOWNTO 0) := (OTHERS => '0');
@@ -31,7 +30,6 @@ BEGIN
     DUT: ENTITY work.blk_mem_gen_0
         PORT MAP (
             clka  => clka,
-            rsta  => rsta,
             wea   => wea,
             addra => addra,
             dina  => dina,
