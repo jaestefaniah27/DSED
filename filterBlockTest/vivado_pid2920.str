@@ -260,3 +260,4 @@ selectMenuItem(PAResourceItoN.MsgTreePanel_SUPPRESS_MESSAGES_WITH_THIS_ID, "Supp
 // [GUI Memory]: 100 MB (+1676kb) [00:15:17]
 selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-3331] design controller has unconnected port sample_from_filter_en. ]", 3, false); // ah:i (JViewport:JComponent, cg:JFrame)
 selectTree(PAResourceItoN.MsgTreePanel_MESSAGE_VIEW_TREE, "[, Synthesis, synth_1, [Synth 8-3331] design controller has unconnected port sample_from_filter_en. ]", 3, false, false, false, false, false, true); // ah:i (JViewport:JComponent, cg:JFrame) - Double Click
+unMaximizeFrame(PAResourceOtoP.PAViews_MESSAGES, "Messages"); // ax:DockableFrame (aF:FrameContainer, cg:JFrame)
